@@ -1,0 +1,10 @@
+@media (max-width: 600px) {
+  .farm_heading h1 {
+    font-size: 2.5rem !important;
+  }
+
+  .farm_heading h2 {
+    font-size: 1.2rem !important;
+    line-height: 1.25rem;
+  }
+}
