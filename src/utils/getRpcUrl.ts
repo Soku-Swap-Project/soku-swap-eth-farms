@@ -18,7 +18,7 @@ export const nodes = [
 
 const getNodeUrl = () => {
   const randomIndex = random(0, nodes.length - 1)
-  return 'https://rinkeby.infura.io/v3/2f19547594904eccb22e0340eb257539'
+  return 'https://rinkeby.infura.io/v3/00578098fc214d3aa75838b89e6cdca4'
 }
 
 export default getNodeUrl

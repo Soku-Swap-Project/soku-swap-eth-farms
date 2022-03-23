@@ -152,8 +152,6 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
   const info = `https://pancakeswap.info/pair/${lpAddress}`
   const origin = window.location.origin
 
-  console.log(farm, 'farm')
-
   // console.log(quoteToken)
   // console.log(token)
 
