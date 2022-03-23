@@ -55,7 +55,7 @@ const Menu = (props) => {
               <a className="nav_link" href="/bsc/#/swap">
                 <li>Swap</li>
               </a>
-              {isMobile ? (
+              {/* {isMobile ? (
                 <a className="nav_link" href="/bsc/#/limit-order">
                   <li>Limit</li>
                 </a>
@@ -63,7 +63,7 @@ const Menu = (props) => {
                 <a className="nav_link" href="/bsc/#/limit-order">
                   <li>Limit Orders</li>
                 </a>
-              )}
+              )} */}
               <a className="nav_link" href="/bsc/#/pool">
                 <li>Pool</li>
               </a>
@@ -73,9 +73,9 @@ const Menu = (props) => {
               <NavLink className="nav_link" activeClassName="active" to="/eth/farms">
                 <li>Farms</li>
               </NavLink>
-              <NavLink className="nav_link" activeClassName="active" to="/eth/staking/">
+              {/* <NavLink className="nav_link" activeClassName="active" to="/eth/staking/">
                 <li>Staking</li>
-              </NavLink>
+              </NavLink> */}
               {/* <a className="nav_link" href="/bsc/#/deposit">
                 <li>Deposit</li>
               </a> */}

@@ -120,9 +120,9 @@ const App: React.FC = () => {
           <Route path="/eth/farms">
             <FarmsV2 />
           </Route>
-          <Route path="/eth/staking/">
+          {/* <Route path="/eth/staking/">
             <Pools />
-          </Route>
+          </Route> */}
           <Route path="/eth/bridge">
             <ComingSoon />
           </Route>
