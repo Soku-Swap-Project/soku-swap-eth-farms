@@ -1,18 +1,4 @@
 {
-  "rewrites": [
-    {
-      "source": "/eth/farms/(.*)",
-      "destination": "/$1"
-    },
-    {
-      "source": "/eth/staking/(.*)",
-      "destination": "/$1"
-    },
-    {
-      "source": "/eth/(.*)",
-      "destination": "/$1"
-    }
-  ],
   "headers": [
     {
       "source": "(.*)",
