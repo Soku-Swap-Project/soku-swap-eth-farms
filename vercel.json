@@ -1,15 +1,15 @@
 {
   "rewrites": [
     {
-      "source": "/bsc/farms/(.*)",
+      "source": "/eth/farms/(.*)",
       "destination": "/$1"
     },
     {
-      "source": "/bsc/staking/(.*)",
+      "source": "/eth/staking/(.*)",
       "destination": "/$1"
     },
     {
-      "source": "/bsc/(.*)",
+      "source": "/eth/(.*)",
       "destination": "/$1"
     }
   ],

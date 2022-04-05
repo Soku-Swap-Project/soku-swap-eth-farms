@@ -1,11 +1,11 @@
 export default {
   masterChef: {
     4: '0x25242e456545386F851547798901a3B49c4Cd547',
-    1: '0xc2EdaD668740f1aA35E4D8f227fB8E17dcA888Cd',
+    1: '0xD9b37171B6c283Be6082A5fdC134f1CEB57aC38c',
   },
   masterChefV2: {
     4: '0x25242e456545386F851547798901a3B49c4Cd547',
-    1: '0xc2EdaD668740f1aA35E4D8f227fB8E17dcA888Cd',
+    1: '0xD9b37171B6c283Be6082A5fdC134f1CEB57aC38c',
   },
   // sousChef: {
   //   4: '0xd3af5fe61dbaf8f73149bfcfa9fb653ff096029a',

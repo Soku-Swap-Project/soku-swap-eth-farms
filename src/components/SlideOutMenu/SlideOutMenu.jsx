@@ -92,7 +92,7 @@ class SlideOutMenu extends React.Component {
     return (
       <nav className="mobile_navbar">
         <div className="mobile_menu_logo">
-          <a href="/bsc/#/swap">
+          <a href="/ethereum/#/swap">
             <img src="https://i.ibb.co/Qfm7690/Soku-Swap-Web-Logo-White.png" alt="SokuSwap Logo" srcset="" />
           </a>
         </div>
@@ -110,25 +110,25 @@ class SlideOutMenu extends React.Component {
           <div>
             <ul>
               <div className="mobile_menu_list">
-                <a className="nav_link" href="/bsc/#/swap">
+                <a className="nav_link" href="/ethereum/#/swap">
                   <li>Swap</li>
                 </a>
-                <a className="nav_link" href="/bsc/#/limit-order">
+                {/* <a className="nav_link" href="/ethereum/#/limit-order">
                   <li>Limit Orders</li>
-                </a>
-                <a className="nav_link" href="/bsc/#/pool">
+                </a> */}
+                <a className="nav_link" href="/ethereum/#/pool">
                   <li>Pool</li>
                 </a>
-                <NavLink className="nav_link" onClick={this.toggleMenu} activeClassName="active" to="/bsc/bridge">
+                <a className="nav_link" href={`${origin}/bridge`}>
                   <li>Bridge</li>
-                </NavLink>
-                <NavLink className="nav_link" onClick={this.toggleMenu} activeClassName="active" to="/bsc/farms">
+                </a>
+                <NavLink className="nav_link" onClick={this.toggleMenu} activeClassName="active" to="/">
                   <li>Farms</li>
                 </NavLink>
-                <NavLink className="nav_link" onClick={this.toggleMenu} activeClassName="active" to="/bsc/staking/">
+                {/* <NavLink className="nav_link" onClick={this.toggleMenu} activeClassName="active" to="/ethereum/staking/">
                   <li>Staking</li>
-                </NavLink>
-                {/* <a className="nav_link" href="/bsc/#/deposit">
+                </NavLink> */}
+                {/* <a className="nav_link" href="/ethereum/#/deposit">
                   <li>Deposit</li>
                 </a> */}
                 <a

@@ -2,16 +2,16 @@ import tokens from './tokens'
 import { FarmConfig } from './types'
 
 const farmsV2: FarmConfig[] = [
-  {
-    pid: 1,
-    lpSymbol: 'SOKU-ETH LP',
-    lpAddresses: {
-      4: '0x6812108E96f2d53680446aF1dE8C6d474bD5b610',
-      1: '',
-    },
-    token: tokens.weth,
-    quoteToken: tokens.soku,
-  },
+  // {
+  //   pid: 1,
+  //   lpSymbol: 'SOKU-ETH LP',
+  //   lpAddresses: {
+  //     4: '0x6812108E96f2d53680446aF1dE8C6d474bD5b610',
+  //     1: '',
+  //   },
+  //   token: tokens.weth,
+  //   quoteToken: tokens.soku,
+  // },
   // {
   //   pid: 0,
   //   lpSymbol: 'SUTEKU',

@@ -52,7 +52,7 @@ const loadNetwork = async () => {
       method: 'wallet_switchEthereumChain',
       params: [
         {
-          chainId: '0x4',
+          chainId: '0x1',
         },
       ],
     })
@@ -63,9 +63,9 @@ const loadNetwork = async () => {
         method: 'wallet_addEthereumChain',
         params: [
           {
-            chainId: '0x4',
+            chainId: '0x1',
             chainName: 'Ethereum Network',
-            rpcUrls: ['https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161/'],
+            rpcUrls: ['https://mainnet.infura.io/v3/'],
             nativeCurrency: {
               name: 'ETH',
               symbol: 'ETH',
@@ -117,15 +117,15 @@ const App: React.FC = () => {
           {/* <Route exact path="/bsc/farms">
             <Farms />
           </Route> */}
-          <Route path="/eth/farms">
+          <Route path="/ethereum/farms">
             <FarmsV2 />
           </Route>
-          <Route path="/eth/staking/">
+          {/* <Route path="/eth/staking/">
             <Pools />
-          </Route>
-          <Route path="/eth/bridge">
+          </Route> */}
+          {/* <Route path="/eth/bridge">
             <ComingSoon />
-          </Route>
+          </Route> */}
           <Route component={NotFound} />
         </Switch>
         <div className="connectWallet__options__MOBILE">

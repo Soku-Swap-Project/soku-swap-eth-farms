@@ -152,8 +152,6 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
   const info = `https://pancakeswap.info/pair/${lpAddress}`
   const origin = window.location.origin
 
-  console.log(farm, 'farm')
-
   // console.log(quoteToken)
   // console.log(token)
 
@@ -173,7 +171,7 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
       <div className="add_remove_liquidity">
         <Button
           onClick={() => {
-            window.location.href = `${origin}/eth/#/add/${token.address[4]}/${quoteToken.address[4]}`
+            window.location.href = `${origin}/ethereum/#/add/${token.address[1]}/${quoteToken.address[1]}`
           }}
           className="farm_liquidity_buttons add"
         >
@@ -181,7 +179,7 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
         </Button>
         <Button
           onClick={() => {
-            window.location.href = `${origin}/eth/#/remove/${token.address[4]}/${quoteToken.address[4]}`
+            window.location.href = `${origin}/ethereum/#/remove/${token.address[1]}/${quoteToken.address[1]}`
           }}
           className="farm_liquidity_buttons remove"
         >

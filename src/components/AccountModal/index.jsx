@@ -67,7 +67,7 @@ export default function AccountModal() {
         </div>
 
         <a target="_blank" className="view_on_scan" href={getBscScanLink(chainId, account, 'address')}>
-          <h2>View on BscScan</h2>
+          <h2>View on EtherScan</h2>
           <span className="material-icons ">open_in_new</span>
         </a>
         <button className="account_logout" onClick={logoutAccount()}>

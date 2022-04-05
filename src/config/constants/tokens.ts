@@ -7,7 +7,7 @@ const tokens = {
     symbol: 'SOKU',
     name: 'SOKU',
     address: {
-      1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
+      1: '0x4C3A8ECeB656Ec63eaE80a4ebD565E4887DB6160',
       4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
     },
     decimals: 18,
@@ -17,7 +17,7 @@ const tokens = {
     symbol: 'SUTEKU',
     name: 'Suteku Rewards Token',
     address: {
-      1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
+      1: '0xc7230BADF274995F1933598c249c824fDE26F426',
       4: '0x5BaF25e000A9FB67e768C1E80B1bB81f4A6eBf76',
     },
     decimals: 18,
