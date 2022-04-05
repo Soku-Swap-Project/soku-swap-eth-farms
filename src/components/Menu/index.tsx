@@ -52,7 +52,7 @@ const Menu = (props) => {
               <img className="nav_logo" style={{ height: '50px' }} alt="Logo" src="images/Web-Corner-Logo.png" />
             </a>
             <div className="navbar__options">
-              <a className="nav_link" href="/bsc/#/swap">
+              <a className="nav_link" href="/ethereum/#/swap">
                 <li>Swap</li>
               </a>
               {/* {isMobile ? (
@@ -64,13 +64,13 @@ const Menu = (props) => {
                   <li>Limit Orders</li>
                 </a>
               )} */}
-              <a className="nav_link" href="/bsc/#/pool">
+              <a className="nav_link" href="/ethereum/#/pool">
                 <li>Pool</li>
               </a>
-              <NavLink className="nav_link" activeClassName="active" to="/eth/bridge">
+              <a className="nav_link" href={`${origin}/bridge`}>
                 <li>Bridge</li>
-              </NavLink>
-              <NavLink className="nav_link" activeClassName="active" to="/eth/farms">
+              </a>
+              <NavLink className="nav_link" activeClassName="active" to="/ethereum/farms">
                 <li>Farms</li>
               </NavLink>
               {/* <NavLink className="nav_link" activeClassName="active" to="/eth/staking/">

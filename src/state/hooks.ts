@@ -474,7 +474,7 @@ export const useGetApiPrice = (address: string) => {
 }
 
 export const usePriceBnbBusd = (): BigNumber => {
-  // const bnbBusdFarm = useFarmFromPid(1)
+  // const bnbBusdFarm = useFarmFromPidV2(1)
   // return bnbBusdFarm.tokenPriceVsQuote ? new BigNumber(1).div(bnbBusdFarm.tokenPriceVsQuote) : BIG_ZERO
 
   // return bnbBusdFarm.tokenPriceVsQuote ? bnbBusdFarm.tokenPriceVsQuote : BIG_ZERO
@@ -482,7 +482,7 @@ export const usePriceBnbBusd = (): BigNumber => {
 }
 
 export const usePriceCakeBusd = (): BigNumber => {
-  // const cakeBnbFarm = useFarmFromPid(2)
+  // const cakeBnbFarm = useFarmFromPidV2(2)
   // const bnbBusdPrice = usePriceBnbBusd()
 
   // console.log(cakeBnbFarm)
@@ -496,18 +496,18 @@ export const usePriceCakeBusd = (): BigNumber => {
 }
 
 export const usePriceBnbSuteku = (): BigNumber => {
-  // const sutekuFarm = useFarmFromPid(11)
+  // const sutekuFarm = useFarmFromPidV2(1)
   // const soku_price = usePriceCakeBusd()
 
   // console.log('farm', sutekuFarm)
 
   // const sutekuPrice = sutekuFarm.tokenPriceVsQuote ? sutekuFarm.tokenPriceVsQuote : BIG_ZERO
 
-  const sutekuPrice = BIG_ZERO
+  // const sutekuPrice = BIG_ZERO
 
   // const price = new BigNumber(sutekuPrice).multipliedBy(soku_price)
   // console.log(tmuFarm, 'tmu2')
-  return sutekuPrice
+  return BIG_ZERO
 }
 
 // Block

@@ -88,7 +88,7 @@ export const fetchPrices = createAsyncThunk<PriceApiThunk>('prices/fetch', async
   const data = (await response.json()) as PriceApiResponse
 
   const suteku = {
-    '0x198800aF50914004A9E9D19cA18C0b24587a50cf': {
+    '0x5BaF25e000A9FB67e768C1E80B1bB81f4A6eBf76': {
       name: 'SUTEKU Soku Rewards Token',
       symbol: 'SUTEKU',
       price: suteku_price || 0,
@@ -97,7 +97,7 @@ export const fetchPrices = createAsyncThunk<PriceApiThunk>('prices/fetch', async
   }
 
   const soku = {
-    '0x0e4b5ea0259eb3d66e6fcb7cc8785817f8490a53': {
+    '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1': {
       name: 'Soku',
       symbol: 'SOKU',
       price: soku_price || 0,

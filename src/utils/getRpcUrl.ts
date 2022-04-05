@@ -18,7 +18,7 @@ export const nodes = [
 
 const getNodeUrl = () => {
   const randomIndex = random(0, nodes.length - 1)
-  return 'https://rinkeby.infura.io/v3/00578098fc214d3aa75838b89e6cdca4'
+  return 'https://speedy-nodes-nyc.moralis.io/a80a9a59f7e3ae9405c48919/eth/mainnet'
 }
 
 export default getNodeUrl
