@@ -4,7 +4,7 @@ import { Address } from 'config/constants/types'
 
 export const getAddress = (address: Address): string => {
   const mainNetChainId = 1
-  const chainId = process.env.NEXT_PUBLIC_CHAIN_ID
+  const chainId = 1
   return address[chainId] ? address[chainId] : address[mainNetChainId]
 }
 

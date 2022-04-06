@@ -47,7 +47,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
 
   const isApproved = account && allowance && allowance.isGreaterThan(0)
 
-  const lpAddress = lpAddresses[process.env.NEXT_PUBLIC_CHAIN_ID]
+  const lpAddress = lpAddresses[1]
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
     quoteTokenAddress: quoteToken.address,
     tokenAddress: token.address,
