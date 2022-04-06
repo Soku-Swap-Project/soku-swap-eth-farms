@@ -45,8 +45,8 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
   const web3 = getWeb3NoAccount()
   const newWeb3 = new Web3(Web3.givenProvider)
   const { account } = useWeb3React()
-  const bnbPrice = useTokenPrice('wbnb')
-  const bnbPriceBig = new BigNumber(bnbPrice)
+  const ethPrice = useTokenPrice('wbnb')
+  const ethPriceBig = new BigNumber(ethPrice)
   const sokuPrice = useTokenPrice('sokuswap')
   const sutekuPrice = usePriceSutekuEth()
 

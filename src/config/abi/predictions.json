@@ -563,7 +563,7 @@
     "name": "ledger",
     "outputs": [
       {
-        "internalType": "enum BnbPricePrediction.Position",
+        "internalType": "enum ethPricePrediction.Position",
         "name": "position",
         "type": "uint8"
       },

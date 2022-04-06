@@ -36,7 +36,7 @@ import {
 // import { fetchProfile } from './profile'
 // import { fetchTeam, fetchTeams } from './teams'
 // import { fetchAchievements } from './achievements'
-import { fetchPrices, bnbPrice } from './prices'
+import { fetchPrices, ethPrice } from './prices'
 import { fetchWalletNfts } from './collectibles'
 // import { getCanClaim } from './predictions/helpers'
 import { transformPool } from './pools/helpers'
@@ -160,8 +160,8 @@ export const useFarmFromTokenSymbolV2 = (tokenSymbol: string, preferredQuoteToke
 
 export const useBusdPriceFromPid = (pid: number): BigNumber => {
   const farm = useFarmFromPid(pid)
-  const bnbPriceBusd = usePriceBnbBusd()
-  // console.log('bnb price', bnbPriceBusd)
+  const ethPriceBusd = usePriceBnbBusd()
+  // console.log('bnb price', ethPriceBusd)
   const quoteTokenFarm = useFarmFromTokenSymbol(farm?.quoteToken?.symbol)
 
   // Catch in case a farm isn't found
@@ -177,11 +177,11 @@ export const useBusdPriceFromPid = (pid: number): BigNumber => {
   if (farm.quoteToken.symbol === 'SOKU') {
     // console.log('farm', farm.tokenPriceVsQuote)
 
-    return bnbPriceBusd.gt(0) ? bnbPriceBusd.times(farm.tokenPriceVsQuote) : BIG_ZERO
+    return ethPriceBusd.gt(0) ? ethPriceBusd.times(farm.tokenPriceVsQuote) : BIG_ZERO
   }
 
   if (farm.quoteToken.symbol === 'wBNB') {
-    return bnbPriceBusd.gt(0) ? bnbPriceBusd.times(farm.tokenPriceVsQuote) : BIG_ZERO
+    return ethPriceBusd.gt(0) ? ethPriceBusd.times(farm.tokenPriceVsQuote) : BIG_ZERO
   }
 
   // Possible alternative farm quoteTokens:
@@ -191,7 +191,7 @@ export const useBusdPriceFromPid = (pid: number): BigNumber => {
   // we find the pBTC farm (pBTC - BNB)'s quote token - BNB
   // from the BNB - pBTC BUSD price, we can calculate the PNT - BUSD price
   if (quoteTokenFarm?.quoteToken?.symbol === 'wBNB') {
-    const quoteTokenInBusd = bnbPriceBusd.gt(0) && bnbPriceBusd.times(quoteTokenFarm.tokenPriceVsQuote)
+    const quoteTokenInBusd = ethPriceBusd.gt(0) && ethPriceBusd.times(quoteTokenFarm.tokenPriceVsQuote)
     return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote).times(quoteTokenInBusd) : BIG_ZERO
   }
 
@@ -482,38 +482,27 @@ export const usePriceBnbBusd = (): BigNumber => {
 }
 
 export const usePriceSokuEth = (): BigNumber => {
-  try {
-    const sokuEthFarm = useFarmFromPidV2(1)
-    // const bnbBusdPrice = usePriceBnbBusd()
+  const sokuEthFarm = useFarmFromPidV2(1)
+  // const bnbBusdPrice = usePriceBnbBusd()
 
-    // console.log(sokuEthFarm)
+  // const sokuEthPrice = sokuEthFarm.tokenPriceVsQuote ? bnbBusdPrice.times(sokuEthFarm.tokenPriceVsQuote) : BIG_ZERO
 
-    // const sokuEthPrice = sokuEthFarm.tokenPriceVsQuote ? bnbBusdPrice.times(sokuEthFarm.tokenPriceVsQuote) : BIG_ZERO
+  const sokuEthPrice = sokuEthFarm.tokenPriceVsQuote ? sokuEthFarm.tokenPriceVsQuote : BIG_ZERO
 
-    const sokuEthPrice = sokuEthFarm.tokenPriceVsQuote ? sokuEthFarm.tokenPriceVsQuote : BIG_ZERO
-
-    return BIG_ZERO
-  } catch (error) {
-    console.log(error)
-  }
+  return sokuEthPrice
 }
 
 export const usePriceSutekuEth = (): BigNumber => {
-  try {
-    const sutekuFarm = useFarmFromPidV2(2)
-    const soku_price = usePriceSokuEth()
+  const sutekuFarm = useFarmFromPidV2(2)
+  const soku_price = usePriceSokuEth()
 
-    // console.log('farm', sutekuFarm)
+  const sutekuPrice = sutekuFarm.tokenPriceVsQuote ? sutekuFarm.tokenPriceVsQuote : BIG_ZERO
 
-    const sutekuPrice = sutekuFarm.tokenPriceVsQuote ? sutekuFarm.tokenPriceVsQuote : BIG_ZERO
+  // const sutekuPrice = BIG_ZERO
 
-    // const sutekuPrice = BIG_ZERO
+  const price = new BigNumber(sutekuPrice).multipliedBy(soku_price)
 
-    const price = new BigNumber(sutekuPrice).multipliedBy(soku_price)
-    return BIG_ZERO
-  } catch (error) {
-    console.log(error)
-  }
+  return sutekuPrice
 }
 
 // Block
