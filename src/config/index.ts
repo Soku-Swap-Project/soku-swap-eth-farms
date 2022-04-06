@@ -9,7 +9,7 @@ BigNumber.config({
 export const BSC_BLOCK_TIME = 3
 
 export const SOKU_PER_BLOCK = new BigNumber(0.03)
-export const SUTEKU_PER_BLOCK = new BigNumber(17)
+export const SUTEKU_PER_BLOCK = new BigNumber(5)
 
 export const BLOCKS_PER_YEAR = new BigNumber((60 / BSC_BLOCK_TIME) * 60 * 24 * 365) // 10512000
 export const BASE_URL = 'https://sokuswap.finance'
