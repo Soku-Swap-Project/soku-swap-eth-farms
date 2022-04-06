@@ -123,6 +123,10 @@ const Farms: React.FC = () => {
   const prices = useGetApiPrices()
   const Web3 = require('web3')
   const priceOfEth = ethPrice()
+  const sutekuToString = cakePrice?.toString()
+  const sutekuToNumber = parseFloat(sutekuToString)
+  const sutekuUsd = sutekuToNumber * priceOfEth
+  const sutekuAsBigNumber = new BigNumber(sutekuUsd)
 
   const dispatch = useAppDispatch()
   const { fastRefresh } = useRefresh()
@@ -184,7 +188,7 @@ const Farms: React.FC = () => {
 
         const quoteTokenPriceUsd = prices[getAddress(farm.quoteToken.address).toLowerCase()]
         const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(priceOfEth)
-        const apr = isActive ? getV2FarmApr(farm.poolWeight, cakePrice, totalLiquidity) : 0
+        const apr = isActive ? getV2FarmApr(farm.poolWeight, sutekuAsBigNumber, totalLiquidity) : 0
 
         return { ...farm, apr, liquidity: totalLiquidity }
       })
