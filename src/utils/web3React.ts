@@ -8,9 +8,8 @@ import getNodeUrl from './getRpcUrl'
 const POLLING_INTERVAL = 12000
 // Mainnet
 const rpcUrl = getNodeUrl()
-const chainId = parseInt(process.env.REACT_APP_CHAIN_ID, 10)
-
-console.log(chainId, 'chain')
+const ethMain = '1'
+const chainId = parseInt(ethMain, 10)
 
 // Testnet
 // const chainId = 97
