@@ -140,15 +140,6 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://sokuswap.finance/',
   },
-  weth: {
-    symbol: 'Wrapped ETH',
-    address: {
-      1: '0x009cF7bC57584b7998236eff51b98A168DceA9B0',
-      4: '0xc778417E063141139Fce010982780140Aa0cD5Ab',
-    },
-    decimals: 18,
-    projectLink: 'https://pancakeswap.finance/',
-  },
   busd: {
     symbol: 'BUSD',
     address: {

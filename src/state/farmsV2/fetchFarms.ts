@@ -7,7 +7,6 @@ import { getAddress, getMasterChefV2Address } from 'utils/addressHelpers'
 import { FarmConfig } from 'config/constants/types'
 
 const fetchFarms = async (farmsToFetch: FarmConfig[]) => {
-  // console.log('keivn farmsToFetch==>', farmsToFetch)
   const data = await Promise.all(
     farmsToFetch.map(async (farmConfig) => {
       const lpAddress = getAddress(farmConfig.lpAddresses)

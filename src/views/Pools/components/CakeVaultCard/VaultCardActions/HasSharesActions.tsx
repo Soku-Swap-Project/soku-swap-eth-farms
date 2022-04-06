@@ -7,7 +7,7 @@ import { getWeb3NoAccount } from 'utils/web3'
 import { AbiItem } from 'web3-utils'
 import { getAddress } from 'utils/addressHelpers'
 import { Pool } from 'state/types'
-import { useCakeVault, usePriceCakeBusd, useBusdPriceFromToken, useTokenPrice, usePriceBnbSuteku } from 'state/hooks'
+import { useCakeVault, usePriceSokuEth, useBusdPriceFromToken, useTokenPrice, usePriceSutekuEth } from 'state/hooks'
 import Balance from 'components/Balance'
 import NotEnoughTokensModal from '../../PoolCard/Modals/NotEnoughTokensModal'
 import { convertSharesToCake } from '../../../helpers'
@@ -25,12 +25,12 @@ import { convertSharesToCake } from '../../../helpers'
 //   } = useCakeVault()
 //   const { stakingToken } = pool
 //   const { cakeAsBigNumber, cakeAsNumberBalance } = convertSharesToCake(userShares, pricePerFullShare)
-//   // const cakePriceBusd = usePriceCakeBusd()
+//   // const cakePriceBusd = usePriceSokuEth()
 //   const [balance, setBalance] = useState(new BigNumber(0))
 //   const { account } = useWeb3React()
 //   const web3 = getWeb3NoAccount()
 //   const sokuPrice = useTokenPrice('sokuswap')
-//   const sutekuPrice = usePriceBnbSuteku()
+//   const sutekuPrice = usePriceSutekuEth()
 //   const stakedDollarValue = getBalanceNumber(cakeAsBigNumber.multipliedBy(sutekuPrice), stakingToken.decimals)
 
 //   // console.log(cakeAsBigNumber, 'cakeAsBigNumber')

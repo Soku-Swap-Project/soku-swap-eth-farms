@@ -1,5 +1,5 @@
 import { ReactText } from 'react'
-import { usePriceCakeBusd } from 'state/hooks'
+import { usePriceSokuEth } from 'state/hooks'
 import { getBalanceNumber } from 'utils/formatBalance'
 // import easterPrizes from 'config/constants/trading-competition/easter'
 // import BigNumber from 'bignumber.js'
@@ -14,7 +14,7 @@ import { getBalanceNumber } from 'utils/formatBalance'
 // export const useCompetitionCakeRewards = (userCakeReward: ReactText) => {
 //   const cakeAsBigNumber = new BigNumber(userCakeReward as string)
 //   const cakeBalance = getBalanceNumber(cakeAsBigNumber)
-//   const cakePriceBusd = usePriceCakeBusd()
+//   const cakePriceBusd = usePriceSokuEth()
 //   return { cakeReward: cakeBalance, dollarValueOfCakeReward: cakeBalance * cakePriceBusd.toNumber() }
 // }
 

@@ -6,7 +6,7 @@ import { getBalanceNumber } from 'utils/formatBalance'
 import { getPoolApr } from 'utils/apr'
 import { AbiItem } from 'web3-utils'
 import { tokenEarnedPerThousandDollarsCompounding, getRoi } from 'utils/compoundApyHelpers'
-import { useBusdPriceFromToken, useTokenPrice, usePriceBnbSuteku } from 'state/hooks'
+import { useBusdPriceFromToken, useTokenPrice, usePriceSutekuEth } from 'state/hooks'
 import Balance from 'components/Balance'
 import ApyCalculatorModal from 'components/ApyCalculatorModal'
 import AprCalculatorModal from 'components/AprCalculatorModal'
@@ -43,7 +43,7 @@ const AprRow: React.FC<AprRowProps> = ({
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })
   const sokuPrice = useTokenPrice('sokuswap')
-  const sutekuPrice = usePriceBnbSuteku()
+  const sutekuPrice = usePriceSutekuEth()
   const earningTokenPrice = earningToken.symbol === 'SOKU' ? sokuPrice : sutekuPrice.toNumber()
   const earningTokenPriceAsNumber = earningTokenPrice
 

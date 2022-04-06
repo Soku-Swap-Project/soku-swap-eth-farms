@@ -9,7 +9,7 @@ import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { Pool } from 'state/types'
-import { useBusdPriceFromToken, useTokenPrice, usePriceBnbSuteku } from 'state/hooks'
+import { useBusdPriceFromToken, useTokenPrice, usePriceSutekuEth } from 'state/hooks'
 import { getUserPoolData } from 'state/pools'
 
 import Balance from 'components/Balance'
@@ -46,7 +46,7 @@ const StakeAction: React.FC<StakeActionsProps> = ({
   const stakedTokenBalance = getBalanceNumber(stakedBalance, stakingToken.decimals)
   // const stakingTokenPrice = useBusdPriceFromToken(stakingToken.symbol)
   const sokuPrice = useTokenPrice('sokuswap')
-  const sutekuPrice = usePriceBnbSuteku()
+  const sutekuPrice = usePriceSutekuEth()
 
   // useEffect(() => {
   //   const fetchUserData = async () => {

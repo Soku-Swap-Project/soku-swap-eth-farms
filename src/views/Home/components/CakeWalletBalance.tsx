@@ -5,7 +5,7 @@ import useTokenBalance from 'hooks/useTokenBalance'
 import { useTranslation } from 'contexts/Localization'
 import { getCakeAddress } from 'utils/addressHelpers'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { usePriceCakeBusd } from 'state/hooks'
+import { usePriceSokuEth } from 'state/hooks'
 import { BigNumber } from 'bignumber.js'
 import CardValue from './CardValue'
 import CardBusdValue from './CardBusdValue'
@@ -13,7 +13,7 @@ import CardBusdValue from './CardBusdValue'
 const CakeWalletBalance = () => {
   const { t } = useTranslation()
   const cakeBalance = useTokenBalance(getCakeAddress())
-  const cakePriceBusd = usePriceCakeBusd()
+  const cakePriceBusd = usePriceSokuEth()
   const busdBalance = new BigNumber(getBalanceNumber(cakeBalance)).multipliedBy(cakePriceBusd).toNumber()
   const { account } = useWeb3React()
 

@@ -8,7 +8,7 @@ import { Image, Heading, RowType, Text } from '@pancakeswap/uikit'
 import styled from 'styled-components'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
-import { useGetApiPrices, usePriceBnbSuteku, useFarmsV2 } from 'state/hooks'
+import { useGetApiPrices, usePriceSutekuEth, useFarmsV2 } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmUserDataAsyncV2 } from 'state/actions'
 import usePersistState from 'hooks/usePersistState'
@@ -114,7 +114,7 @@ const Farms: React.FC = () => {
   const { pathname } = useLocation()
   const { t } = useTranslation()
   const { data: farmsLP, userDataLoaded } = useFarmsV2()
-  const cakePrice = usePriceBnbSuteku()
+  const cakePrice = usePriceSutekuEth()
 
   const [query, setQuery] = useState('')
   const [viewMode, setViewMode] = usePersistState(ViewMode.TABLE, 'pancake_farm_view')
