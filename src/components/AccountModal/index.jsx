@@ -5,7 +5,7 @@ import { useWeb3React } from '@web3-react/core'
 import useAuth from '../../hooks/useAuth'
 
 import Modal from '@material-ui/core/Modal'
-import getBscScanLink from '../../utils'
+import getEtherScanLink from '../../utils'
 // import { useActiveWeb3React } from '../../hooks'
 // import { useActiveWeb3React } from '../../hooks/'
 
@@ -66,7 +66,7 @@ export default function AccountModal() {
           />
         </div>
 
-        <a target="_blank" className="view_on_scan" href={getBscScanLink(chainId, account, 'address')}>
+        <a target="_blank" className="view_on_scan" href={getEtherScanLink(chainId, account, 'address')}>
           <h2>View on EtherScan</h2>
           <span className="material-icons ">open_in_new</span>
         </a>

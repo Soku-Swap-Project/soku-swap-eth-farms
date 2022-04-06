@@ -1,16 +1,21 @@
-import { ChainId } from '@pancakeswap-libs/sdk'
+// import { ChainId } from '@pancakeswap-libs/sdk'
 
-const BSCSCAN_PREFIXES: { [chainId in ChainId]: string } = {
-  56: '',
-  97: 'testnet.',
+export declare enum ChainId {
+  MAINNET = 1,
+  TESTNET = 4,
 }
 
-export default function getBscScanLink(
+const BSCSCAN_PREFIXES: { [chainId in ChainId]: string } = {
+  1: '',
+  4: 'testnet.',
+}
+
+export default function getEtherScanLink(
   chainId: ChainId,
   data: string,
   type: 'transaction' | 'token' | 'address',
 ): string {
-  const prefix = `https://${BSCSCAN_PREFIXES[chainId] || BSCSCAN_PREFIXES[ChainId.MAINNET]}bscscan.com`
+  const prefix = `https://etherscan.io`
 
   switch (type) {
     case 'transaction': {

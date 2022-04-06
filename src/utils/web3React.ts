@@ -10,6 +10,8 @@ const POLLING_INTERVAL = 12000
 const rpcUrl = getNodeUrl()
 const chainId = parseInt(process.env.REACT_APP_CHAIN_ID, 10)
 
+console.log(chainId, 'chain')
+
 // Testnet
 // const chainId = 97
 // const rpcUrl = 'https://data-seed-prebsc-1-s1.binance.org:8545/'
