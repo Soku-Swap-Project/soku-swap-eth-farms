@@ -8,7 +8,7 @@ const tokens = {
     name: 'SOKU',
     address: {
       1: '0x4C3A8ECeB656Ec63eaE80a4ebD565E4887DB6160',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      4: '',
     },
     decimals: 18,
     projectLink: 'https://sokuswap.org/',
@@ -18,7 +18,7 @@ const tokens = {
     name: 'Suteku Rewards Token',
     address: {
       1: '0xc7230BADF274995F1933598c249c824fDE26F426',
-      4: '0x5BaF25e000A9FB67e768C1E80B1bB81f4A6eBf76',
+      4: '',
     },
     decimals: 18,
     projectLink: 'https://sokuswap.org/',
@@ -154,7 +154,7 @@ const tokens = {
     name: 'Ethereum Token',
     address: {
       1: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      4: '',
     },
     decimals: 18,
     projectLink: 'https://sokuswap.finance/',

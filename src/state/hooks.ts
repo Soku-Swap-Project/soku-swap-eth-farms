@@ -484,7 +484,7 @@ export const usePriceBnbBusd = (): BigNumber => {
 export const usePriceSokuEth = (): BigNumber => {
   try {
     const sokuEthFarm = useFarmFromPidV2(1)
-    const bnbBusdPrice = usePriceBnbBusd()
+    // const bnbBusdPrice = usePriceBnbBusd()
 
     // console.log(sokuEthFarm)
 
