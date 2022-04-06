@@ -28,7 +28,7 @@ const tokens = {
     name: 'Tether USD',
     address: {
       1: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      4: '',
     },
     decimals: 6,
     projectLink: 'https://sokuswap.finance/',
@@ -48,7 +48,7 @@ const tokens = {
     name: 'BODAV2',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      4: '',
     },
     decimals: 18,
     projectLink: 'https://www.bodatoken.org/ ',
@@ -58,7 +58,7 @@ const tokens = {
     name: 'HODL',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      4: '',
     },
     decimals: 9,
     projectLink: 'https://sokuswap.finance/',
@@ -68,7 +68,7 @@ const tokens = {
     name: 'Moonlight Token',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      4: '',
     },
     decimals: 9,
     projectLink: 'https://sokuswap.finance/',
@@ -78,7 +78,7 @@ const tokens = {
     name: 'FCF',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      4: '',
     },
     decimals: 18,
     projectLink: 'https://sokuswap.finance/',
@@ -88,7 +88,7 @@ const tokens = {
     name: 'Suteku Rewards Token',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      4: '',
     },
     decimals: 9,
     projectLink: 'https://sokuswap.finance/',
@@ -98,7 +98,7 @@ const tokens = {
     name: 'earnable',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      4: '',
     },
     decimals: 18,
     projectLink: 'https://earnable.one/',
@@ -108,7 +108,7 @@ const tokens = {
     name: 'yummy',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      4: '',
     },
     decimals: 18,
     projectLink: 'https://yummy-crypto.com/',
@@ -117,7 +117,7 @@ const tokens = {
     symbol: "SOKU 'Syrup'",
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0xa35062141Fa33BCA92Ce69FeD37D0E8908868AAe',
+      4: '',
     },
     decimals: 18,
     projectLink: 'https://sokuswap.finance/',
@@ -126,7 +126,7 @@ const tokens = {
     symbol: 'CAKE',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      4: '',
     },
     decimals: 18,
     projectLink: 'https://sokuswap.finance/',
@@ -135,7 +135,7 @@ const tokens = {
     symbol: 'wBNB',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      4: '',
     },
     decimals: 18,
     projectLink: 'https://sokuswap.finance/',
@@ -144,7 +144,7 @@ const tokens = {
     symbol: 'BUSD',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      4: '',
     },
     decimals: 18,
     projectLink: 'https://www.paxos.com/busd/',
