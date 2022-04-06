@@ -70,7 +70,7 @@ const Menu = (props) => {
               <a className="nav_link" href={`${origin}/bridge`}>
                 <li>Bridge</li>
               </a>
-              <NavLink className="nav_link" activeClassName="active" to="/farms">
+              <NavLink className="nav_link" activeClassName="active" to="/ethereum/farms">
                 <li>Farms</li>
               </NavLink>
               {/* <NavLink className="nav_link" activeClassName="active" to="/eth/staking/">
