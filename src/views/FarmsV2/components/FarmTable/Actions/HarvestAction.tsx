@@ -8,7 +8,7 @@ import { useTranslation } from 'contexts/Localization'
 import { usePriceSutekuEth } from 'state/hooks'
 import { useCountUp } from 'react-countup'
 import { useWeb3React } from '@web3-react/core'
-
+import { ethPrice } from 'state/prices'
 import { ActionContainer, ActionTitles, Title, Subtle, ActionContent, Earned, Staked } from './styles'
 
 interface HarvestActionProps extends FarmWithStakedValue {
@@ -17,8 +17,12 @@ interface HarvestActionProps extends FarmWithStakedValue {
 
 const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userData, userDataReady }) => {
   const earningsBigNumber = new BigNumber(userData.earnings)
+  // console.log(earningsBigNumber.toString(), 'earnings')
   const sutekuPrice = usePriceSutekuEth()
-  // console.log('Cake Price', sutekuPrice.toString())
+  const priceOfEth = ethPrice()
+  const sutekuToString = sutekuPrice?.toString()
+  const sutekuToNumber = parseFloat(sutekuToString)
+  const sutekuUsd = sutekuToNumber * priceOfEth
   let earnings = 0
   let earningsBusd = 0
   let displayBalance = userDataReady ? earnings.toLocaleString() : <Skeleton width={60} />
@@ -27,9 +31,11 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userD
   // If user didn't connect wallet default balance will be 0
   if (!earningsBigNumber.isZero()) {
     earnings = getBalanceNumber(earningsBigNumber)
-    earningsBusd = new BigNumber(earnings).multipliedBy(sutekuPrice).toNumber()
+    earningsBusd = new BigNumber(earnings).multipliedBy(sutekuUsd).toNumber()
     displayBalance = earnings.toLocaleString()
   }
+
+  // console.log(sutekuUsd, 'sutekuUsd')
 
   const [pendingTx, setPendingTx] = useState(false)
   const { onReward } = useHarvestV2(pid)

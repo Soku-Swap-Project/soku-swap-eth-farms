@@ -126,6 +126,7 @@ const Farms: React.FC = () => {
   const sutekuToString = cakePrice?.toString()
   const sutekuToNumber = parseFloat(sutekuToString)
   const sutekuUsd = sutekuToNumber * priceOfEth
+  // console.log(sutekuUsd, 'sutekuUsd')
   const sutekuAsBigNumber = new BigNumber(sutekuUsd)
 
   const dispatch = useAppDispatch()
