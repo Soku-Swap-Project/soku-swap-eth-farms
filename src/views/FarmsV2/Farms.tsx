@@ -285,7 +285,6 @@ const Farms: React.FC = () => {
     const tokenAddress = token.address
     const quoteTokenAddress = quoteToken.address
     const lpLabel = farm.lpSymbol && farm.lpSymbol.split(' ')[0].toUpperCase().replace('SOKU', '')
-    console.log(farm.liquidity)
     // console.log('Farm APR', farm.apr)
 
     const row: RowProps = {
