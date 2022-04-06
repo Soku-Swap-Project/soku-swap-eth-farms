@@ -72,6 +72,8 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
 
   const { onApprove } = useApproveV2(lpContract)
 
+  console.log(lpContract)
+
   const handleApprove = useCallback(async () => {
     try {
       setRequestedApproval(true)
