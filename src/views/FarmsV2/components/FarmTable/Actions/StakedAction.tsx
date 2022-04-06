@@ -8,7 +8,7 @@ import { useFarmUserV2 } from 'state/hooks'
 import { FarmWithStakedValue } from 'views/FarmsV2/components/FarmCard/FarmCard'
 import { useTranslation } from 'contexts/Localization'
 import { useApproveV2 } from 'hooks/useApprove'
-import { getBep20Contract } from 'utils/contractHelpers'
+import { getBep20Contract, getLpContract } from 'utils/contractHelpers'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
@@ -69,10 +69,12 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
   const [onPresentWithdraw] = useModal(<WithdrawModal max={stakedBalance} onConfirm={onUnstake} tokenName={lpSymbol} />)
 
   const lpContract = getBep20Contract(lpAddress, web3)
+  const testLp = getLpContract(lpAddress, web3)
 
   const { onApprove } = useApproveV2(lpContract)
 
-  console.log(lpContract)
+  console.log(lpContract, lpAddress)
+  console.log(testLp)
 
   const handleApprove = useCallback(async () => {
     try {
