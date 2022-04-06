@@ -48,7 +48,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
 
   const isApproved = account && allowance && allowance.isGreaterThan(0)
 
-  const lpAddress = lpAddresses[process.env.REACT_APP_CHAIN_ID]
+  const lpAddress = lpAddresses[process.env.NEXT_PUBLIC_CHAIN_ID]
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
     quoteTokenAddress: quoteToken.address,
     tokenAddress: token.address,
@@ -73,7 +73,8 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
 
   const { onApprove } = useApproveV2(lpContract)
 
-  console.log(lpContract, lpAddress)
+  console.log(lpContract)
+  console.log(lpAddress)
   console.log(testLp)
 
   const handleApprove = useCallback(async () => {

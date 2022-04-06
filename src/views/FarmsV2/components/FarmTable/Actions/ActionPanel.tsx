@@ -147,7 +147,7 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
     quoteTokenAddress: quoteToken.address,
     tokenAddress: token.address,
   })
-  const lpAddress = farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]
+  const lpAddress = farm.lpAddresses[process.env.NEXT_PUBLIC_CHAIN_ID]
   const bsc = `https://bscscan.com/address/${lpAddress}`
   const info = `https://pancakeswap.info/pair/${lpAddress}`
   const origin = window.location.origin
