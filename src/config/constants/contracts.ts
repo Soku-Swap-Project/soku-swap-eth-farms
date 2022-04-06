@@ -1,10 +1,10 @@
 export default {
   masterChef: {
-    4: '0x25242e456545386F851547798901a3B49c4Cd547',
+    4: '',
     1: '0xD9b37171B6c283Be6082A5fdC134f1CEB57aC38c',
   },
   masterChefV2: {
-    4: '0x25242e456545386F851547798901a3B49c4Cd547',
+    4: '',
     1: '0xD9b37171B6c283Be6082A5fdC134f1CEB57aC38c',
   },
   // sousChef: {
@@ -26,7 +26,7 @@ export default {
   // },
   multiCall: {
     1: '0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441',
-    4: '0x08CB8bCA0716A1de3d41cAf8D091c7744340Be04',
+    4: '',
   },
   // pancakeProfile: {
   //   1: '0xDf4dBf6536201370F95e06A0F8a7a70fE40E388a',
