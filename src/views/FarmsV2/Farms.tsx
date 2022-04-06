@@ -29,6 +29,7 @@ import SearchInput from './components/SearchInput'
 import { RowProps } from './components/FarmTable/Row'
 import { DesktopColumnSchema, ViewMode } from './components/types'
 import ToggleNew from 'views/FarmsV2/components/ToggleNew'
+import { ethPrice } from 'state/prices'
 
 import './index.css'
 import Web3 from 'web3'
@@ -121,6 +122,7 @@ const Farms: React.FC = () => {
   const [sortOption, setSortOption] = useState('hot')
   const prices = useGetApiPrices()
   const Web3 = require('web3')
+  const priceOfEth = ethPrice()
 
   const dispatch = useAppDispatch()
   const { fastRefresh } = useRefresh()
@@ -181,7 +183,7 @@ const Farms: React.FC = () => {
         }
 
         const quoteTokenPriceUsd = prices[getAddress(farm.quoteToken.address).toLowerCase()]
-        const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(quoteTokenPriceUsd)
+        const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(priceOfEth)
         const apr = isActive ? getV2FarmApr(farm.poolWeight, cakePrice, totalLiquidity) : 0
 
         return { ...farm, apr, liquidity: totalLiquidity }
@@ -283,6 +285,7 @@ const Farms: React.FC = () => {
     const tokenAddress = token.address
     const quoteTokenAddress = quoteToken.address
     const lpLabel = farm.lpSymbol && farm.lpSymbol.split(' ')[0].toUpperCase().replace('SOKU', '')
+    console.log(farm.liquidity)
     // console.log('Farm APR', farm.apr)
 
     const row: RowProps = {
