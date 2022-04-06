@@ -481,33 +481,39 @@ export const usePriceBnbBusd = (): BigNumber => {
   return BIG_ZERO
 }
 
-export const usePriceCakeBusd = (): BigNumber => {
-  // const cakeBnbFarm = useFarmFromPidV2(2)
-  // const bnbBusdPrice = usePriceBnbBusd()
+export const usePriceSokuEth = (): BigNumber => {
+  try {
+    const sokuEthFarm = useFarmFromPidV2(1)
+    // const bnbBusdPrice = usePriceBnbBusd()
 
-  // console.log(cakeBnbFarm)
+    // console.log(sokuEthFarm)
 
-  // const cakeBusdPrice = cakeBnbFarm.tokenPriceVsQuote ? bnbBusdPrice.times(cakeBnbFarm.tokenPriceVsQuote) : BIG_ZERO
+    // const sokuEthPrice = sokuEthFarm.tokenPriceVsQuote ? bnbBusdPrice.times(sokuEthFarm.tokenPriceVsQuote) : BIG_ZERO
 
-  // const cakeBusdPrice = cakeBnbFarm.tokenPriceVsQuote ? cakeBnbFarm.tokenPriceVsQuote : BIG_ZERO
-  const cakeBusdPrice = BIG_ZERO
+    const sokuEthPrice = sokuEthFarm.tokenPriceVsQuote ? sokuEthFarm.tokenPriceVsQuote : BIG_ZERO
 
-  return cakeBusdPrice
+    return BIG_ZERO
+  } catch (error) {
+    console.log(error)
+  }
 }
 
-export const usePriceBnbSuteku = (): BigNumber => {
-  // const sutekuFarm = useFarmFromPidV2(1)
-  // const soku_price = usePriceCakeBusd()
+export const usePriceSutekuEth = (): BigNumber => {
+  try {
+    const sutekuFarm = useFarmFromPidV2(2)
+    const soku_price = usePriceSokuEth()
 
-  // console.log('farm', sutekuFarm)
+    // console.log('farm', sutekuFarm)
 
-  // const sutekuPrice = sutekuFarm.tokenPriceVsQuote ? sutekuFarm.tokenPriceVsQuote : BIG_ZERO
+    const sutekuPrice = sutekuFarm.tokenPriceVsQuote ? sutekuFarm.tokenPriceVsQuote : BIG_ZERO
 
-  // const sutekuPrice = BIG_ZERO
+    // const sutekuPrice = BIG_ZERO
 
-  // const price = new BigNumber(sutekuPrice).multipliedBy(soku_price)
-  // console.log(tmuFarm, 'tmu2')
-  return BIG_ZERO
+    const price = new BigNumber(sutekuPrice).multipliedBy(soku_price)
+    return BIG_ZERO
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 // Block

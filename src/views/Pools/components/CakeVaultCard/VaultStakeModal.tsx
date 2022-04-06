@@ -8,7 +8,7 @@ import { AbiItem } from 'web3-utils'
 import { useAppDispatch } from 'state'
 import { BIG_TEN } from 'utils/bigNumber'
 import Slider from 'components/Slider'
-import { useCakeVault, usePriceCakeBusd, useBusdPriceFromToken, useTokenPrice, usePriceBnbSuteku } from 'state/hooks'
+import { useCakeVault, usePriceSokuEth, useBusdPriceFromToken, useTokenPrice, usePriceSutekuEth } from 'state/hooks'
 import { getWeb3NoAccount } from 'utils/web3'
 import { getAddress } from 'utils/addressHelpers'
 // import { useCakeVaultContract } from 'hooks/useContract'
@@ -45,7 +45,7 @@ import FeeSummary from './FeeSummary'
 //   const [balance, setBalance] = useState(new BigNumber(0))
 //   const { stakingToken } = pool
 //   const sokuPrice = useTokenPrice('sokuswap')
-//   const sutekuPrice = usePriceBnbSuteku()
+//   const sutekuPrice = usePriceSutekuEth()
 //   const web3 = getWeb3NoAccount()
 //   const { account } = useWeb3React()
 //   // const cakeVaultContract = useCakeVaultContract()
@@ -61,7 +61,7 @@ import FeeSummary from './FeeSummary'
 //   const [staked, setStaked] = useState(0)
 //   const [percent, setPercent] = useState(0)
 //   const { hasUnstakingFee } = useWithdrawalFeeTimer(parseInt(lastDepositedTime, 10), userShares)
-//   const cakePriceBusd = usePriceCakeBusd()
+//   const cakePriceBusd = usePriceSokuEth()
 //   const stakingTokenPrice =
 //     stakingToken.address[56] === '0x198800aF50914004A9E9D19cA18C0b24587a50cf' ? sutekuPrice : sokuPrice
 //   const usdValueStaked = stakeAmount && formatNumber(new BigNumber(stakeAmount).times(stakingTokenPrice).toNumber())

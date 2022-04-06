@@ -117,7 +117,7 @@ const App: React.FC = () => {
           {/* <Route exact path="/bsc/farms">
             <Farms />
           </Route> */}
-          <Route path="/ethereum/farms">
+          <Route exact path="/ethereum/farms">
             <FarmsV2 />
           </Route>
           {/* <Route path="/eth/staking/">

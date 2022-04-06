@@ -5,7 +5,7 @@ import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useHarvest } from 'hooks/useHarvest'
 import { useTranslation } from 'contexts/Localization'
-import { usePriceCakeBusd } from 'state/hooks'
+import { usePriceSokuEth } from 'state/hooks'
 import { useCountUp } from 'react-countup'
 import { useWeb3React } from '@web3-react/core'
 
@@ -17,7 +17,7 @@ interface HarvestActionProps extends FarmWithStakedValue {
 
 const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userData, userDataReady }) => {
   const earningsBigNumber = new BigNumber(userData.earnings)
-  const cakePrice = usePriceCakeBusd()
+  const cakePrice = usePriceSokuEth()
   // console.log('Cake Price', cakePrice.toString())
   let earnings = 0
   let earningsBusd = 0

@@ -16,7 +16,7 @@ import {
 } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { useCakeVault, usePriceCakeBusd } from 'state/hooks'
+import { useCakeVault, usePriceSokuEth } from 'state/hooks'
 import Balance from 'components/Balance'
 // import BountyModal from './BountyModal'
 
@@ -34,7 +34,7 @@ import Balance from 'components/Balance'
 //     totalPendingCakeHarvest,
 //     fees: { callFee },
 //   } = useCakeVault()
-//   const cakePriceBusd = usePriceCakeBusd()
+//   const cakePriceBusd = usePriceSokuEth()
 //   const cakePriceBusdAsNumber = cakePriceBusd.toString()
 
 //   const estimatedDollarBountyReward = useMemo(() => {

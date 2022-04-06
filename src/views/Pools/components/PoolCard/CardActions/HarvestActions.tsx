@@ -10,7 +10,7 @@ import { AbiItem } from 'web3-utils'
 import { getAddress } from 'utils/addressHelpers'
 import { useTranslation } from 'contexts/Localization'
 import { getFullDisplayBalance, getBalanceNumber, formatNumber } from 'utils/formatBalance'
-import { useBusdPriceFromToken, useTokenPrice, usePriceBnbSuteku } from 'state/hooks'
+import { useBusdPriceFromToken, useTokenPrice, usePriceSutekuEth } from 'state/hooks'
 import useToast from 'hooks/useToast'
 import Balance from 'components/Balance'
 import CollectModal from '../Modals/CollectModal'
@@ -48,7 +48,7 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
   const bnbPrice = useTokenPrice('wbnb')
   const bnbPriceBig = new BigNumber(bnbPrice)
   const sokuPrice = useTokenPrice('sokuswap')
-  const sutekuPrice = usePriceBnbSuteku()
+  const sutekuPrice = usePriceSutekuEth()
 
   const earningTokenPrice = earningToken.symbol === 'SOKU' ? sokuPrice : sutekuPrice.toNumber()
 

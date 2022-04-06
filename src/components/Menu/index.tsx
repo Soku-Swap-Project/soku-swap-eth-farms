@@ -11,7 +11,7 @@ import { useTranslation } from 'contexts/Localization'
 import useTheme from 'hooks/useTheme'
 import useAuth from 'hooks/useAuth'
 import useTransak from 'hooks/useTransak'
-import { usePriceCakeBusd, useProfile } from 'state/hooks'
+import { usePriceSokuEth, useProfile } from 'state/hooks'
 import config from './config'
 import ClaimSokuModal from 'components/ClaimSokuModal'
 import AccountModal from 'components/AccountModal'
@@ -48,7 +48,7 @@ const Menu = (props) => {
       <div className="sokuswap__navbar">
         <nav>
           <ul className="navbar__items">
-            <a className="nav_link" href="/bsc/#/swap">
+            <a className="nav_link" href="/ethereum/#/swap">
               <img className="nav_logo" style={{ height: '50px' }} alt="Logo" src="images/Web-Corner-Logo.png" />
             </a>
             <div className="navbar__options">
@@ -76,9 +76,6 @@ const Menu = (props) => {
               {/* <NavLink className="nav_link" activeClassName="active" to="/eth/staking/">
                 <li>Staking</li>
               </NavLink> */}
-              {/* <a className="nav_link" href="/bsc/#/deposit">
-                <li>Deposit</li>
-              </a> */}
               <a className="nav_link" onClick={() => launchTransak()}>
                 <li>Deposit</li>
               </a>
