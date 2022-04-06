@@ -8,11 +8,10 @@ import { NetworkConnector } from './NetworkConnector'
 
 const NETWORK_URL = process.env.REACT_APP_NETWORK_URL
 const POLLING_INTERVAL = 12000
-const chainId = parseInt(process.env.REACT_APP_CHAIN_ID, 10)
+const ethMain = '1'
+const chainId = parseInt(ethMain, 10)
 
-console.log(chainId, 'chainId')
-
-export const NETWORK_CHAIN_ID: number = parseInt(process.env.REACT_APP_CHAIN_ID ?? '1')
+export const NETWORK_CHAIN_ID: number = parseInt(ethMain ?? '1')
 
 if (typeof NETWORK_URL === 'undefined') {
   throw new Error(`REACT_APP_NETWORK_URL must be a defined environment variable`)

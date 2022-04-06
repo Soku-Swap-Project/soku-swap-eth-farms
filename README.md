@@ -4,6 +4,6 @@
 
 [SokuSwap](https://sokuswap.finance/) is an automated market maker (“**AMM**”) that allows two tokens to be exchanged on the [Binance Smart Chain](https://www.binance.org/en/smartChain) (BSC) as well as the Ethereum Mainnet. It is fast, cheap, and allows anyone to participate.
 
-This repo is responsible for the BSC Farms and Staking for SokuSwap
+This repo is responsible for the ETH Farms and Staking for SokuSwap
 
 If you want to contribute, please refer to the [contributing guidelines](./CONTRIBUTING.md) of this project.
