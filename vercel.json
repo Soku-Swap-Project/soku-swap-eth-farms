@@ -1,4 +1,18 @@
 {
+  "rewrites": [
+    {
+      "source": "/ethereum/farms/(.*)",
+      "destination": "/$1"
+    },
+    {
+      "source": "/ethereum/staking/(.*)",
+      "destination": "/$1"
+    },
+    {
+      "source": "/ethereum/(.*)",
+      "destination": "/$1"
+    }
+  ],
   "headers": [
     {
       "source": "(.*)",
