@@ -28,7 +28,7 @@ import Table from './components/FarmTable/FarmTable'
 import SearchInput from './components/SearchInput'
 import { RowProps } from './components/FarmTable/Row'
 import { DesktopColumnSchema, ViewMode } from './components/types'
-import ToggleNew from 'views/FarmsV2/components/ToggleNew'
+import Toggle from 'components/Toggle'
 import { ethPrice } from 'state/prices'
 
 import './index.css'
@@ -396,7 +396,7 @@ const Farms: React.FC = () => {
       </PageHeader>
 
       <Page>
-        {/* <ToggleNew /> */}
+        <Toggle />
         <ControlContainer>
           <FilterContainer>
             <LabelWrapper>
