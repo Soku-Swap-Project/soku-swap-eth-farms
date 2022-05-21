@@ -23,6 +23,7 @@ import AccountModal from './components/AccountModal'
 import ClaimSokuModal from './components/ClaimSokuModal'
 import SlideOutMenu from './components/SlideOutMenu/SlideOutMenu'
 import ComingSoon from './views/ComingSoon'
+import NewVersionModal from "./components/NewVersionModal"
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -191,6 +192,7 @@ const App: React.FC = () => {
             </li>
           </ul>
         </div>
+        <NewVersionModal />
       </SuspenseWithChunkError>
       <EasterEgg iterations={2} />
       <ToastContainer />
