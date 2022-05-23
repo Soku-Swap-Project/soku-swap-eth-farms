@@ -3,6 +3,7 @@ import React from 'react'
 import { css } from '@emotion/css'
 import { NavLink } from 'react-router-dom'
 import useTransak from 'hooks/useTransak'
+import { sokuSwapVersion2Url } from 'config/constants'
 
 import '../Menu/Menu.css'
 
@@ -92,7 +93,7 @@ class SlideOutMenu extends React.Component {
     return (
       <nav className="mobile_navbar">
         <div className="mobile_menu_logo">
-          <a href="/ethereum/#/swap">
+          <a href="/ethereum/#/pool">
             <img src="https://i.ibb.co/Qfm7690/Soku-Swap-Web-Logo-White.png" alt="SokuSwap Logo" srcset="" />
           </a>
         </div>
@@ -110,7 +111,7 @@ class SlideOutMenu extends React.Component {
           <div>
             <ul>
               <div className="mobile_menu_list">
-                <a className="nav_link" href="/ethereum/#/swap">
+                <a className="nav_link" href={sokuSwapVersion2Url}>
                   <li>Swap</li>
                 </a>
                 {/* <a className="nav_link" href="/ethereum/#/limit-order">
