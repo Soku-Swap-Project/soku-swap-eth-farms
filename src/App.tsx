@@ -112,6 +112,7 @@ const App: React.FC = () => {
       <ResetCSS />
       <GlobalStyle />
       {isMobile ? <SlideOutMenu /> : <Menu />}
+      <NewVersionModal />
       {/* <Menu /> */}
       <SuspenseWithChunkError fallback={<PageLoader />}>
         <Switch>
@@ -192,7 +193,6 @@ const App: React.FC = () => {
             </li>
           </ul>
         </div>
-        {/* <NewVersionModal /> */}
       </SuspenseWithChunkError>
       <EasterEgg iterations={2} />
       <ToastContainer />
