@@ -24,6 +24,9 @@
   z-index: 1;
   position: relative;
 }
+p.tab-button__text {
+  margin: 0px;
+}
 .tab-button__text--active {
   color: #fff;
 }
