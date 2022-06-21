@@ -29,10 +29,10 @@ import SearchInput from './components/SearchInput'
 import { RowProps } from './components/FarmTable/Row'
 import { DesktopColumnSchema, ViewMode } from './components/types'
 import Toggle from 'components/Toggle'
+import ToggleNew from './components/ToggleNew'
 import { ethPrice } from 'state/prices'
 
 import './index.css'
-import Web3 from 'web3'
 
 const ControlContainer = styled.div`
   display: flex;
@@ -81,32 +81,6 @@ const FilterContainer = styled.div`
   }
 `
 
-const ViewControls = styled.div`
-  flex-wrap: wrap;
-  justify-content: space-between;
-  display: flex;
-  align-items: center;
-  width: 100%;
-
-  > div {
-    padding: 8px 0px;
-  }
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    justify-content: flex-start;
-    width: auto;
-
-    > div {
-      padding: 0;
-    }
-  }
-`
-
-const StyledImage = styled(Image)`
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 58px;
-`
 const NUMBER_OF_FARMS_VISIBLE = 12
 
 const Farms: React.FC = () => {
@@ -397,6 +371,7 @@ const Farms: React.FC = () => {
 
       <Page>
         <Toggle />
+        <ToggleNew />
         <ControlContainer>
           <FilterContainer>
             <LabelWrapper>

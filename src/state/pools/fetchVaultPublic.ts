@@ -13,7 +13,7 @@ import makeBatchRequest from 'utils/makeBatchRequest'
 //       cakeVaultContract.methods.getPricePerFullShare().call,
 //       cakeVaultContract.methods.totalShares().call,
 //       cakeVaultContract.methods.calculateHarvestSokuRewards().call,
-//       cakeVaultContract.methods.calculateTotalPendingSokuRewards().call,
+//       cakeVaultContract.methods.calculateTotalpendingSUTEKURewards().call,
 //     ])
 //     const totalSharesAsBigNumber = new BigNumber(shares as string)
 //     const sharePriceAsBigNumber = new BigNumber(sharePrice as string)

@@ -26,6 +26,7 @@ import {
   // getPredictionsContract,
   // getChainlinkOracleContract,
   getSouschefV2Contract,
+  getSouschefContractFarms,
 } from 'utils/contractHelpers'
 
 /**
@@ -113,6 +114,11 @@ export const useSousChef = (id) => {
 export const useSousChefV2 = (id) => {
   const web3 = useWeb3()
   return useMemo(() => getSouschefV2Contract(id, web3), [id, web3])
+}
+
+export const useSousChefV2Farms = (id) => {
+  const web3 = useWeb3()
+  return useMemo(() => getSouschefContractFarms(id, web3), [id, web3])
 }
 
 // export const usePointCenterIfoContract = () => {

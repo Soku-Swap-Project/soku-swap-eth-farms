@@ -1,0 +1,49 @@
+import React from 'react'
+import { useTranslation } from 'contexts/Localization'
+import styled from 'styled-components'
+import { Modal, Text, Button, OpenNewIcon, Link } from '@pancakeswap/uikit'
+import { BASE_EXCHANGE_URL } from 'config'
+import useTheme from 'hooks/useTheme'
+
+/* eslint-disable react/require-default-props */
+interface NotEnoughTokensModalProps {
+  tokenSymbol: string
+  onDismiss?: () => void
+}
+
+const StyledLink = styled(Link)`
+  width: 100%;
+`
+
+const NotEnoughTokensModal: React.FC<NotEnoughTokensModalProps> = ({ tokenSymbol, onDismiss }) => {
+  const { t } = useTranslation()
+  const { theme } = useTheme()
+
+  return (
+    <Modal title={t('%symbol% required', { symbol: tokenSymbol })} onDismiss={onDismiss} headerBackground="#f9f9fa">
+      <Text color="failure" bold>
+        {t('Insufficient %symbol% LP balance', { symbol: tokenSymbol })}
+      </Text>
+      <Text mt="24px">{t('You’ll need %symbol% LP to stake in this farm!', { symbol: tokenSymbol })}</Text>
+      {/* <Text>
+        {t('Get %symbol% LP, or make sure your %symbol% LP isn’t in another farm or LP.', {
+          symbol: tokenSymbol,
+        })}
+      </Text> */}
+      <Button mt="24px" as="a" style={{ background: '#05195a', boxShadow: 'none' }} external href={BASE_EXCHANGE_URL}>
+        {t('Get')} {tokenSymbol} LP
+      </Button>
+      {/* <StyledLink href="https://yieldwatch.net" external>
+        <Button variant="secondary" mt="8px" width="100%">
+          {t('Locate Assets')}
+          <OpenNewIcon color="primary" ml="4px" />
+        </Button>
+      </StyledLink> */}
+      <Button variant="text" style={{ color: '#04bbfb' }} onClick={onDismiss}>
+        {t('Close Window')}
+      </Button>
+    </Modal>
+  )
+}
+
+export default NotEnoughTokensModal

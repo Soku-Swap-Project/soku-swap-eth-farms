@@ -309,6 +309,7 @@ export interface State {
   block: BlockState
   farms: FarmsState
   farmsV2: FarmsStateV2
+  farmsWithSmartChef: PoolsState
   prices: PriceState
   pools: PoolsState
   predictions: PredictionsState
