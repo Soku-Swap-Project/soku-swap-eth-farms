@@ -6,6 +6,8 @@ import { useERC20 } from 'hooks/useContract'
 import useToast from 'hooks/useToast'
 import { getAddress } from 'utils/addressHelpers'
 import { Pool } from 'state/types'
+import { ToastSuccess, ToastError } from 'style/Toasts'
+import { toast } from 'react-toastify'
 
 /* eslint-disable react/require-default-props */
 interface ApprovalActionProps {
@@ -27,21 +29,29 @@ const ApprovalAction: React.FC<ApprovalActionProps> = ({ pool, isLoading = false
       setRequestedApproval(true)
       const txHash = await onApprove()
       if (txHash) {
-        toastSuccess(
-          t('Contract Enabled'),
-          t('You can now stake in the %symbol% farm!', { symbol: stakingToken.symbol }),
+        toast.success(
+          ToastSuccess(
+            t('Contract Enabled'),
+            t('You can now stake in the %symbol% farm!', { symbol: stakingToken.symbol }),
+          ),
         )
+
         setRequestedApproval(false)
       } else {
         // user rejected tx or didn't go thru
-        toastError(t('Error'), t('Please try again. Confirm the transaction and make sure you are paying enough gas!'))
+        toast.error(
+          ToastError(
+            t('Error'),
+            t('Please try again. Confirm the transaction and make sure you are paying enough gas!'),
+          ),
+        )
         setRequestedApproval(false)
       }
     } catch (e) {
       console.error(e)
-      toastError(t('Error'))
+      toast.error(ToastError(t('Error'), 'An error has occured'))
     }
-  }, [onApprove, setRequestedApproval, toastSuccess, toastError, t, stakingToken])
+  }, [onApprove, setRequestedApproval, t, stakingToken])
 
   return (
     <>
@@ -49,12 +59,13 @@ const ApprovalAction: React.FC<ApprovalActionProps> = ({ pool, isLoading = false
         <Skeleton width="100%" height="52px" />
       ) : (
         <Button
+          className="hover_shadow emphasize_swap_button"
           isLoading={requestedApproval}
           endIcon={requestedApproval ? <AutoRenewIcon spin color="currentColor" /> : null}
           disabled={requestedApproval}
           onClick={handleApprove}
           width="100%"
-          style={{ background: '#04bbfb' }}
+          style={{ background: '#04bbfb', marginTop: '12px' }}
         >
           {t('Enable')}
         </Button>

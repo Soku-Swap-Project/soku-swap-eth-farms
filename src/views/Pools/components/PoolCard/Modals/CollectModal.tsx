@@ -462,7 +462,8 @@ const CollectModal: React.FC<CollectModalProps> = ({
     <Modal
       title={`${earningToken.symbol} ${isCompoundPool ? t('Collect') : t('Claim')}`}
       onDismiss={onDismiss}
-      headerBackground="#f9f9fa"
+      headerBackground="#ecf1f8"
+      className="emphasized_swap_layout hover_shadow"
     >
       {isCompoundPool && (
         <Flex justifyContent="center" alignItems="center" mb="24px">
@@ -493,6 +494,7 @@ const CollectModal: React.FC<CollectModalProps> = ({
       </Flex>
 
       <Button
+        className="hover_shadow emphasize_swap_button"
         mt="8px"
         style={{ backgroundColor: '#04bbfb' }}
         onClick={handleHarvestConfirm}
@@ -501,7 +503,7 @@ const CollectModal: React.FC<CollectModalProps> = ({
       >
         {pendingTx ? t('Confirming') : t('Confirm')}
       </Button>
-      <Button variant="text" style={{ color: '#04bbfb' }} onClick={onDismiss} pb="0px">
+      <Button className="hover_shadow_icon" variant="text" style={{ color: '#04bbfb' }} onClick={onDismiss} pb="0px">
         {t('Close Window')}
       </Button>
     </Modal>

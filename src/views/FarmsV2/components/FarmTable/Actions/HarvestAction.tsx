@@ -68,6 +68,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userD
               {countUp > 0 && <Staked>~ ${countUp} USD</Staked>}
             </div>
             <Button
+              className="hover_shadow emphasize_swap_button"
               style={{ background: '#04bbfb' }}
               disabled={!earnings || pendingTx || !userDataReady}
               onClick={async () => {

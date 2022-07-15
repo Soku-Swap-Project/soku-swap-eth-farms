@@ -114,6 +114,7 @@ const StakeAction: React.FC<StakeActionsProps> = ({
           (pool.poolCategory === '60DayLock' && lockTime !== '0' && !pool.isFinished) ||
           (pool.poolCategory === '90DayLock' && lockTime !== '0' && !pool.isFinished) ? (
             <IconButton
+              className="hover_shadow emphasize_swap_button"
               variant="secondary"
               disabled={pool.isFinished ? false : !false}
               onClick={onPresentUnstake}
@@ -122,19 +123,31 @@ const StakeAction: React.FC<StakeActionsProps> = ({
               <MinusIcon color="gray" width="14px" />
             </IconButton>
           ) : (
-            <IconButton style={{ border: '2px solid #05195a' }} variant="secondary" onClick={onPresentUnstake} mr="6px">
+            <IconButton
+              className="hover_shadow emphasize_swap_button"
+              style={{ border: '2px solid #05195a' }}
+              variant="secondary"
+              onClick={onPresentUnstake}
+              mr="6px"
+            >
               <MinusIcon color="#05195a" width="14px" />
             </IconButton>
           )}
 
           {reachStakingLimit ? (
             <span ref={targetRef}>
-              <IconButton style={{ border: '2px solid #05195a' }} variant="secondary" disabled>
+              <IconButton
+                className="hover_shadow emphasize_swap_button"
+                style={{ border: '2px solid #05195a' }}
+                variant="secondary"
+                disabled
+              >
                 <AddIcon color="#05195a" width="14px" height="24px" />
               </IconButton>
             </span>
           ) : (
             <IconButton
+              className="hover_shadow emphasize_swap_button"
               variant="secondary"
               style={isFinished ? { border: '0' } : { border: '2px solid #05195a' }}
               onClick={stakingTokenBalance.gt(0) ? onPresentStake : onPresentTokenRequired}
@@ -148,6 +161,7 @@ const StakeAction: React.FC<StakeActionsProps> = ({
       </Flex>
     ) : (
       <Button
+        className="hover_shadow emphasize_swap_button"
         style={{ backgroundColor: '#04bbfb' }}
         disabled={isFinished}
         onClick={stakingTokenBalance.gt(0) ? onPresentStake : onPresentTokenRequired}

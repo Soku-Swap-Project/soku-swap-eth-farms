@@ -109,7 +109,7 @@ const NewFarms: React.FC = () => {
           <Flex flexDirection="column" mr={['8px', 0]}>
             <Heading
               as="h1"
-              color="white"
+              color="#05195a"
               mb="20px"
               style={{ fontSize: '3.25rem', marginBottom: '12px', textAlign: 'center' }}
             >
@@ -117,10 +117,10 @@ const NewFarms: React.FC = () => {
             </Heading>
             <Heading
               scale="lg"
-              color="white"
-              style={{ opacity: '0.65', fontSize: '1.25rem', textAlign: 'center', paddingBottom: '25px' }}
+              color="#05195a"
+              style={{ opacity: '0.85', fontSize: '1.25rem', textAlign: 'center', paddingBottom: '25px' }}
             >
-              {t('Stake Liquidity Pool (LP) tokens to earn HOBI!')}
+              {t('Stake Liquidity Pool (LP) tokens to earn SUTEKU!')}
             </Heading>
             {/* <Heading
               scale="lg"
@@ -129,7 +129,7 @@ const NewFarms: React.FC = () => {
             >
               {t('High APR, low risk.')}
             </Heading> */}
-            <ToggleNew />
+            {/* <ToggleNew /> */}
             {/* <div
               style={{
                 width: '100%',

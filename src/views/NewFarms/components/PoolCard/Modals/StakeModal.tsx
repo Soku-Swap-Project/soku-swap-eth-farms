@@ -138,7 +138,12 @@ const StakeModal: React.FC<StakeModalProps> = ({
   // console.log(web3.utils.fromWei(stakedBalance.toString()), 'staking balance')
 
   return (
-    <Modal title={isRemovingStake ? t('Unstake') : t('Stake in Farm')} onDismiss={onDismiss} headerBackground="#f9f9fa">
+    <Modal
+      title={isRemovingStake ? t('Unstake') : t('Stake in Farm')}
+      onDismiss={onDismiss}
+      headerBackground="#ecf1f8"
+      className="emphasized_swap_layout hover_shadow"
+    >
       {stakingLimit.gt(0) && !isRemovingStake && (
         <Text color="#04bbfb" bold mb="24px" style={{ textAlign: 'center' }} fontSize="16px">
           {t('Max stake: %amount% %token% LP', {
@@ -215,6 +220,7 @@ const StakeModal: React.FC<StakeModalProps> = ({
         </>
       )}
       <Button
+        className="hover_shadow emphasize_swap_button"
         style={{ background: '#05195a' }}
         isLoading={pendingTx}
         endIcon={pendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
@@ -226,7 +232,13 @@ const StakeModal: React.FC<StakeModalProps> = ({
       </Button>
       {!isRemovingStake && (
         <StyledLink external href={BASE_EXCHANGE_URL}>
-          <Button style={{ background: '#05195a' }} width="100%" mt="8px" variant="primary">
+          <Button
+            className="hover_shadow emphasize_swap_button"
+            style={{ background: '#05195a' }}
+            width="100%"
+            mt="8px"
+            variant="primary"
+          >
             <Text color="#fff" fontWeight="bolder">
               {' '}
               {t('Get %symbol%', { symbol: stakingToken.symbol })}

@@ -50,6 +50,7 @@ const SearchInput: React.FC<Props> = ({ onChange: onChangeCallback }) => {
     <Container toggled={toggled}>
       <InputWrapper>
         <StyledInput
+          className="hover_shadow"
           value={searchText}
           onChange={onChange}
           placeholder={t('Search by name, symbol, address')}

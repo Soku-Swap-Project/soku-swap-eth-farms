@@ -29,8 +29,6 @@ const PoolCard: React.FC<{ pool: Pool; account: string }> = ({ pool, account }) 
   const web3 = getWeb3NoAccount()
   const { fastRefresh } = useRefresh()
 
-  console.log(reward, rewardPerBlock, stakedAmount, lockTime)
-
   const { t } = useTranslation()
   // const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
   const accountHasStakedBalance = stakedAmount > 0
@@ -992,6 +990,7 @@ const PoolCard: React.FC<{ pool: Pool; account: string }> = ({ pool, account }) 
     <StyledCard
       isFinished={isFinished && sousId !== 0}
       ribbon={isFinished && <CardRibbon variantColor="textDisabled" text={t('Finished')} className="finished_ribbon" />}
+      className="hover_shadow emphasized_swap_layout"
     >
       <StyledCardInner>
         <StyledCardHeader

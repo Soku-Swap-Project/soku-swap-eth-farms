@@ -41,7 +41,12 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   }, [fullBalance, setVal])
 
   return (
-    <Modal title={t('Stake LP tokens')} onDismiss={onDismiss}>
+    <Modal
+      headerBackground="#ecf1f8"
+      className="emphasized_swap_layout hover_shadow"
+      title={t('Stake LP tokens')}
+      onDismiss={onDismiss}
+    >
       <ModalInput
         value={val}
         onSelectMax={handleSelectMax}
@@ -52,10 +57,17 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
         inputTitle={t('Stake')}
       />
       <ModalActions>
-        <Button style={{ background: '#04bbfb' }} onClick={onDismiss} width="100%" disabled={pendingTx}>
+        <Button
+          className="hover_shadow emphasize_swap_button"
+          style={{ background: '#04bbfb' }}
+          onClick={onDismiss}
+          width="100%"
+          disabled={pendingTx}
+        >
           {t('Cancel')}
         </Button>
         <Button
+          className="hover_shadow emphasize_swap_button"
           style={{ background: '#04bbfb' }}
           width="100%"
           disabled={pendingTx || !valNumber.isFinite() || valNumber.eq(0) || valNumber.gt(fullBalanceNumber)}
@@ -69,7 +81,7 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
           {pendingTx ? t('Pending Confirmation') : t('Confirm')}
         </Button>
       </ModalActions>
-      <LinkExternal href={addLiquidityUrl} style={{ alignSelf: 'center' }}>
+      <LinkExternal className="hover_shadow_icon" href={addLiquidityUrl} style={{ alignSelf: 'center' }}>
         {t('Get %symbol%', { symbol: tokenName })}
       </LinkExternal>
     </Modal>

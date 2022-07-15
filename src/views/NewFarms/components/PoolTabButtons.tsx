@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import ToggleButton from '@mui/material/ToggleButton'
 import { useRouteMatch, Link } from 'react-router-dom'
 import {
   ButtonMenu,
@@ -30,6 +31,11 @@ const StyledLink = styled(UiKitLink)`
   }
 `
 
+const StyledButtonMenu = styled(ButtonMenu)`
+  border: none;
+  background: transparent;
+`
+
 const PoolTabButtons = ({ stakedOnly, setStakedOnly, hasStakeInFinishedPools }) => {
   const { url, isExact } = useRouteMatch()
   const { t } = useTranslation()
@@ -37,22 +43,34 @@ const PoolTabButtons = ({ stakedOnly, setStakedOnly, hasStakeInFinishedPools }) 
   const pathname = window.location.pathname
   const newUrl = pathname.replace(/\/?$/, '/')
 
+  const isActive = pathname === newUrl
+
   return (
     <Flex alignItems="center" justifyContent="center" mb="32px">
       <Flex alignItems="center" flexDirection={['column', null, 'row', null]}>
-        <ButtonMenu activeIndex={pathname === newUrl ? 0 : 1} scale="sm" variant="primary">
-          <ButtonMenuItem style={{ color: '#05195a', opacity: '0.9' }} as={Link} to="/ethereum/farms-v2/">
+        <StyledButtonMenu activeIndex={pathname === newUrl ? 0 : 1} scale="sm" variant="primary">
+          <ButtonMenuItem
+            className={isActive ? 'hover_shadow emphasized-selected' : 'hover_shadow'}
+            style={{ color: '#05195a', opacity: '0.9', borderRadius: '10px', marginRight: '14px' }}
+            as={Link}
+            to="/ethereum/farms-v2/"
+          >
             {t('Live')}
           </ButtonMenuItem>
           <NotificationDot show={hasStakeInFinishedPools}>
-            <ButtonMenuItem style={{ color: '#05195a', opacity: '0.9' }} as={Link} to="/ethereum/farms-v2/history">
+            <ButtonMenuItem
+              className={isActive ? 'hover_shadow' : 'hover_shadow emphasized-selected'}
+              style={{ color: '#05195a', opacity: '0.9', borderRadius: '10px' }}
+              as={Link}
+              to="/ethereum/farms-v2/history"
+            >
               {t('Finished')}
             </ButtonMenuItem>
           </NotificationDot>
-        </ButtonMenu>
+        </StyledButtonMenu>
         <Flex mt={['4px', null, 0, null]} ml={[0, null, '24px', null]} justifyContent="center" alignItems="center">
           <ToggleSwitch checked={stakedOnly} onChange={() => setStakedOnly((prev) => !prev)} />
-          <Text color="white" ml="8px">
+          <Text color="#05195a" ml="8px">
             {t('Staked only')}
           </Text>
         </Flex>

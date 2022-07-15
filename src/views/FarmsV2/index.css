@@ -1,4 +1,5 @@
 @media (max-width: 600px) {
+  .farm_h,
   .farm_heading h1 {
     font-size: 2.5rem !important;
   }

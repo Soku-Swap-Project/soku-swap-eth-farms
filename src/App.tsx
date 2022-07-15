@@ -28,7 +28,8 @@ import NewFarms from './views/NewFarms'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import './MobileFooter.css'
+// import './MobileFooter.css'
+import './styles/index.css'
 
 // Route-based code splitting
 // Only pool is included in the main bundle because of it's the most visited page
@@ -87,10 +88,10 @@ const App: React.FC = () => {
   // useFetchProfile()
   useFetchPriceList()
 
-  useEffect(() => {
-    loadNetwork()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // useEffect(() => {
+  //   loadNetwork()
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [])
 
   const { account } = useWeb3React()
   const { login, logout } = useAuth()
@@ -106,7 +107,7 @@ const App: React.FC = () => {
     }
   }
 
-  const isMobile = window.innerWidth <= 500
+  const isMobile = window.innerWidth <= 1000
 
   return (
     <Router history={history}>
@@ -130,7 +131,7 @@ const App: React.FC = () => {
           </Route> */}
           <Route component={NotFound} />
         </Switch>
-        <div className="connectWallet__options__MOBILE">
+        {/* <div className="connectWallet__options__MOBILE">
           <ul>
             {account ? (
               <li className="account__footer">
@@ -192,7 +193,7 @@ const App: React.FC = () => {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
         {/* <NewVersionModal /> */}
       </SuspenseWithChunkError>
       <EasterEgg iterations={2} />

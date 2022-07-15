@@ -219,7 +219,6 @@ export const useBusdPriceFromPid = (pid: number): BigNumber => {
 
 export const useBusdPriceFromPidV2 = (pid: number): BigNumber => {
   const farm = useFarmFromPidV2(pid)
-  console.log(farm)
   const bnbPriceBusd = usePriceBnbBusd()
   const quoteTokenFarm = useFarmFromTokenSymbolSmartChef(farm?.quoteToken?.symbol)
 

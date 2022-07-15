@@ -43,7 +43,7 @@ const collapseAnimation = keyframes`
 const Button = styled.button`
   // border: 1px solid red;
   min-width: 49.5%;
-  padding: 5px;
+  // padding: 5px;
 `
 
 const Container = styled.div<{ expanded }>`
@@ -166,6 +166,7 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
         display: 'flex',
         flexDirection: 'column',
         borderBottom: '1px solid #ebebeb',
+        background: '#ecf1f8',
       }}
     >
       <div className="add_remove_liquidity">
@@ -173,7 +174,7 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
           onClick={() => {
             window.location.href = `${origin}/ethereum/#/add/${token.address[1]}/${quoteToken.address[1]}`
           }}
-          className="farm_liquidity_buttons add"
+          className="farm_liquidity_buttons hover_shadow emphasize_swap_button add"
         >
           Add Liquidity
         </Button>
@@ -181,7 +182,7 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
           onClick={() => {
             window.location.href = `${origin}/ethereum/#/remove/${token.address[1]}/${quoteToken.address[1]}`
           }}
-          className="farm_liquidity_buttons remove"
+          className="farm_liquidity_buttons hover_shadow emphasize_swap_button remove"
         >
           Remove Liquidity
         </Button>

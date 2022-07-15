@@ -144,7 +144,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({
         <>
           <Flex mb="2px" justifyContent="space-between" alignItems="center">
             <Text small>{hasPoolStarted ? t('End') : t('Start')}:</Text>
-            <Flex alignItems="center">
+            <Flex className="hover_shadow_icon_sm" alignItems="center">
               {blocksRemaining || blocksUntilStart ? (
                 <Balance
                   color="primary"
@@ -190,7 +190,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({
         <>
           <Flex mb="2px" justifyContent="space-between" alignItems="center">
             <Text small>Lock Time:</Text>
-            <Flex alignItems="center">
+            <Flex className="hover_shadow_icon_sm" alignItems="center">
               {blocksRemaining || blocksUntilStart ? (
                 <Balance color="primary" fontSize="14px" value={stakedAmount > 0 ? lockTime : 0} decimals={0} />
               ) : (
@@ -239,13 +239,14 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({
         </Flex>
       )}
       <Flex mb="2px" justifyContent="flex-end">
-        <LinkExternal bold={false} small href={earningToken.projectLink}>
+        <LinkExternal className="hover_shadow_icon_sm" bold={false} small href={earningToken.projectLink}>
           {t('View Project Site')}
         </LinkExternal>
       </Flex>
       {poolContractAddress && (
         <Flex mb="2px" justifyContent="flex-end">
           <LinkExternal
+            className="hover_shadow_icon_sm"
             bold={false}
             small
             href={`${BASE_ETHER_SCAN_URL}/address/${isAutoVault ? cakeVaultContractAddress : poolContractAddress}`}
@@ -257,6 +258,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({
       {account && isMetaMaskInScope && tokenAddress && (
         <Flex justifyContent="flex-end">
           <Button
+            className="hover_shadow_icon_sm"
             variant="text"
             p="0"
             height="auto"

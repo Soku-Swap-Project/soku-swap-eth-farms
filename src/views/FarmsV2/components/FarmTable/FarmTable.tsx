@@ -71,7 +71,7 @@ const FarmTable: React.FC<ITableProps> = (props) => {
   }
 
   return (
-    <Container>
+    <Container className="emphasized_swap_layout_no_hover">
       <TableContainer>
         <TableWrapper ref={tableWrapperEl}>
           <StyledTable>

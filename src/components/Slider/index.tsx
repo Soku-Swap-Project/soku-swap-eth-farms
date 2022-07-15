@@ -113,6 +113,7 @@ export default function Slider({ value, onChange, min = 0, step = 1, max = 100, 
 
   return (
     <StyledRangeInput
+      className="hover_shadow_icon"
       size={size}
       type="range"
       value={value}
