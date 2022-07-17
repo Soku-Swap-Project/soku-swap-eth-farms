@@ -33,7 +33,7 @@ export default function AccountModal() {
   const truncatedLastHalf = account?.substring(account.length - 5, account.length)
   const truncatedAddress = `${truncatedFirstHalf}...${truncatedLastHalf}`
 
-  const isMobile = window.innerWidth <= 1000
+  const isMobile = window.innerWidth <= 1200
 
   const handleOpen = () => {
     setOpen(true)

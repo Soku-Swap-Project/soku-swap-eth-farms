@@ -33,7 +33,7 @@ export default function ClaimSokuModal() {
     setOpen(false)
   }
 
-  const isMobile = window.innerWidth <= 1000
+  const isMobile = window.innerWidth <= 1200
 
   const date = new Date()
   const month = date.getMonth() + 1

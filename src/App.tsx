@@ -107,7 +107,7 @@ const App: React.FC = () => {
     }
   }
 
-  const isMobile = window.innerWidth <= 1000
+  const isMobile = window.innerWidth <= 1200
 
   return (
     <Router history={history}>

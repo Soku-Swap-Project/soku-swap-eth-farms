@@ -36,7 +36,7 @@ const Menu = (props) => {
     }
   }
 
-  const isMobile = window.innerWidth <= 500
+  const isMobile = window.innerWidth <= 1200
 
   const HEADER_HEIGHT = 64
 
