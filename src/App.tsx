@@ -26,7 +26,7 @@ import ComingSoon from './views/ComingSoon'
 import NewVersionModal from './components/NewVersionModal'
 import NewFarms from './views/NewFarms'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 
 // import './MobileFooter.css'
 import './styles/index.css'
