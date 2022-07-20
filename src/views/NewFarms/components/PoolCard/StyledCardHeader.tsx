@@ -6,8 +6,7 @@ import { useTranslation } from 'contexts/Localization'
 
 const Wrapper = styled(CardHeader)<{ isFinished?: boolean; background?: string; isPromotedPool?: boolean }>`
   background: ${({ isFinished, background, theme }) => (isFinished ? theme.colors.backgroundDisabled : '#f9f9fa')};
-  border-radius: ${({ theme, isPromotedPool }) =>
-    isPromotedPool ? '31px 31px 0 0' : `${theme.radii.card} ${theme.radii.card} 0 0`};
+  border-radius: 7px 7px 0 0;
 `
 
 /* eslint-disable react/require-default-props */

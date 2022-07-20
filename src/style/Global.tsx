@@ -281,7 +281,7 @@ input[pattern='^[0-9]*[.,]?[0-9]*$'] {
     background: #05195a;
     border: none;
     padding: 0.75rem 1rem;
-    border-radius: 14px;
+    border-radius: 7px;
     color: #fff;
     font-size: 1rem;
     cursor: pointer;

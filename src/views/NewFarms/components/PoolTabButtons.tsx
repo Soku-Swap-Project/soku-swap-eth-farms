@@ -50,8 +50,8 @@ const PoolTabButtons = ({ stakedOnly, setStakedOnly, hasStakeInFinishedPools }) 
       <Flex alignItems="center" flexDirection={['column', null, 'row', null]}>
         <StyledButtonMenu activeIndex={pathname === newUrl ? 0 : 1} scale="sm" variant="primary">
           <ButtonMenuItem
-            className={isActive ? 'hover_shadow emphasized-selected' : 'hover_shadow'}
-            style={{ color: '#05195a', opacity: '0.9', borderRadius: '10px', marginRight: '14px' }}
+            className={isActive ? 'hover_transparent emphasized-selected' : 'hover_transparent'}
+            style={{ color: '#05195a', opacity: '0.9', borderRadius: '7px', marginRight: '14px' }}
             as={Link}
             to="/ethereum/farms-v2/"
           >
@@ -59,8 +59,8 @@ const PoolTabButtons = ({ stakedOnly, setStakedOnly, hasStakeInFinishedPools }) 
           </ButtonMenuItem>
           <NotificationDot show={hasStakeInFinishedPools}>
             <ButtonMenuItem
-              className={isActive ? 'hover_shadow' : 'hover_shadow emphasized-selected'}
-              style={{ color: '#05195a', opacity: '0.9', borderRadius: '10px' }}
+              className={isActive ? 'hover_transparent' : 'hover_transparent emphasized-selected'}
+              style={{ color: '#05195a', opacity: '0.9', borderRadius: '7px' }}
               as={Link}
               to="/ethereum/farms-v2/history"
             >

@@ -6,6 +6,7 @@ import { useTranslation } from 'contexts/Localization'
 
 const StyledButton = styled(Button)`
   border-radius: 14px;
+  border: none;
   height: 52px;
 `
 

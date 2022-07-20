@@ -52,8 +52,8 @@ const CellInner = styled.div`
 
 const StyledTr = styled.tr`
   cursor: pointer !important;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.cardBorder};
-  border-radius: 16px;
+  border-bottom: 1px solid #dddddda6;
+  border-radius: 7px;
   width: 20%;
 `
 
@@ -94,7 +94,7 @@ const Row: React.FunctionComponent<RowPropsWithLoading> = (props) => {
   const handleRenderRow = () => {
     if (!isXs) {
       return (
-        <StyledTr className="currency_selector" onClick={toggleActionPanel}>
+        <StyledTr className="hover_shadow" onClick={toggleActionPanel}>
           {Object.keys(props).map((key) => {
             const columnIndex = columnNames.indexOf(key)
             if (columnIndex === -1) {

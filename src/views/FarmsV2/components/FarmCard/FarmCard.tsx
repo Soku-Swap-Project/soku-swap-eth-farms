@@ -34,7 +34,7 @@ const StyledCardAccent = styled.div`
   background: ${({ theme }) => `linear-gradient(180deg, ${theme.colors.primaryBright}, ${theme.colors.secondary})`};
   background-size: 400% 400%;
   animation: ${AccentGradient} 2s linear infinite;
-  border-radius: 32px;
+  border-radius: 16px;
   position: absolute;
   top: -1px;
   right: -1px;

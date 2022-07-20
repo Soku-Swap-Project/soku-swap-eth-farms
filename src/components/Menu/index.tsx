@@ -61,31 +61,31 @@ const Menu = (props) => {
                 <div className="sokuswap__navbar">
                   <nav className="soku_nav">
                     <ul className="navbar__items">
-                      <a className="nav_link hover_shadow" href={`${origin}/swap`}>
+                      <a className="nav_link hover_transparent" href={`${origin}/swap`}>
                         Trade
                       </a>
-                      <a className="nav_link hover_shadow" href="/ethereum/#/pool">
+                      <a className="nav_link hover_transparent" href="/ethereum/#/pool">
                         Pool
                       </a>
-                      <a className="nav_link hover_shadow" href={`${origin}/bridge`}>
+                      <a className="nav_link hover_transparent" href={`${origin}/bridge`}>
                         Bridge
                       </a>
                       <NavLink
-                        className="nav_link hover_shadow"
+                        className="nav_link hover_transparent"
                         activeClassName="emphasized-selected active_mobile_link"
                         to="/ethereum/farms-v2/"
                       >
                         Farms
                       </NavLink>
                       {/* <NavLink
-                        className="nav_link hover_shadow"
+                        className="nav_link hover_transparent"
                         activeClassName="emphasized-selected active_mobile_link"
                         to="/ethereum/staking/"
                       >
                         Staking
                       </NavLink> */}
 
-                      <a className="nav_link hover_shadow" onClick={() => launchTransak()}>
+                      <a className="nav_link hover_transparent" onClick={() => launchTransak()}>
                         Deposit
                       </a>
                     </ul>
@@ -105,7 +105,7 @@ const Menu = (props) => {
                       {account ? (
                         <AccountModal />
                       ) : (
-                        <li className="hover_shadow account_modal">
+                        <li className="hover_transparent account_modal">
                           <button
                             type="button"
                             style={{ color: '#05195a', fontWeight: 'bold' }}
