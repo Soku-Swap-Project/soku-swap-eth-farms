@@ -23,6 +23,16 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://sokuswap.org/',
   },
+  hobi: {
+    symbol: 'HOBI',
+    name: 'Hobi',
+    address: {
+      1: '0xDe8239e84c4f31875EA7A22dBdb232c28ac77bE4',
+      4: '',
+    },
+    decimals: 18,
+    projectLink: 'https://sokuswap.org/',
+  },
   usdt: {
     symbol: 'USDT',
     name: 'Tether USD',

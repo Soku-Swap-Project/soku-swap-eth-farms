@@ -82,6 +82,8 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
     }
   }, [onApprove])
 
+  const isMobile = window.innerWidth <= 1200
+
   if (!account) {
     return (
       <ActionContainer>
@@ -89,7 +91,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
           <Subtle>{t('Start Farming').toUpperCase()}</Subtle>
         </ActionTitles> */}
         <ActionContentNoAccount>
-          <UnlockButton width="50%" />
+          <UnlockButton width={isMobile ? '100%' : '50%'} />
         </ActionContentNoAccount>
       </ActionContainer>
     )
