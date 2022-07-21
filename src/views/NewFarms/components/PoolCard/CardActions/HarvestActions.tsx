@@ -12,7 +12,7 @@ import { ToastError } from 'style/Toasts'
 import { getAddress } from 'utils/addressHelpers'
 import { useTranslation } from 'contexts/Localization'
 import { getFullDisplayBalance, getBalanceNumber, formatNumber } from 'utils/formatBalance'
-import { usePriceSutekuEth } from 'state/hooks'
+import { usePriceSutekuEth, usePriceHobiEth } from 'state/hooks'
 import useToast from 'hooks/useToast'
 import Balance from 'components/Balance'
 import CollectModal from '../Modals/CollectModal'
@@ -43,11 +43,14 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
   const [loading, setLoading] = useState(false)
   const earningTokenBalance = getBalanceNumber(earnings, earningToken.decimals)
   const formattedBalance = formatNumber(earningTokenBalance, 3, 3)
-  const { toastSuccess, toastError } = useToast()
   const web3 = getWeb3NoAccount()
-  const sutekuPrice = usePriceSutekuEth()
 
-  const earningTokenPrice = sutekuPrice
+  const sutekuPrice = usePriceSutekuEth()
+  const hobiPrice = usePriceHobiEth()
+
+  const isSuteku = earningToken.symbol === 'SUTEKU'
+
+  const earningTokenPrice = isSuteku ? sutekuPrice : hobiPrice
 
   const earningTokenPriceAsNumber = parseFloat(earningTokenPrice.toString())
 

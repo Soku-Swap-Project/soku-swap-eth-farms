@@ -23,6 +23,8 @@ import { useSousStake } from 'hooks/useStake'
 import useToast from 'hooks/useToast'
 import { Token } from 'config/constants/types'
 import useWeb3 from 'hooks/useWeb3'
+import { toast } from 'react-toastify'
+import { ToastError, ToastSuccess } from 'style/Toasts'
 
 /* eslint-disable react/require-default-props */
 interface CollectModalProps {
@@ -429,7 +431,7 @@ const CollectModal: React.FC<CollectModalProps> = ({
         setPendingTx(false)
         onDismiss()
       } catch (e) {
-        toastError(t('Canceled'), t('Please try again and confirm the transaction.'))
+        toast.error(ToastError(t('Canceled'), t('Please try again and confirm the transaction.')))
         setPendingTx(false)
       }
     } else {
@@ -444,15 +446,17 @@ const CollectModal: React.FC<CollectModalProps> = ({
         } else {
           await onReward()
         }
-        toastSuccess(
-          `${t('Claimed')}!`,
-          t('Your %symbol% earnings have been sent to your wallet!', { symbol: earningToken.symbol }),
+        toast.success(
+          ToastSuccess(
+            `${t('Claimed')}!`,
+            t('Your %symbol% earnings have been sent to your wallet!', { symbol: earningToken.symbol }),
+          ),
         )
         setPendingTx(false)
         onDismiss()
       } catch (e) {
         console.log(e)
-        toastError(t('Canceled'), t('Please try again and confirm the transaction.'))
+        toast.error(ToastError(t('Canceled'), t('Please try again and confirm the transaction.')))
         setPendingTx(false)
       }
     }

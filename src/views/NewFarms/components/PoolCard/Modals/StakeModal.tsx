@@ -6,6 +6,8 @@ import { useTranslation } from 'contexts/Localization'
 import { BASE_EXCHANGE_URL } from 'config'
 import { useSousStakeFarms } from 'hooks/useStake'
 import { useSousUnstakeFarms } from 'hooks/useUnstake'
+import { ToastError, ToastSuccess } from 'style/Toasts'
+import { toast } from 'react-toastify'
 import { AbiItem } from 'web3-utils'
 import { getAddress } from 'utils/addressHelpers'
 import { useWeb3React } from '@web3-react/core'
@@ -112,23 +114,19 @@ const StakeModal: React.FC<StakeModalProps> = ({
         setPendingTx(false)
         onDismiss()
       } catch (e) {
-        toastError(t('Canceled'), t('Please try again and confirm the transaction.'))
+        toast.error(ToastError('Canceled', 'Please try again and confirm the transaction.'))
         setPendingTx(false)
       }
     } else {
       try {
         // staking
         await stakeInFarm(stakeAmount, stakingToken.decimals)
-        toastSuccess(
-          `${t('Staked')}!`,
-          t('Your %symbol% LP tokens have been staked in the pool!', {
-            symbol: stakingToken.symbol,
-          }),
-        )
+        toast.success(ToastSuccess('Staked!', `Your ${stakingToken.symbol} LP tokens have been staked in the pool!`))
+
         setPendingTx(false)
         onDismiss()
       } catch (e) {
-        toastError(t('Canceled'), t('Please try again and confirm the transaction.'))
+        toast.error(ToastError('Canceled', 'Please try again and confirm the transaction.'))
         setPendingTx(false)
       }
     }
@@ -175,6 +173,7 @@ const StakeModal: React.FC<StakeModalProps> = ({
         currencyValue={stakingTokenPrice !== 0 && `~${usdValueStaked || 0} USD`}
         isWarning={hasReachedStakeLimit}
         style={{ background: 'rgb(239 238 238 / 79%)', border: 'none' }}
+        className="hover_transparent"
       />
       {hasReachedStakeLimit && (
         <Text color="failure" fontSize="12px" style={{ textAlign: 'right' }} mt="4px">

@@ -6,7 +6,7 @@ import { getBalanceNumber } from 'utils/formatBalance'
 import { getPoolApr } from 'utils/apr'
 import { AbiItem } from 'web3-utils'
 import { tokenEarnedPerThousandDollarsCompounding, getRoi } from 'utils/compoundApyHelpers'
-import { useLpTokenPriceV2, usePriceSutekuEth } from 'state/hooks'
+import { useLpTokenPriceV2, usePriceHobiEth, usePriceSutekuEth } from 'state/hooks'
 import Balance from 'components/Balance'
 import ApyCalculatorModal from 'components/ApyCalculatorModal'
 import AprCalculatorModal from 'components/AprCalculatorModal'
@@ -42,9 +42,11 @@ const AprRow: React.FC<AprRowProps> = ({
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })
 
   const sutekuPrice = usePriceSutekuEth()
+  const hobiPrice = usePriceHobiEth()
   const farmLpToken = pool.stakingToken
 
-  const earningTokenPrice = sutekuPrice
+  const isSuteku = earningToken.symbol === 'SUTEKU'
+  const earningTokenPrice = isSuteku ? sutekuPrice : hobiPrice
   const earningTokenPriceAsNumber = parseFloat(earningTokenPrice.toString()) ?? 0
 
   const stakingLpPrice = useLpTokenPriceV2(`${farmLpToken.symbol} LP`)
@@ -81,7 +83,7 @@ const AprRow: React.FC<AprRowProps> = ({
     return apr
   }
 
-  const apyModalLink = stakingToken.address && `${BASE_EXCHANGE_URL}/#/swap?outputCurrency=${stakingToken.address[56]}`
+  const apyModalLink = stakingToken.address && `${BASE_EXCHANGE_URL}/#/swap?outputCurrency=${stakingToken.address[1]}`
 
   const [onPresentApyModal] = useModal(
     <ApyCalculatorModal

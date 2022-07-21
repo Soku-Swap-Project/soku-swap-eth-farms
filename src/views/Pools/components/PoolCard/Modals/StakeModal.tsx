@@ -16,7 +16,8 @@ import BigNumber from 'bignumber.js'
 import { getFullDisplayBalance, formatNumber, getDecimalAmount } from 'utils/formatBalance'
 import { Pool } from 'state/types'
 import Slider from 'components/Slider'
-
+import { ToastError, ToastSuccess } from 'style/Toasts'
+import { toast } from 'react-toastify'
 import PercentageButton from './PercentageButton'
 
 /* eslint-disable react/require-default-props */
@@ -108,16 +109,18 @@ const StakeModal: React.FC<StakeModalProps> = ({
       // unstaking
       try {
         await onUnstake(stakeAmount, stakingToken.decimals)
-        toastSuccess(
-          `${t('Unstaked')}!`,
-          t('Your %symbol% earnings have been automatically sent to your wallet!', {
-            symbol: earningToken.symbol,
-          }),
+        toast.success(
+          ToastSuccess(
+            `${t('Unstaked')}!`,
+            t('Your %symbol% earnings have been automatically sent to your wallet!', {
+              symbol: earningToken.symbol,
+            }),
+          ),
         )
         setPendingTx(false)
         onDismiss()
       } catch (e) {
-        toastError(t('Canceled'), t('Please try again and confirm the transaction.'))
+        toast.error(ToastError(t('Canceled'), t('Please try again and confirm the transaction.')))
         setPendingTx(false)
       }
     } else {
@@ -133,7 +136,7 @@ const StakeModal: React.FC<StakeModalProps> = ({
         setPendingTx(false)
         onDismiss()
       } catch (e) {
-        toastError(t('Canceled'), t('Please try again and confirm the transaction.'))
+        toast.error(ToastError(t('Canceled'), t('Please try again and confirm the transaction.')))
         setPendingTx(false)
       }
     }

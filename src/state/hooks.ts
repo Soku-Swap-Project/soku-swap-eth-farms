@@ -597,6 +597,14 @@ export const usePriceSutekuEth = (): BigNumber => {
   return sutekuPrice
 }
 
+export const usePriceHobiEth = (): BigNumber => {
+  const hobiFarm = useFarmFromPidV2(3)
+
+  const hobiPrice = hobiFarm.tokenPriceVsQuote ? hobiFarm.tokenPriceVsQuote : BIG_ZERO
+
+  return hobiPrice
+}
+
 // Block
 export const useBlock = () => {
   return useSelector((state: State) => state.block)
