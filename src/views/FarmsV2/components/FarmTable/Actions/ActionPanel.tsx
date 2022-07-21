@@ -174,7 +174,15 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
           onClick={() => {
             window.location.href = `${origin}/ethereum/#/add/${token.address[1]}/${quoteToken.address[1]}`
           }}
-          className="farm_liquidity_buttons hover_shadow emphasize_swap_button add"
+          style={{
+            border: 'none',
+            background: 'none',
+            color: '#05195a',
+            fontWeight: 700,
+            fontSize: '16px',
+            height: '52px',
+          }}
+          className="hover_transparent"
         >
           Add Liquidity
         </Button>
@@ -182,7 +190,15 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
           onClick={() => {
             window.location.href = `${origin}/ethereum/#/remove/${token.address[1]}/${quoteToken.address[1]}`
           }}
-          className="farm_liquidity_buttons hover_shadow emphasize_swap_button remove"
+          style={{
+            border: 'none',
+            background: 'none',
+            color: '#05195a',
+            fontWeight: 700,
+            fontSize: '16px',
+            height: '52px',
+          }}
+          className="hover_transparent"
         >
           Remove Liquidity
         </Button>

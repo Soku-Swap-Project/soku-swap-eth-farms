@@ -17,7 +17,7 @@ import { useUnstakeV2 } from 'hooks/useUnstake'
 import useWeb3 from 'hooks/useWeb3'
 import DepositModal from '../../DepositModal'
 import WithdrawModal from '../../WithdrawModal'
-import { ActionContainer, ActionTitles, ActionContent, Earned, Title, Subtle } from './styles'
+import { ActionContainer, ActionTitles, ActionContent, Earned, Title, Subtle, ActionContentNoAccount } from './styles'
 
 const IconButtonWrapper = styled.div`
   display: flex;
@@ -88,9 +88,9 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
         {/* <ActionTitles>
           <Subtle>{t('Start Farming').toUpperCase()}</Subtle>
         </ActionTitles> */}
-        <ActionContent>
-          <UnlockButton width="100%" />
-        </ActionContent>
+        <ActionContentNoAccount>
+          <UnlockButton width="50%" />
+        </ActionContentNoAccount>
       </ActionContainer>
     )
   }

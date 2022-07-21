@@ -204,11 +204,24 @@ input[type='range']::-webkit-slider-thumb {
   box-shadow: 1px 8px 7px 1px rgba(0, 0, 0, 0.2) !important;
   background: #f6f8fad6 !important;
   transform: scale(1.035) !important;
+  border-radius: 7px;
 }
 
 .emphasized_swap_layout:hover {
   box-shadow: 1px 8px 9px 2px rgb(0 0 0 / 20%) !important;
   transform: scale(1.035) !important;
+}
+
+.farm_selector {
+  background: #ecf1f8 !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.farm_selector:hover {
+  box-shadow: 1px 8px 7px 1px rgba(0, 0, 0, 0.2) !important;
+  transform: scale(1.005) !important;
+  opacity: 0.9 !important;
+  background-color: #f6f8fad6 !important;
 }
 
 .currency_selector {

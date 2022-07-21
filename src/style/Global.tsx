@@ -9,8 +9,16 @@ declare module 'styled-components' {
 
 const GlobalStyle = createGlobalStyle`
   * {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif !important;
 
+  }
+
+  a {
+  text-decoration: none !important;
+    }
+
+  p {
+    margin-bottom: 0px !important;
   }
 
   .start_and_endBlocks:hover {
@@ -229,7 +237,7 @@ input[pattern='^[0-9]*[.,]?[0-9]*$'] {
 
   div[data-popper-reference-hidden="false"] {
     background: rgb(236, 241, 248);
-      box-shadow: 12px 24px 12px 3px rgb(0 0 0 / 18%) !important;
+      box-shadow: 1px 24px 12px 3px rgb(0 0 0 / 18%) !important;
 
     color: #04bbfb;
   }
@@ -281,7 +289,7 @@ input[pattern='^[0-9]*[.,]?[0-9]*$'] {
     background: #05195a;
     border: none;
     padding: 0.75rem 1rem;
-    border-radius: 7px;
+    border-radius: 14px;
     color: #fff;
     font-size: 1rem;
     cursor: pointer;
@@ -318,18 +326,25 @@ button[id='wallet-connect-binance chain wallet'] div,
   fill: #04bbfb !important;
 }
 
+button[id='wallet-connect-metamask'],
+button[id='wallet-connect-walletconnect'],
+button[id='wallet-connect-binance chain wallet'] {
+    transition: all 0.2s ease-in-out !important;
+  background: transparent;
+  border-radius: 7px;
+}
+
+button[id='wallet-connect-metamask']:hover,
+button[id='wallet-connect-walletconnect']:hover,
+button[id='wallet-connect-binance chain wallet']:hover {
+    box-shadow: 1px 8px 7px 1px rgba(0, 0, 0, 0.2) !important;
+  transform: scale(1.025) !important;
+}
+
 a[href='https://docs.pancakeswap.finance/help/faq#how-do-i-connect-my-wallet-to-pancakeswap'] {
   display: none !important;
 }
 
-/* button[id='wallet-connect-trustwallet'],
-button[id='wallet-connect-mathwallet'],
-button[id='wallet-connect-tokenpocket'],
-button[id='wallet-connect-walletconnect'],
-button[id='wallet-connect-binance chain wallet'],
-button[id='wallet-connect-safepal wallet'],
-  display: none;
-} */
 
 button[id='wallet-connect-tokenpocket'],
 button[id='wallet-connect-trustwallet'],

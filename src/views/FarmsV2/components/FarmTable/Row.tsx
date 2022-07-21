@@ -94,7 +94,7 @@ const Row: React.FunctionComponent<RowPropsWithLoading> = (props) => {
   const handleRenderRow = () => {
     if (!isXs) {
       return (
-        <StyledTr className="hover_shadow" onClick={toggleActionPanel}>
+        <StyledTr className="farm_selector" onClick={toggleActionPanel}>
           {Object.keys(props).map((key) => {
             const columnIndex = columnNames.indexOf(key)
             if (columnIndex === -1) {
