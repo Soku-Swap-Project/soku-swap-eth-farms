@@ -50,7 +50,7 @@ const Toggle = () => {
 
   return (
     <div className="sokuswap__toggleContainer">
-      <p className="form-check-label ethToggle toggleActive">ETH</p>
+      <p className="form-check-label ethToggle emphasized-selected">ETH</p>
       <CheckBoxWrapper>
         <CheckBox id="checkbox" type="checkbox" defaultChecked={false} />
         <CheckBoxLabel htmlFor="checkbox" />

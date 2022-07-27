@@ -83,11 +83,14 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .sokuswap__toggleContainer p {
-  padding: 0px 20px;
-  color: #fff;
+  padding: 10px;
+  color: #05195a;
+  margin-left: 12px;
   font-size: 14px;
   font-weight: bolder;
   margin-bottom: 8px;
+  border-radius: 10px;
+  margin-right: 14px;
 }
 
 .toggleActive {
