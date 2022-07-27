@@ -37,7 +37,7 @@ const FarmTabButtons: React.FC<FarmTabButtonsProps> = ({ hasStakeInFinishedFarms
       <StyledButtonMenu activeIndex={activeIndex} scale="sm" variant="primary">
         <ButtonMenuItem
           className={activeIndex === 0 ? 'hover_shadow emphasized-selected' : 'hover_shadow'}
-          style={{ color: '#05195a', opacity: '0.9', borderRadius: '10px', marginRight: '14px' }}
+          style={{ color: '#05195a', opacity: '0.9', borderRadius: '7px', marginRight: '14px' }}
           as={Link}
           to="/ethereum/farms"
         >
@@ -46,7 +46,7 @@ const FarmTabButtons: React.FC<FarmTabButtonsProps> = ({ hasStakeInFinishedFarms
         <NotificationDot show={hasStakeInFinishedFarms}>
           <ButtonMenuItem
             className={activeIndex === 1 ? 'hover_shadow emphasized-selected' : 'hover_shadow'}
-            style={{ color: '#05195a', opacity: '0.9', borderRadius: '10px' }}
+            style={{ color: '#05195a', opacity: '0.9', borderRadius: '7px' }}
             as={Link}
             to="/ethereum/farms/history"
           >
