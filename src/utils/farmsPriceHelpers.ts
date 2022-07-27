@@ -1,4 +1,4 @@
-import { Farm } from 'state/types'
+import { Farm, Pool } from 'state/types'
 
 /**
  * Returns the first farm with a quote token that matches from an array of preferred quote tokens
@@ -10,6 +10,18 @@ export const filterFarmsByQuoteToken = (farms: Farm[], preferredQuoteTokens: str
   const preferredFarm = farms.find((farm) => {
     return preferredQuoteTokens.some((quoteToken) => {
       return farm.quoteToken.symbol === quoteToken
+    })
+  })
+  return preferredFarm || farms[0]
+}
+
+export const filterFarmsByLpToken = (
+  farms: Pool[],
+  preferredQuoteTokens: string[] = ['SOKU-ETH', 'SUTEKU-ETH'],
+): Pool => {
+  const preferredFarm = farms.find((farm) => {
+    return preferredQuoteTokens.some((stakingToken) => {
+      return farm.stakingToken.symbol === stakingToken
     })
   })
   return preferredFarm || farms[0]

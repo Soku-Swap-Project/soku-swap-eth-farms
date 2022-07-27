@@ -16,7 +16,8 @@ import BigNumber from 'bignumber.js'
 import { getFullDisplayBalance, formatNumber, getDecimalAmount } from 'utils/formatBalance'
 import { Pool } from 'state/types'
 import Slider from 'components/Slider'
-
+import { ToastError, ToastSuccess } from 'style/Toasts'
+import { toast } from 'react-toastify'
 import PercentageButton from './PercentageButton'
 
 /* eslint-disable react/require-default-props */
@@ -108,16 +109,18 @@ const StakeModal: React.FC<StakeModalProps> = ({
       // unstaking
       try {
         await onUnstake(stakeAmount, stakingToken.decimals)
-        toastSuccess(
-          `${t('Unstaked')}!`,
-          t('Your %symbol% earnings have been automatically sent to your wallet!', {
-            symbol: earningToken.symbol,
-          }),
+        toast.success(
+          ToastSuccess(
+            `${t('Unstaked')}!`,
+            t('Your %symbol% earnings have been automatically sent to your wallet!', {
+              symbol: earningToken.symbol,
+            }),
+          ),
         )
         setPendingTx(false)
         onDismiss()
       } catch (e) {
-        toastError(t('Canceled'), t('Please try again and confirm the transaction.'))
+        toast.error(ToastError(t('Canceled'), t('Please try again and confirm the transaction.')))
         setPendingTx(false)
       }
     } else {
@@ -133,7 +136,7 @@ const StakeModal: React.FC<StakeModalProps> = ({
         setPendingTx(false)
         onDismiss()
       } catch (e) {
-        toastError(t('Canceled'), t('Please try again and confirm the transaction.'))
+        toast.error(ToastError(t('Canceled'), t('Please try again and confirm the transaction.')))
         setPendingTx(false)
       }
     }
@@ -143,7 +146,12 @@ const StakeModal: React.FC<StakeModalProps> = ({
   // console.log(web3.utils.fromWei(stakedBalance.toString()), 'staking balance')
 
   return (
-    <Modal title={isRemovingStake ? t('Unstake') : t('Stake in Pool')} onDismiss={onDismiss} headerBackground="#f9f9fa">
+    <Modal
+      headerBackground="#ecf1f8"
+      className="emphasized_swap_layout hover_shadow"
+      title={isRemovingStake ? t('Unstake') : t('Stake in Pool')}
+      onDismiss={onDismiss}
+    >
       {stakingLimit.gt(0) && !isRemovingStake && (
         <Text color="#04bbfb" bold mb="24px" style={{ textAlign: 'center' }} fontSize="16px">
           {t('Max stake for this pool: %amount% %token%', {
@@ -180,6 +188,7 @@ const StakeModal: React.FC<StakeModalProps> = ({
         </Flex>
       </Flex>
       <BalanceInput
+        className="hover_shadow"
         value={stakeAmount}
         onUserInput={handleStakeInputChange}
         currencyValue={stakingTokenPrice !== 0 && `~${usdValueStaked || 0} USD`}
@@ -230,6 +239,7 @@ const StakeModal: React.FC<StakeModalProps> = ({
         </>
       )}
       <Button
+        className="hover_shadow emphasize_swap_button"
         style={{ background: '#05195a' }}
         isLoading={pendingTx}
         endIcon={pendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
@@ -241,7 +251,13 @@ const StakeModal: React.FC<StakeModalProps> = ({
       </Button>
       {!isRemovingStake && (
         <StyledLink external href={BASE_EXCHANGE_URL}>
-          <Button style={{ background: '#05195a' }} width="100%" mt="8px" variant="primary">
+          <Button
+            className="hover_shadow emphasize_swap_button"
+            style={{ background: '#05195a' }}
+            width="100%"
+            mt="8px"
+            variant="primary"
+          >
             <Text color="#fff" fontWeight="bolder">
               {' '}
               {t('Get %symbol%', { symbol: stakingToken.symbol })}

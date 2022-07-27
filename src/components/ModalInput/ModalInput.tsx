@@ -84,14 +84,15 @@ const ModalInput: React.FC<ModalInputProps> = ({
   }
 
   return (
-    <div style={{ position: 'relative' }}>
-      <StyledTokenInput isWarning={isBalanceZero}>
+    <div style={{ position: 'relative', background: '#ecf1f8' }}>
+      <StyledTokenInput className="hover_shadow" isWarning={isBalanceZero}>
         <Flex justifyContent="space-between" pl="16px">
           <Text fontSize="14px">{inputTitle}</Text>
           <Text fontSize="14px">{t('Balance: %balance%', { balance: displayBalance(max) })}</Text>
         </Flex>
         <Flex alignItems="flex-end" justifyContent="space-around">
           <StyledInput
+            className="hover_shadow"
             pattern="^[0-9]*[.,]?[0-9]*$"
             inputMode="decimal"
             step="any"
@@ -100,7 +101,13 @@ const ModalInput: React.FC<ModalInputProps> = ({
             placeholder="0"
             value={value}
           />
-          <Button style={{ background: '#04bbfb' }} scale="sm" onClick={onSelectMax} mr="8px">
+          <Button
+            className="hover_shadow emphasize_swap_button"
+            style={{ background: '#04bbfb' }}
+            scale="sm"
+            onClick={onSelectMax}
+            mr="8px"
+          >
             {t('Max')}
           </Button>
           <Text fontSize="16px">{symbol}</Text>

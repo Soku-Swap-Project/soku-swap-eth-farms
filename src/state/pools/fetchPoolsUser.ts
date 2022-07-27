@@ -92,7 +92,7 @@ export const fetchUserPendingRewards = async (account) => {
   )
 
   // Soku / Soku pool
-  const pendingReward = await masterChefContract.methods.pendingSOKU('0', account).call()
+  const pendingReward = await masterChefContract.methods.pendingSUTEKU('0', account).call()
   // console.log(await masterChefContract)
 
   return { ...pendingRewards, 0: new BigNumber(pendingReward).toJSON() }

@@ -16,7 +16,7 @@ import {
   Button,
 } from '@pancakeswap/uikit'
 import LockClockIcon from '@mui/icons-material/LockClock'
-import { BASE_BSC_SCAN_URL, BASE_URL } from 'config'
+import { BASE_ETHER_SCAN_URL, BASE_URL } from 'config'
 import { useBlock, useCakeVault } from 'state/hooks'
 import { Pool } from 'state/types'
 // import { getAddress, getCakeVaultAddress } from 'utils/addressHelpers'
@@ -223,7 +223,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({
           <LinkExternal
             bold={false}
             small
-            href={`${BASE_BSC_SCAN_URL}/address/${isAutoVault ? cakeVaultContractAddress : poolContractAddress}`}
+            href={`${BASE_ETHER_SCAN_URL}/address/${isAutoVault ? cakeVaultContractAddress : poolContractAddress}`}
           >
             {t('View Contract')}
           </LinkExternal>

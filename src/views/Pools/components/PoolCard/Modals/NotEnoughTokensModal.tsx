@@ -20,7 +20,12 @@ const NotEnoughTokensModal: React.FC<NotEnoughTokensModalProps> = ({ tokenSymbol
   const { theme } = useTheme()
 
   return (
-    <Modal title={t('%symbol% required', { symbol: tokenSymbol })} onDismiss={onDismiss} headerBackground="#f9f9fa">
+    <Modal
+      title={t('%symbol% required', { symbol: tokenSymbol })}
+      onDismiss={onDismiss}
+      headerBackground="#ecf1f8"
+      className="emphasized_swap_layout hover_shadow"
+    >
       <Text color="failure" bold>
         {t('Insufficient %symbol% balance', { symbol: tokenSymbol })}
       </Text>
@@ -30,7 +35,14 @@ const NotEnoughTokensModal: React.FC<NotEnoughTokensModalProps> = ({ tokenSymbol
           symbol: tokenSymbol,
         })}
       </Text>
-      <Button mt="24px" as="a" style={{ background: '#05195a', boxShadow: 'none' }} external href={BASE_EXCHANGE_URL}>
+      <Button
+        className="hover_shadow emphasize_swap_button"
+        mt="24px"
+        as="a"
+        style={{ background: '#05195a', boxShadow: 'none' }}
+        external
+        href={BASE_EXCHANGE_URL}
+      >
         {t('Buy')} {tokenSymbol}
       </Button>
       {/* <StyledLink href="https://yieldwatch.net" external>
@@ -39,7 +51,7 @@ const NotEnoughTokensModal: React.FC<NotEnoughTokensModalProps> = ({ tokenSymbol
           <OpenNewIcon color="primary" ml="4px" />
         </Button>
       </StyledLink> */}
-      <Button variant="text" style={{ color: '#04bbfb' }} onClick={onDismiss}>
+      <Button className="hover_shadow_icon" variant="text" style={{ color: '#04bbfb' }} onClick={onDismiss}>
         {t('Close Window')}
       </Button>
     </Modal>

@@ -10,11 +10,11 @@ const ToggleNew = () => {
 
   return (
     <Wrapper>
-      <ButtonMenu activeIndex={isExact ? 1 : 0} scale="sm" variant="primary">
-        <ButtonMenuItem style={{ color: '#05195a' }} as={Link} to={`${'/bsc/farms'}`}>
+      <ButtonMenu activeIndex={isExact ? 0 : 1} scale="sm" variant="primary">
+        <ButtonMenuItem style={{ color: '#05195a' }} as={Link} to={`${'/ethereum/farms'}`}>
           Farm V1
         </ButtonMenuItem>
-        <ButtonMenuItem style={{ color: '#05195a' }} as={Link} to={`/bsc/farms/v2`}>
+        <ButtonMenuItem style={{ color: '#05195a' }} as={Link} to={`/ethereum/farms-v2/`}>
           Farm V2
         </ButtonMenuItem>
       </ButtonMenu>

@@ -5,7 +5,7 @@ export const ActionContainer = styled.div`
   border-bottom: 1px solid #ebebeb;
   border-top: 1px solid #ebebeb;
 
-  border-radius: 16px;
+  border-radius: 7px;
   flex-grow: 1;
   flex-basis: 0;
   margin-bottom: 16px;
@@ -46,6 +46,13 @@ export const ActionContent = styled.div`
   justify-content: space-between;
   align-items: center;
 `
+
+export const ActionContentNoAccount = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 export const Earned = styled.div`
   font-weight: 600;
   font-size: 20px;

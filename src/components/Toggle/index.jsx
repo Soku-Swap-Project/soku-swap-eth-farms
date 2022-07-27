@@ -18,7 +18,7 @@ const Toggle = () => {
   checkbox?.addEventListener('change', function () {
     // Check if toggle switch is on BSC
     if (this.checked) {
-      window.location.href = `${origin}/bsc/farms`
+      window.location.href = `${origin}/ethereum/farms`
       // console.log('Show BSC Swap')
       for (let i = 0; i < bscToggle?.classList.length; i++) {
         if (bscToggle.classList[i] == 'toggleActive') {
@@ -50,7 +50,7 @@ const Toggle = () => {
 
   return (
     <div className="sokuswap__toggleContainer">
-      <p className="form-check-label ethToggle toggleActive">ETH</p>
+      <p className="form-check-label ethToggle emphasized-selected">ETH</p>
       <CheckBoxWrapper>
         <CheckBox id="checkbox" type="checkbox" defaultChecked={false} />
         <CheckBoxLabel htmlFor="checkbox" />

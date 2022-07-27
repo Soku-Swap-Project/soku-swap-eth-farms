@@ -5,7 +5,7 @@ export const ActionContainer = styled.div`
   border-bottom: 1px solid #ebebeb;
   border-top: 1px solid #ebebeb;
 
-  border-radius: 16px;
+  border-radius: 7px;
   flex-grow: 1;
   flex-basis: 0;
   margin-bottom: 16px;

@@ -17,7 +17,7 @@ import { useUnstakeV2 } from 'hooks/useUnstake'
 import useWeb3 from 'hooks/useWeb3'
 import DepositModal from '../../DepositModal'
 import WithdrawModal from '../../WithdrawModal'
-import { ActionContainer, ActionTitles, ActionContent, Earned, Title, Subtle } from './styles'
+import { ActionContainer, ActionTitles, ActionContent, Earned, Title, Subtle, ActionContentNoAccount } from './styles'
 
 const IconButtonWrapper = styled.div`
   display: flex;
@@ -82,15 +82,17 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
     }
   }, [onApprove])
 
+  const isMobile = window.innerWidth <= 1200
+
   if (!account) {
     return (
       <ActionContainer>
         {/* <ActionTitles>
           <Subtle>{t('Start Farming').toUpperCase()}</Subtle>
         </ActionTitles> */}
-        <ActionContent>
-          <UnlockButton width="100%" />
-        </ActionContent>
+        <ActionContentNoAccount>
+          <UnlockButton width={isMobile ? '100%' : '50%'} />
+        </ActionContentNoAccount>
       </ActionContainer>
     )
   }
@@ -109,6 +111,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
             </div>
             <IconButtonWrapper>
               <IconButton
+                className="hover_shadow emphasize_swap_button"
                 style={{ background: 'transparent', border: '2px solid #05195a' }}
                 onClick={onPresentWithdraw}
                 mr="6px"
@@ -116,6 +119,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
                 <MinusIcon color="#05195a" width="14px" />
               </IconButton>
               <IconButton
+                className="hover_shadow emphasize_swap_button"
                 style={{ background: 'transparent', border: '2px solid #05195a' }}
                 onClick={onPresentDeposit}
                 disabled={['history', 'archived'].some((item) => location.pathname.includes(item))}
@@ -153,6 +157,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
         </ActionTitles>
         <ActionContent>
           <Button
+            className="hover_shadow emphasize_swap_button"
             style={{ background: '#04bbfb', borderRadius: '24px' }}
             width="100%"
             onClick={onPresentDeposit}
@@ -185,6 +190,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
       </ActionTitles> */}
       <ActionContent>
         <Button
+          className="hover_shadow emphasize_swap_button"
           width="100%"
           disabled={requestedApproval}
           onClick={handleApprove}

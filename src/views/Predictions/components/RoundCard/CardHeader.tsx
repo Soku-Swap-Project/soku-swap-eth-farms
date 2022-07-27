@@ -53,7 +53,7 @@ const getTextColorByStatus = (status: Status, fallback: FallbackColor): TextColo
 const StyledCardHeader = styled.div<{ status: Status }>`
   align-items: center;
   background: ${({ theme, status }) => getBackgroundColor(theme, status)};
-  border-radius: 16px 16px 0 0;
+  border-radius: 7px 7px 0 0;
   display: flex;
   justify-content: space-between;
   padding: ${({ status }) => (status === 'live' ? '16px' : '8px')};

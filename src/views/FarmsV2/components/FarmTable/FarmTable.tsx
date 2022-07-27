@@ -16,7 +16,7 @@ const Container = styled.div`
   filter: ${({ theme }) => theme.card.dropShadow};
   width: 100%;
   background: ${({ theme }) => theme.card.background};
-  border-radius: 16px;
+  border-radius: 7px;
   margin: 16px 0px;
 `
 
@@ -71,7 +71,7 @@ const FarmTable: React.FC<ITableProps> = (props) => {
   }
 
   return (
-    <Container>
+    <Container className="emphasized_swap_layout_no_hover">
       <TableContainer>
         <TableWrapper ref={tableWrapperEl}>
           <StyledTable>

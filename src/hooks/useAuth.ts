@@ -15,8 +15,8 @@ import {
 import { connectorLocalStorageKey, ConnectorNames } from '@pancakeswap-libs/uikit'
 import useToast from 'hooks/useToast'
 import { connectorsByName } from 'utils/web3React'
-// import { profileClear } from 'state/profile'
 import { useAppDispatch } from 'state'
+import { ToastError } from 'style/Toasts'
 
 const useAuth = () => {
   const { activate, deactivate } = useWeb3React()
@@ -30,14 +30,18 @@ const useAuth = () => {
       activate(connector, async (error: Error) => {
         window.localStorage.removeItem(connectorLocalStorageKey)
         if (error instanceof UnsupportedChainIdError) {
-          toastError(
-            'Unsupported Chain Id',
-            'Unsupported Chain Id Error. Please make sure you are connected to the correct network.',
+          toast.error(
+            ToastError(
+              'Unsupported Chain Id',
+              'Unsupported Chain Id Error. Please make sure you are connected to the correct network.',
+            ),
           )
         } else if (error instanceof NoEthereumProviderError || error instanceof NoBscProviderError) {
-          toastError(
-            'Provider Error',
-            'No provider was found. If on mobile, please connect to your specified wallet through WalletConnect.',
+          toast.error(
+            ToastError(
+              'Provider Error',
+              'No provider was found. If on mobile, please connect to your specified wallet through WalletConnect.',
+            ),
           )
         } else if (
           error instanceof UserRejectedRequestErrorInjected ||
@@ -47,19 +51,18 @@ const useAuth = () => {
             const walletConnector = connector as WalletConnectConnector
             walletConnector.walletConnectProvider = null
           }
-          toastError('Authorization Error', 'Please authorize to access your account')
+          toast.error(ToastError('Authorization Error', 'Please authorize to access your account'))
         } else {
-          toastError(error.name, error.message)
+          toast.error(ToastError(error.name, error.message))
         }
       })
     } else {
-      toastError("Can't find connector", 'The connector config is wrong')
+      toast.error(ToastError("Can't find connector", 'The connector config is wrong'))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const logout = useCallback(() => {
-    // dispatch(profileClear())
     deactivate()
     // This localStorage key is set by @web3-react/walletconnect-connector
     if (window.localStorage.getItem('walletconnect')) {

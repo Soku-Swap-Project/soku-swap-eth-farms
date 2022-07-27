@@ -191,7 +191,7 @@ import FeeSummary from './FeeSummary'
 //       },
 //       {
 //         inputs: [],
-//         name: 'calculateTotalPendingSutekuRewards',
+//         name: 'calculateTotalpendingSUTEKURewards',
 //         outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
 //         stateMutability: 'view',
 //         type: 'function',

@@ -7,7 +7,10 @@ import { useTranslation } from 'contexts/Localization'
 interface FarmTabButtonsProps {
   hasStakeInFinishedFarms: boolean
 }
-
+const StyledButtonMenu = styled(ButtonMenu)`
+  border: none;
+  background: transparent;
+`
 const FarmTabButtons: React.FC<FarmTabButtonsProps> = ({ hasStakeInFinishedFarms }) => {
   const { url } = useRouteMatch()
   const location = useLocation()
@@ -15,10 +18,10 @@ const FarmTabButtons: React.FC<FarmTabButtonsProps> = ({ hasStakeInFinishedFarms
 
   let activeIndex
   switch (location.pathname) {
-    case '/farms':
+    case '/ethereum/farms':
       activeIndex = 0
       break
-    case '/farms/history':
+    case '/ethereum/farms/history':
       activeIndex = 1
       break
     case '/farms/archived':
@@ -31,16 +34,26 @@ const FarmTabButtons: React.FC<FarmTabButtonsProps> = ({ hasStakeInFinishedFarms
 
   return (
     <Wrapper>
-      <ButtonMenu activeIndex={activeIndex} scale="sm" variant="subtle">
-        <ButtonMenuItem as={Link} to={`${url}`}>
+      <StyledButtonMenu activeIndex={activeIndex} scale="sm" variant="primary">
+        <ButtonMenuItem
+          className={activeIndex === 0 ? 'hover_shadow emphasized-selected' : 'hover_shadow'}
+          style={{ color: '#05195a', opacity: '0.9', borderRadius: '7px', marginRight: '14px' }}
+          as={Link}
+          to="/ethereum/farms"
+        >
           {t('Live')}
         </ButtonMenuItem>
         <NotificationDot show={hasStakeInFinishedFarms}>
-          <ButtonMenuItem as={Link} to={`${url}/history`}>
+          <ButtonMenuItem
+            className={activeIndex === 1 ? 'hover_shadow emphasized-selected' : 'hover_shadow'}
+            style={{ color: '#05195a', opacity: '0.9', borderRadius: '7px' }}
+            as={Link}
+            to="/ethereum/farms/history"
+          >
             {t('Finished')}
           </ButtonMenuItem>
         </NotificationDot>
-      </ButtonMenu>
+      </StyledButtonMenu>
     </Wrapper>
   )
 }
@@ -51,6 +64,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 16px;
 
   a {
     padding-left: 12px;

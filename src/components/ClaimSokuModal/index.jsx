@@ -2,12 +2,13 @@
 
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import CloseIcon from '@mui/icons-material/Close'
 import { useWeb3React } from '@web3-react/core'
 import useAuth from 'hooks/useAuth'
 
 import Modal from '@material-ui/core/Modal'
 
-import './ClaimSoku.css'
+// import './ClaimSoku.css'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -23,7 +24,6 @@ export default function ClaimSokuModal() {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
   const { account } = useWeb3React()
-  const { login, logout } = useAuth()
 
   const handleOpen = () => {
     setOpen(true)
@@ -33,6 +33,8 @@ export default function ClaimSokuModal() {
     setOpen(false)
   }
 
+  const isMobile = window.innerWidth <= 1200
+
   const date = new Date()
   const month = date.getMonth() + 1
   const day = date.getDate() + 7
@@ -41,12 +43,16 @@ export default function ClaimSokuModal() {
   const earnedAmount = 50
 
   const body = (
-    <div className={`claimSoku__modal ${classes.paper}`}>
-      <div className="claimSoku__modal_header">
-        <h1>Claim Soku</h1>
-        <span onClick={handleClose} className="material-icons">
-          close
-        </span>
+    <div className="flex flex-col gap-6 network_modal">
+      <div className="modal_header">
+        <h1 className="text-blue font-bold" style={{ fontWeight: 700 }}>
+          Claim SOKU
+        </h1>
+        <CloseIcon
+          className="hover_shadow_icon"
+          style={{ color: '#05195a', cursor: 'pointer' }}
+          onClick={handleClose}
+        />
       </div>
       <hr />
       {account ? (
@@ -81,7 +87,12 @@ export default function ClaimSokuModal() {
 
   return (
     <div className="claimSoku__wrapper">
-      <button type="button" className="claimSoku__navButton" onClick={handleOpen}>
+      <button
+        type="button"
+        className={isMobile ? 'claimSoku__navButton_mobile' : 'claimSoku__navButton' + ' hover_shadow'}
+        style={{ background: '#05195a', padding: '12px 24px', whiteSpace: 'nowrap', fontWeight: 700 }}
+        onClick={handleOpen}
+      >
         Claim Soku
       </button>
       {/* <a href="https://tokensale.sokuswap.finance/token-exchange/#/" target="_blank">
@@ -94,7 +105,8 @@ export default function ClaimSokuModal() {
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
-        className="claimSoku__modalContainer"
+        className="network_modal_container"
+        role="none"
       >
         {body}
       </Modal>
