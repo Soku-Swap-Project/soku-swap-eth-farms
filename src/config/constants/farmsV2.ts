@@ -22,16 +22,16 @@ const farmsV2: FarmConfig[] = [
     token: tokens.suteku,
     quoteToken: tokens.eth,
   },
-  {
-    pid: 3,
-    lpSymbol: 'HOBI-ETH LP',
-    lpAddresses: {
-      1: '0xb72f4306faddaca030e5305090159cacd111c630',
-      4: '0x6812108E96f2d53680446aF1dE8C6d474bD5b610',
-    },
-    token: tokens.hobi,
-    quoteToken: tokens.eth,
-  },
+  // {
+  //   pid: 3,
+  //   lpSymbol: 'HOBI-ETH LP',
+  //   lpAddresses: {
+  //     1: '0xb72f4306faddaca030e5305090159cacd111c630',
+  //     4: '0x6812108E96f2d53680446aF1dE8C6d474bD5b610',
+  //   },
+  //   token: tokens.hobi,
+  //   quoteToken: tokens.eth,
+  // },
 ]
 
 export default farmsV2
