@@ -18,7 +18,7 @@ const Toggle = () => {
   checkbox?.addEventListener('change', function () {
     // Check if toggle switch is on BSC
     if (this.checked) {
-      window.location.href = `${origin}/ethereum/farms`
+      window.location.href = `${origin}/bsc/farms`
       // console.log('Show BSC Swap')
       for (let i = 0; i < bscToggle?.classList.length; i++) {
         if (bscToggle.classList[i] == 'toggleActive') {
