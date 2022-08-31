@@ -46,6 +46,7 @@ import { transformPool as transformFarm } from './farmsWithSmartChef/helpers'
 
 import { fetchPoolsStakingLimitsAsync } from './pools'
 import { fetchFarmsV2StakingLimitsAsync } from './farmsWithSmartChef'
+import useSutekuPrice from 'hooks/useSutekuPrice'
 
 const web3 = getWeb3NoAccount()
 
@@ -588,13 +589,14 @@ export const usePriceSutekuEth = (): BigNumber => {
   const sutekuFarm = useFarmFromPidV2(2)
   const soku_price = usePriceSokuEth()
 
-  const sutekuPrice = sutekuFarm.tokenPriceVsQuote ? sutekuFarm.tokenPriceVsQuote : BIG_ZERO
+  const sutekuPriceBSC = useSutekuPrice()
+  const sutekuPriceBSCAsBN = new BigNumber(sutekuPriceBSC)
 
-  // const sutekuPrice = BIG_ZERO
+  const sutekuPriceETH = sutekuFarm.tokenPriceVsQuote ? sutekuFarm.tokenPriceVsQuote : BIG_ZERO
 
-  const price = new BigNumber(sutekuPrice).multipliedBy(soku_price)
+  const averageSutekuPrice = sutekuPriceBSCAsBN.plus(sutekuPriceETH).div(new BigNumber(2))
 
-  return sutekuPrice
+  return averageSutekuPrice
 }
 
 export const usePriceHobiEth = (): BigNumber => {
