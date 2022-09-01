@@ -588,13 +588,16 @@ export const usePriceSokuEth = (): BigNumber => {
 export const usePriceSutekuEth = (): BigNumber => {
   const sutekuFarm = useFarmFromPidV2(2)
   const soku_price = usePriceSokuEth()
+  const priceOfEth = ethPrice()
 
   const sutekuPriceBSC = useSutekuPrice()
   const sutekuPriceBSCAsBN = new BigNumber(sutekuPriceBSC)
 
   const sutekuPriceETH = sutekuFarm.tokenPriceVsQuote ? sutekuFarm.tokenPriceVsQuote : BIG_ZERO
 
-  const averageSutekuPrice = sutekuPriceBSCAsBN.plus(sutekuPriceETH).div(new BigNumber(2))
+  const sutekuPriceUsd = Number(sutekuPriceETH) * Number(priceOfEth)
+  const sutekuPriceETHAsBN = new BigNumber(sutekuPriceUsd)
+  const averageSutekuPrice = sutekuPriceBSCAsBN.plus(sutekuPriceETHAsBN).div(new BigNumber(2))
 
   return averageSutekuPrice
 }
