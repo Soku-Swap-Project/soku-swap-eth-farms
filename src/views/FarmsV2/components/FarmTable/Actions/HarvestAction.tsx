@@ -19,10 +19,10 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userD
   const earningsBigNumber = new BigNumber(userData.earnings)
   // console.log(earningsBigNumber.toString(), 'earnings')
   const sutekuPrice = usePriceSutekuEth()
-  const priceOfEth = ethPrice()
-  const sutekuToString = sutekuPrice?.toString()
-  const sutekuToNumber = parseFloat(sutekuToString)
-  const sutekuUsd = sutekuToNumber * priceOfEth
+  // const priceOfEth = ethPrice()
+  // // const sutekuToString = sutekuPrice?.toString()
+  // // const sutekuToNumber = parseFloat(sutekuToString)
+  // // const sutekuUsd = sutekuToNumber * priceOfEth
   let earnings = 0
   let earningsBusd = 0
   let displayBalance = userDataReady ? earnings.toLocaleString() : <Skeleton width={60} />
@@ -31,7 +31,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userD
   // If user didn't connect wallet default balance will be 0
   if (!earningsBigNumber.isZero()) {
     earnings = getBalanceNumber(earningsBigNumber)
-    earningsBusd = new BigNumber(earnings).multipliedBy(sutekuUsd).toNumber()
+    earningsBusd = new BigNumber(earnings).multipliedBy(sutekuPrice).toNumber()
     displayBalance = earnings.toLocaleString()
   }
 
