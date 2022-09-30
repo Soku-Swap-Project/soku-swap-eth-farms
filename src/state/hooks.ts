@@ -605,9 +605,9 @@ export const usePriceSutekuEth = (): BigNumber => {
 export const usePriceHobiEth = (): BigNumber => {
   const hobiFarm = useFarmFromPidV2(3)
 
-  const hobiPrice = hobiFarm.tokenPriceVsQuote ? hobiFarm.tokenPriceVsQuote : BIG_ZERO
+  // const hobiPrice = hobiFarm.tokenPriceVsQuote ? hobiFarm.tokenPriceVsQuote : BIG_ZERO
 
-  return hobiPrice
+  return new BigNumber(1)
 }
 
 // Block
