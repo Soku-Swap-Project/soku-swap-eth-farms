@@ -11,6 +11,7 @@ import useAuth from 'hooks/useAuth'
 import ClaimSokuModal from 'components/ClaimSokuModal'
 import AccountModal from 'components/AccountModal'
 import { useWalletModal } from '@pancakeswap/uikit'
+import SwitchNetworkModal from 'components/SwitchNetworkModal'
 
 // import '../Menu/Menu.css'
 
@@ -105,6 +106,12 @@ const SlideOutMenu: FC = () => {
   const isTradeActive = window.location.pathname === '/cross-swap' || window.location.pathname === '/swap'
   const origin = window.location.origin
 
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const toggleNetworkModal = () => {
+    setIsModalOpen(!isModalOpen)
+  }
+
   return (
     <nav className="mobile_navbar">
       <div>
@@ -119,14 +126,6 @@ const SlideOutMenu: FC = () => {
           </div>
         </div>
       </div>
-      {/* 
-      <div>
-        <div className={`${menuBtn} ${isMenuOpen ? 'closer' : null}`} onClick={toggleMenu}>
-          <div className={`${btnLine} ${isMenuOpen ? 'closer' : null}`} />
-          <div className={`${btnLine} ${isMenuOpen ? 'closer' : null}`} />
-          <div className={`${btnLine} ${isMenuOpen ? 'closer' : null}`} />
-        </div>
-      </div> */}
 
       <MenuIcon fontSize="medium" onClick={toggleMenu} />
 
@@ -148,6 +147,7 @@ const SlideOutMenu: FC = () => {
                     color: '#05195a',
                     justifyContent: 'center',
                   }}
+                  onClick={toggleNetworkModal}
                 >
                   <img
                     src={NETWORK_ICON[chainId as number]}
@@ -159,6 +159,7 @@ const SlideOutMenu: FC = () => {
                   {NETWORK_LABEL_SHORT[chainId as number]}
                 </div>
               )}
+              <SwitchNetworkModal isModalOpen={isModalOpen} toggleNetworkModal={toggleNetworkModal} />
             </div>
             <div className="mobile_menu_list">
               <a className="nav_link_mobile" href="https://swap.app.sokuswap.finance">
