@@ -3,7 +3,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import CloseIcon from '@mui/icons-material/Close'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from '@mui/icons-material/Logout'
 import { useWeb3React } from '@web3-react/core'
 import useAuth from '../../hooks/useAuth'
 
@@ -64,14 +64,12 @@ export default function AccountModal() {
       <hr />
       <div className="account__modal_details">
         <div className="wallet_info">
-          <p style={{ fontSize: "16px", fontWeight: "bold" }}>
-            Wallet: {truncatedAddress}
-          </p>
+          <p style={{ fontSize: '16px', fontWeight: 'bold' }}>Wallet: {truncatedAddress}</p>
           <img
             className="nav_logo"
             alt="Logo"
             src="https://bscscan.com/token/images/sokuv2_32.png"
-            style={{ height: "20px", marginLeft: "5px" }}
+            style={{ height: '20px', marginLeft: '5px' }}
           />
         </div>
 
@@ -79,29 +77,34 @@ export default function AccountModal() {
           target="_blank"
           className="view_on_scan hover_shadow"
           style={{
-            color: "rgb(255, 255, 255)",
-            background: "rgb(5, 25, 90)",
-            padding: " 12px 24px",
-            borderRadius: "7px",
-            fontSize: '14px'
+            color: 'rgb(255, 255, 255)',
+            background: 'rgb(5, 25, 90)',
+            padding: ' 12px 24px',
+            borderRadius: '7px',
+            fontSize: '14px',
           }}
-          href={getBscScanLink(chainId, account, "address")}
+          href={getBscScanLink(chainId, account, 'address')}
         >
-          <h2 style={{paddingRight: '8px'}}>View on Explorer</h2>
+          <h2 style={{ paddingRight: '8px' }}>View on Explorer</h2>
           <OpenInNewIcon />
         </a>
-        <button style={{
-            color: "rgb(255, 255, 255)",
-            background: "rgb(5, 25, 90)",
-            padding: " 9px 18px",
-            borderRadius: "7px",
-            fontSize: '14px'
-          }}
-          className="account_logout view_on_scan hover_shadow" 
-          onClick={deactivate}>
-          <h2 style={{paddingRight: '8px'}}>Sign Out</h2>
-          <LogoutIcon />
-        </button>
+        {((isMobile && connector?.constructor?.name !== 'InjectedConnector' && connector?.constructor?.name !== 't') ||
+          !isMobile) && (
+          <button
+            style={{
+              color: 'rgb(255, 255, 255)',
+              background: 'rgb(5, 25, 90)',
+              padding: ' 9px 18px',
+              borderRadius: '7px',
+              fontSize: '14px',
+            }}
+            className="account_logout view_on_scan hover_shadow"
+            onClick={deactivate}
+          >
+            <h2 style={{ paddingRight: '8px' }}>Sign Out</h2>
+            <LogoutIcon />
+          </button>
+        )}
       </div>
     </div>
   )
