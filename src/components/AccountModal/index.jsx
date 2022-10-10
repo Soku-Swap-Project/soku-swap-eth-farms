@@ -5,7 +5,6 @@ import CloseIcon from '@mui/icons-material/Close'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { useWeb3React } from '@web3-react/core'
-import useAuth from '../../hooks/useAuth'
 
 import Modal from '@material-ui/core/Modal'
 import getBscScanLink from '../../utils'
@@ -27,8 +26,7 @@ const useStyles = makeStyles((theme) => ({
 export default function AccountModal() {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
-  // const { login, logout } = useAuth()
-  const { account, chainId, deactivate } = useWeb3React()
+  const { account, chainId, deactivate, connector } = useWeb3React()
 
   const truncatedFirstHalf = account?.substring(0, 5)
   const truncatedLastHalf = account?.substring(account.length - 5, account.length)
@@ -43,11 +41,6 @@ export default function AccountModal() {
   const handleClose = () => {
     setOpen(false)
   }
-
-  // const logoutAccount = () => {
-  //     localStorage.removeItem('redux_localstorage_simple_user')
-  //     return deactivate
-  // }
 
   const body = (
     <div className="flex flex-col gap-6 network_modal">

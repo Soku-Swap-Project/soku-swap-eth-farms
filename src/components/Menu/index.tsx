@@ -29,7 +29,6 @@ const Menu = (props) => {
   }
 
   const { currentLanguage, setLanguage, t } = useTranslation()
-
   const { onPresentConnectModal } = useWalletModal(login, logout)
 
   const openHiddenLinks = () => {
