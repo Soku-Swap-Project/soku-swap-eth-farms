@@ -20,7 +20,7 @@ const LpTokens = {
     projectLink: 'https://sokuswap.org/',
   },
   soku_eth_uni: {
-    symbol: 'SOKU-ETH V2',
+    symbol: 'SOKU-ETH',
     name: 'Uniswap LPs',
     address: {
       1: '0x2a4da9BE7A78573B12385Ea91c8b7B07A98336ED',

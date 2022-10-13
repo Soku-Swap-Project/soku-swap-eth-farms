@@ -174,7 +174,7 @@ const SlideOutMenu: FC = () => {
               <NavLink
                 className="nav_link_mobile hover_shadow"
                 activeClassName="emphasized-selected active_mobile_link"
-                to="/ethereum/farms/"
+                to="/ethereum/farms-v2/"
               >
                 Farms
               </NavLink>

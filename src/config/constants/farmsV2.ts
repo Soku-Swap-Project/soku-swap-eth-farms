@@ -34,7 +34,7 @@ const farmsV2: FarmConfig[] = [
   },
   {
     pid: 4,
-    lpSymbol: 'SOKU-ETH V2 LP',
+    lpSymbol: 'SOKU-ETH LP',
     lpAddresses: {
       1: '0x2a4da9BE7A78573B12385Ea91c8b7B07A98336ED',
       4: '0x6812108E96f2d53680446aF1dE8C6d474bD5b610',

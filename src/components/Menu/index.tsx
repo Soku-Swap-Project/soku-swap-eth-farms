@@ -78,7 +78,7 @@ const Menu = (props) => {
                       <NavLink
                         className="nav_link hover_transparent"
                         activeClassName="emphasized-selected active_mobile_link"
-                        to="/ethereum/farms/"
+                        to="/ethereum/farms-v2/"
                       >
                         Farms
                       </NavLink>

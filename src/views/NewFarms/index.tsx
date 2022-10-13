@@ -150,11 +150,11 @@ const NewFarms: React.FC = () => {
         </Flex>
       </PageHeader>
       <Page>
-        <PoolTabButtons
+        {/* <PoolTabButtons
           stakedOnly={stakedOnly}
           setStakedOnly={setStakedOnly}
           hasStakeInFinishedPools={hasStakeInFinishedPools}
-        />
+        /> */}
         <div className="modal_video">
           <ModalVideo channel="youtube" autoplay isOpen={isOpen} videoId="iricuuB4KUo" onClose={() => setOpen(false)} />
         </div>
