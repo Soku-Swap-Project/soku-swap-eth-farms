@@ -115,7 +115,6 @@ export const getUserPoolData = async (account) => {
       stakedBalance: stakedBalances[pool.sousId],
       pendingReward: pendingRewards[pool.sousId],
     }))
-    console.log(userData, 'user')
   } catch (error) {
     // console.log(error)
   }

@@ -37,6 +37,7 @@ const CardActions: React.FC<CardActionsProps> = ({
   isApproved,
 }) => {
   const { sousId, stakingToken, earningToken, harvest, poolCategory, userData } = pool
+
   const { account } = useWeb3React()
   // Pools using native BNB behave differently than pools using a token
   const isBnbPool = poolCategory === PoolCategory.BINANCE

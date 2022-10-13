@@ -24,6 +24,7 @@ import useToast from 'hooks/useToast'
 import { Token } from 'config/constants/types'
 import useWeb3 from 'hooks/useWeb3'
 import { useSousChefV2Farms } from 'hooks/useContract'
+import { useSousUnstakeFarms } from 'hooks/useUnstake'
 import { ToastError, ToastSuccess } from 'style/Toasts'
 import { toast } from 'react-toastify'
 import { SmartChefABI } from '../../../helpers'
@@ -56,6 +57,7 @@ const CollectModal: React.FC<CollectModalProps> = ({
   const { theme } = useTheme()
   const { toastSuccess, toastError } = useToast()
   const { onReward, claimRewards } = useSousHarvestFarms(sousId, isBnbPool)
+  const { onUnstake, unStakeInFarm } = useSousUnstakeFarms(sousId, pool.enableEmergencyWithdraw)
   const { account } = useWeb3React()
   const { onStake } = useSousStakeFarms(sousId, isBnbPool)
   const [pendingTx, setPendingTx] = useState(false)
@@ -91,7 +93,7 @@ const CollectModal: React.FC<CollectModalProps> = ({
     } else {
       // harvesting
       try {
-        await claimRewards()
+        await unStakeInFarm('0', earningToken.decimals)
 
         toast.success(
           ToastSuccess(

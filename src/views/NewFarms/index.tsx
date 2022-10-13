@@ -103,7 +103,7 @@ const NewFarms: React.FC = () => {
   }, [observerIsSet])
 
   return (
-    <div style={{ paddingTop: '1.85rem' }} className="farm_heading">
+    <div className="farm_heading">
       <PageHeader>
         <Flex justifyContent="space-between" flexDirection={['column', null, 'row']}>
           <Flex flexDirection="column" mr={['8px', 0]}>
@@ -129,7 +129,7 @@ const NewFarms: React.FC = () => {
             >
               {t('High APR, low risk.')}
             </Heading> */}
-            {/* <ToggleNew /> */}
+            <ToggleNew />
             {/* <div
               style={{
                 width: '100%',

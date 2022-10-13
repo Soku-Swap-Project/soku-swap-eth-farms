@@ -34,6 +34,7 @@ import {
   PriceState,
   FarmsState,
   FarmsStateV2,
+  FarmV2,
 } from './types'
 // import { fetchProfile } from './profile'
 // import { fetchTeam, fetchTeams } from './teams'
@@ -526,6 +527,7 @@ let price
 
 export const useTokenPrice = (token: string) => {
   const [tokenPrice, setTokenPrice] = useState(0)
+  const { fastRefresh } = useRefresh()
   useEffect(() => {
     const getTokenPrice = async (token_symbol) => {
       try {
@@ -539,7 +541,7 @@ export const useTokenPrice = (token: string) => {
       }
     }
     getTokenPrice(token)
-  }, [])
+  }, [fastRefresh])
 
   return tokenPrice
 }
@@ -569,9 +571,9 @@ export const useGetApiPrice = (address: string) => {
 }
 
 export const usePriceBnbBusd = (): BigNumber => {
-  const ethPrice = useTokenPrice('eth')
+  const ethPrice = useTokenPrice('ethereum')
 
-  return BIG_ZERO
+  return new BigNumber(ethPrice)
 }
 
 export const usePriceSokuEth = (): BigNumber => {
@@ -605,9 +607,21 @@ export const usePriceSutekuEth = (): BigNumber => {
 export const usePriceHobiEth = (): BigNumber => {
   const hobiFarm = useFarmFromPidV2(3)
 
-  // const hobiPrice = hobiFarm.tokenPriceVsQuote ? hobiFarm.tokenPriceVsQuote : BIG_ZERO
+  const hobiPrice = hobiFarm.tokenPriceVsQuote ? hobiFarm.tokenPriceVsQuote : BIG_ZERO
 
   return new BigNumber(1)
+}
+
+export const useUniPriceSodatsuEth = (): BigNumber => {
+  const sodatsuFarm = useFarmFromPidV2(5)
+  const priceOfEth = ethPrice()
+
+  const sodatsuPriceETH = sodatsuFarm.tokenPriceVsQuote ? sodatsuFarm.tokenPriceVsQuote : BIG_ZERO
+
+  const sodatsuPriceUsd = Number(sodatsuPriceETH) * Number(priceOfEth)
+  const sodatsuPriceETHAsBN = new BigNumber(sodatsuPriceUsd)
+
+  return sodatsuPriceETHAsBN
 }
 
 // Block

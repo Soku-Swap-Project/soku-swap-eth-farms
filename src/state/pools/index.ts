@@ -94,8 +94,6 @@ export const fetchPoolsUserDataAsync = (account) => async (dispatch) => {
     pendingReward: pendingRewards[pool.sousId],
   }))
 
-  console.log(userData, 'user')
-
   dispatch(setPoolsUserData(userData))
   return { allowances, stakingTokenBalances, stakedBalances, pendingRewards }
 }
@@ -119,7 +117,6 @@ export const getUserPoolData = async (account) => {
       stakedBalance: stakedBalances[pool.sousId],
       pendingReward: pendingRewards[pool.sousId],
     }))
-    console.log(userData, 'user')
   } catch (error) {
     // console.log(error)
   }
