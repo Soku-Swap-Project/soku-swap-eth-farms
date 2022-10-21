@@ -10,7 +10,7 @@ const LpTokens = {
     projectLink: 'https://sokuswap.org/',
   },
   soku_eth_sushi: {
-    symbol: 'SOKU-ETH V1',
+    symbol: 'SOKU-ETH',
     name: 'SushiSwap LPs',
     address: {
       1: '0x0de56b00b45a07b15Ca09661336f785E7E4D1d45',
@@ -20,7 +20,7 @@ const LpTokens = {
     projectLink: 'https://sokuswap.org/',
   },
   soku_eth_uni: {
-    symbol: 'SOKU-ETH',
+    symbol: 'SOKU-ETH UNI',
     name: 'Uniswap LPs',
     address: {
       1: '0x2a4da9BE7A78573B12385Ea91c8b7B07A98336ED',
@@ -34,6 +34,16 @@ const LpTokens = {
     name: 'UniSwap LPs',
     address: {
       1: '0x0Ba20E39D062d4e7a2BCEf61dFA4371b97ce1980',
+      4: '',
+    },
+    decimals: 18,
+    projectLink: 'https://sokuswap.org/',
+  },
+  sodatsu_eth: {
+    symbol: 'SODATSU-ETH',
+    name: 'Sodatsu LPs',
+    address: {
+      1: '0x778B81ce35a21EE911971Fa06164e5d649b4d06d',
       4: '',
     },
     decimals: 18,

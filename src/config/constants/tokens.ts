@@ -33,11 +33,21 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://sokuswap.org/',
   },
-  sodatsu: {
+  sodatsu_old: {
     symbol: 'SODATSU',
     name: 'Sodatsu',
     address: {
       1: '0xeD641273b0c9dd7Bc89f0CD4c3BD58770B662d63',
+      4: '',
+    },
+    decimals: 18,
+    projectLink: 'https://sokuswap.org/',
+  },
+  sodatsu: {
+    symbol: 'SODATSU',
+    name: 'Sodatsu',
+    address: {
+      1: '0xf8497f1dab075A3674363B5609Ba679F7dc9C885',
       4: '',
     },
     decimals: 18,

@@ -6,7 +6,7 @@ import { getBalanceNumber } from 'utils/formatBalance'
 import { getPoolApr } from 'utils/apr'
 import { AbiItem } from 'web3-utils'
 import { tokenEarnedPerThousandDollarsCompounding, getRoi } from 'utils/compoundApyHelpers'
-import { useLpTokenPriceV2, usePriceHobiEth, usePriceSutekuEth, useUniPriceSodatsuEth } from 'state/hooks'
+import { useLpTokenPriceV2, usePriceHobiEth, usePriceSutekuEth, usePriceSodatsuEth } from 'state/hooks'
 import Balance from 'components/Balance'
 import ApyCalculatorModal from 'components/ApyCalculatorModal'
 import AprCalculatorModal from 'components/AprCalculatorModal'
@@ -41,13 +41,11 @@ const AprRow: React.FC<AprRowProps> = ({
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })
 
-  const sodatsuPrice = useUniPriceSodatsuEth()
+  const sodatsuPrice = usePriceSodatsuEth()
   const sutekuPrice = usePriceSutekuEth()
   const hobiPrice = usePriceHobiEth()
 
   const farmLpToken = pool.stakingToken
-
-  const isSuteku = earningToken.symbol === 'SUTEKU'
   const earningTokenPrice = sodatsuPrice
   const earningTokenPriceAsNumber = parseFloat(earningTokenPrice.toString()) ?? 0
 

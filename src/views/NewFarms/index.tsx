@@ -5,8 +5,6 @@ import { Route, useRouteMatch } from 'react-router-dom'
 
 import { useWeb3React } from '@web3-react/core'
 import { Heading, Flex } from '@pancakeswap/uikit'
-import { getAddress } from 'utils/addressHelpers'
-import { AbiItem } from 'web3-utils'
 import { getWeb3NoAccount } from 'utils/web3'
 import { getUserPoolData as getUserFarmData } from 'state/farmsWithSmartChef'
 import orderBy from 'lodash/orderBy'
@@ -120,29 +118,9 @@ const NewFarms: React.FC = () => {
               color="#05195a"
               style={{ opacity: '0.85', fontSize: '1.25rem', textAlign: 'center', paddingBottom: '25px' }}
             >
-              {t('Stake Liquidity Pool (LP) tokens to earn SUTEKU!')}
+              {t('Stake Liquidity Pool (LP) tokens to earn SODATSU!')}
             </Heading>
-            {/* <Heading
-              scale="lg"
-              color="white"
-              style={{ opacity: '0.65', fontSize: '1.25rem', textAlign: 'center', marginBottom: '15px' }}
-            >
-              {t('High APR, low risk.')}
-            </Heading> */}
             <ToggleNew />
-            {/* <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                paddingBottom: '16px',
-                fontWeight: 'bolder',
-              }}
-            >
-              <p style={{ color: '#04bbfb', fontSize: '16px', cursor: 'pointer' }} onClick={() => setOpen(true)}>
-                How to stake?
-              </p>
-            </div> */}
           </Flex>
           {/* <Flex height="fit-content" justifyContent="center" alignItems="center" mt={['24px', null, '0']}>
             <BountyCard />

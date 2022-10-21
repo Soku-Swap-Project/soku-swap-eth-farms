@@ -612,8 +612,8 @@ export const usePriceHobiEth = (): BigNumber => {
   return new BigNumber(1)
 }
 
-export const useUniPriceSodatsuEth = (): BigNumber => {
-  const sodatsuFarm = useFarmFromPidV2(5)
+export const usePriceSodatsuEth = (): BigNumber => {
+  const sodatsuFarm = useFarmFromPidV2(8)
   const priceOfEth = ethPrice()
 
   const sodatsuPriceETH = sodatsuFarm.tokenPriceVsQuote ? sodatsuFarm.tokenPriceVsQuote : BIG_ZERO

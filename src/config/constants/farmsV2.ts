@@ -4,7 +4,7 @@ import { FarmConfig } from './types'
 const farmsV2: FarmConfig[] = [
   {
     pid: 1,
-    lpSymbol: 'SOKU-ETH V1 LP',
+    lpSymbol: 'SOKU-ETH LP',
     lpAddresses: {
       1: '0x0de56b00b45a07b15Ca09661336f785E7E4D1d45',
       4: '0x6812108E96f2d53680446aF1dE8C6d474bD5b610',
@@ -32,21 +32,21 @@ const farmsV2: FarmConfig[] = [
     token: tokens.hobi,
     quoteToken: tokens.eth,
   },
+  // {
+  //   pid: 4,
+  //   lpSymbol: 'SOKU-ETH LP',
+  //   lpAddresses: {
+  //     1: '0x2a4da9BE7A78573B12385Ea91c8b7B07A98336ED',
+  //     4: '0x6812108E96f2d53680446aF1dE8C6d474bD5b610',
+  //   },
+  //   token: tokens.soku,
+  //   quoteToken: tokens.eth,
+  // },
   {
-    pid: 4,
-    lpSymbol: 'SOKU-ETH LP',
-    lpAddresses: {
-      1: '0x2a4da9BE7A78573B12385Ea91c8b7B07A98336ED',
-      4: '0x6812108E96f2d53680446aF1dE8C6d474bD5b610',
-    },
-    token: tokens.soku,
-    quoteToken: tokens.eth,
-  },
-  {
-    pid: 5,
+    pid: 8,
     lpSymbol: 'SODATSU-ETH LP',
     lpAddresses: {
-      1: '0xE0389DBA507951D27b4d8A4F57a9c86e4400816B',
+      1: '0x778B81ce35a21EE911971Fa06164e5d649b4d06d',
       4: '0x6812108E96f2d53680446aF1dE8C6d474bD5b610',
     },
     token: tokens.sodatsu,

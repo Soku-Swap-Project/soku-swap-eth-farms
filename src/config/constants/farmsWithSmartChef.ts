@@ -5,10 +5,10 @@ import { PoolConfig as FarmsWithSmartChefConfig, PoolCategory as FarmsWithSmartC
 const farmsWithSmartChef: FarmsWithSmartChefConfig[] = [
   {
     sousId: 1,
-    stakingToken: LpTokens.soku_eth_uni,
+    stakingToken: LpTokens.soku_eth_sushi,
     earningToken: tokens.sodatsu,
     contractAddress: {
-      1: '0x1e27d11BEd059E981fa84c0E10843c3c8F54c07C',
+      1: '0xf1294743ff92B07182eDA500997B8e5Ed82e1a5b',
       4: '',
     },
     poolCategory: FarmsWithSmartChefCategory.CORE,
