@@ -142,7 +142,7 @@ const CollectModal: React.FC<CollectModalProps> = ({
           <Heading>
             {formattedBalance} {earningToken.symbol}
           </Heading>
-          <Text fontSize="12px" color="textSubtle">{`~${earningsDollarValue || 0} USD`}</Text>
+          {/* <Text fontSize="12px" color="textSubtle">{`~${earningsDollarValue || 0} USD`}</Text> */}
         </Flex>
       </Flex>
 
