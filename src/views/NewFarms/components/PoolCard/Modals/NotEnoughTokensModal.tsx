@@ -39,7 +39,7 @@ const NotEnoughTokensModal: React.FC<NotEnoughTokensModalProps> = ({ tokenSymbol
         as="a"
         style={{ background: '#05195a', boxShadow: 'none' }}
         external
-        href={BASE_EXCHANGE_URL}
+        href={`${BASE_EXCHANGE_URL}/ethereum/#/pool`}
       >
         {t('Get')} {tokenSymbol} LP
       </Button>

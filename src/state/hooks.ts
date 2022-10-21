@@ -291,16 +291,19 @@ export const useLpTokenPrice = (symbol: string) => {
 export const useLpTokenPriceV2 = (symbol: string) => {
   const farm = useFarmFromLpSymbolV2(symbol)
   const farmTokenPriceInUsd = useBusdPriceFromPidV2(farm.pid)
+  const priceOfEth = ethPrice()
   let lpTokenPrice = BIG_ZERO
 
   if (farm.lpTotalSupply && farm.lpTotalInQuoteToken) {
     // Total value of base token in LP
     const valueOfBaseTokenInFarm = farmTokenPriceInUsd.times(farm.tokenAmountTotal)
     // Double it to get overall value in LP
-    const overallValueOfAllTokensInFarm = valueOfBaseTokenInFarm.times(2)
+    const overallValueOfAllTokensInFarm = valueOfBaseTokenInFarm.times(2).times(priceOfEth)
     // Divide total value of all tokens, by the number of LP tokens
     const totalLpTokens = getBalanceAmount(farm.lpTotalSupply)
     lpTokenPrice = overallValueOfAllTokensInFarm.div(totalLpTokens)
+
+    // https://dailydefi.org/articles/lp-token-value-calculation/
   }
 
   return lpTokenPrice

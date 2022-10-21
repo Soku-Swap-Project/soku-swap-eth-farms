@@ -230,7 +230,7 @@ const StakeModal: React.FC<StakeModalProps> = ({
         {pendingTx ? t('Confirming') : t('Confirm')}
       </Button>
       {!isRemovingStake && (
-        <StyledLink external href={BASE_EXCHANGE_URL}>
+        <StyledLink external href={`${BASE_EXCHANGE_URL}/ethereum/#/pool`}>
           <Button
             className="hover_shadow emphasize_swap_button"
             style={{ background: '#05195a' }}

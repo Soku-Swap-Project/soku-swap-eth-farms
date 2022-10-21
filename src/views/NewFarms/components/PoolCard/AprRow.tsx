@@ -52,13 +52,12 @@ const AprRow: React.FC<AprRowProps> = ({
   const stakingLpPrice = useLpTokenPriceV2(`${farmLpToken.symbol} LP`)
   const stakingLpPriceAsNumber = parseFloat(stakingLpPrice.toString()) ?? 0
 
-  const apr =
-    getPoolApr(
-      stakingLpPriceAsNumber,
-      earningTokenPriceAsNumber,
-      getBalanceNumber(totalStaked, stakingToken.decimals),
-      parseFloat(rewardPerBlock),
-    ) * 0.75
+  const apr = getPoolApr(
+    stakingLpPriceAsNumber,
+    earningTokenPriceAsNumber,
+    getBalanceNumber(totalStaked, stakingToken.decimals),
+    parseFloat(rewardPerBlock),
+  )
 
   // special handling for tokens like tBTC or BIFI where the daily token rewards for $1000 dollars will be less than 0.001 of that token
   const isHighValueToken = Math.round(earningTokenPriceAsNumber / 1000) > 0

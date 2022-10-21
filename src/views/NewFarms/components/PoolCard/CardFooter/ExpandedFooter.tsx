@@ -64,9 +64,9 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({
   const farmLpToken = pool.stakingToken
   const stakingLpPrice = useLpTokenPriceV2(`${farmLpToken.symbol} LP`)
 
-  const stakingLpPriceAsNumber = stakingLpPrice ? parseFloat(stakingLpPrice.toString()) : 0
+  const stakingLpPriceAsNumber = stakingLpPrice ? parseFloat(stakingLpPrice?.toString()) : 0
 
-  const formattedTotalStaked = totalStaked ? web3.utils.fromWei(totalStaked.toString(), 'ether') : BIG_ZERO
+  const formattedTotalStaked = totalStaked ? web3.utils.fromWei(totalStaked?.toString(), 'ether') : BIG_ZERO
 
   const totalStakedAsNumber = parseFloat(formattedTotalStaked.toString())
 

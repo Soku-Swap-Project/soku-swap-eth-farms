@@ -105,7 +105,7 @@ const Pools: React.FC = () => {
   return (
     <div style={{ paddingTop: '1.85rem' }} className="farm_heading">
       <PageHeader>
-        <AlertDismissable />
+        {/* <AlertDismissable /> */}
         <Flex justifyContent="space-between" flexDirection={['column', null, 'row']}>
           <Flex flexDirection="column" mr={['8px', 0]}>
             <Heading
