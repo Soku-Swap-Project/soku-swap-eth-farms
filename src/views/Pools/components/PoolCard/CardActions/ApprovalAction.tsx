@@ -52,6 +52,7 @@ const ApprovalAction: React.FC<ApprovalActionProps> = ({ pool, isLoading = false
         )
         setRequestedApproval(false)
       }
+      window.location.reload()
     } catch (e) {
       console.error(e)
       toast.error(ToastError(t('Error'), 'An error has occured'))
