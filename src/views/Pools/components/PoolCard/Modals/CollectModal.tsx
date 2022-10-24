@@ -23,8 +23,8 @@ import { useSousStake } from 'hooks/useStake'
 import useToast from 'hooks/useToast'
 import { Token } from 'config/constants/types'
 import useWeb3 from 'hooks/useWeb3'
+import { ToastSuccess, ToastError } from 'style/Toasts'
 import { toast } from 'react-toastify'
-import { ToastError, ToastSuccess } from 'style/Toasts'
 
 /* eslint-disable react/require-default-props */
 interface CollectModalProps {
@@ -424,9 +424,11 @@ const CollectModal: React.FC<CollectModalProps> = ({
     if (shouldCompound) {
       try {
         await onStake(fullBalance, earningToken.decimals)
-        toastSuccess(
-          `${t('Compounded')}!`,
-          t('Your %symbol% earnings have been re-invested into the pool!', { symbol: earningToken.symbol }),
+        toast.success(
+          ToastSuccess(
+            `${t('Compounded')}!`,
+            t('Your %symbol% earnings have been re-invested into the pool!', { symbol: earningToken.symbol }),
+          ),
         )
         setPendingTx(false)
         onDismiss()

@@ -82,14 +82,13 @@ const Menu = (props) => {
                       >
                         Farms
                       </NavLink>
-                      {/* <NavLink
+                      <NavLink
                         className="nav_link hover_transparent"
                         activeClassName="emphasized-selected active_mobile_link"
                         to="/ethereum/staking/"
                       >
                         Staking
-                      </NavLink> */}
-
+                      </NavLink>
                       <a className="nav_link hover_transparent" onClick={() => launchTransak()}>
                         Deposit
                       </a>

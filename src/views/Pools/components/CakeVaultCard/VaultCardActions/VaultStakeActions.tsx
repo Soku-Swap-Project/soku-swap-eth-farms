@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Flex, Button, useModal, Skeleton } from '@pancakeswap/uikit'
 import { useWeb3React } from '@web3-react/core'
-import { useBusdPriceFromToken, useTokenPrice, usePriceSutekuEth } from 'state/hooks'
+import { useBusdPriceFromToken, useTokenPrice } from 'state/hooks'
 import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
 import { Pool } from 'state/types'
@@ -9,8 +9,9 @@ import { getWeb3NoAccount } from 'utils/web3'
 import { getAddress } from 'utils/addressHelpers'
 import { AbiItem } from 'web3-utils'
 import NotEnoughTokensModal from '../../PoolCard/Modals/NotEnoughTokensModal'
-// import VaultStakeModal from '../VaultStakeModal'
-// import HasSharesActions from './HasSharesActions'
+import VaultStakeModal from '../VaultStakeModal'
+import HasSharesActions from './HasSharesActions'
+import { BIG_ZERO } from 'utils/bigNumber'
 
 interface VaultStakeActionsProps {
   pool: Pool
@@ -29,11 +30,11 @@ const VaultStakeActions: React.FC<VaultStakeActionsProps> = ({
   const { stakingToken } = pool
   const { t } = useTranslation()
   const sokuPrice = useTokenPrice('sokuswap')
-  const sutekuPrice = usePriceSutekuEth()
+  const sutekuPrice = BIG_ZERO
   const { account } = useWeb3React()
   const [balance, setBalance] = useState(new BigNumber(0))
   const [onPresentTokenRequired] = useModal(<NotEnoughTokensModal tokenSymbol={stakingToken.symbol} />)
-  // const [onPresentStake] = useModal(<VaultStakeModal stakingMax={balance} pool={pool} />)
+  const [onPresentStake] = useModal(<VaultStakeModal stakingMax={balance} pool={pool} />)
   const web3 = getWeb3NoAccount()
 
   // useEffect(() => {
@@ -648,17 +649,17 @@ const VaultStakeActions: React.FC<VaultStakeActionsProps> = ({
   const formattedBal = balance.toString()
   // console.log(parseFloat(formattedBal), 'formatted')
 
-  // const renderStakeAction = () => {
-  //   return accountHasSharesStaked ? (
-  //     <HasSharesActions pool={pool} stakingTokenBalance={stakingTokenBalance} />
-  //   ) : (
-  //     <Button style={{ backgroundColor: '#04bbfb' }} onClick={balance.gt(0) ? onPresentStake : onPresentTokenRequired}>
-  //       {t('Stake')}
-  //     </Button>
-  //   )
-  // }
+  const renderStakeAction = () => {
+    return accountHasSharesStaked ? (
+      <HasSharesActions pool={pool} stakingTokenBalance={stakingTokenBalance} />
+    ) : (
+      <Button style={{ backgroundColor: '#04bbfb' }} onClick={balance.gt(0) ? onPresentStake : onPresentTokenRequired}>
+        {t('Stake')}
+      </Button>
+    )
+  }
 
-  return <Flex flexDirection="column">{isLoading ? <Skeleton width="100%" height="52px" /> : <></>}</Flex>
+  return <Flex flexDirection="column">{isLoading ? <Skeleton width="100%" height="52px" /> : renderStakeAction()}</Flex>
 }
 
 export default VaultStakeActions

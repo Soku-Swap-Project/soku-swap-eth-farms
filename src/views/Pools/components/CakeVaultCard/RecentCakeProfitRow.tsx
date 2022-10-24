@@ -2,10 +2,11 @@ import React from 'react'
 import { Flex, Text } from '@pancakeswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
-import { useCakeVault, usePriceSokuEth } from 'state/hooks'
+import { useCakeVault } from 'state/hooks'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { convertSharesToCake } from 'views/Pools/helpers'
 import RecentCakeProfitBalance from './RecentCakeProfitBalance'
+import { BIG_ZERO } from 'utils/bigNumber'
 
 const RecentCakeProfitCountdownRow = () => {
   const { t } = useTranslation()
@@ -19,7 +20,7 @@ const RecentCakeProfitCountdownRow = () => {
   const currentSharesAsCake = convertSharesToCake(userShares, pricePerFullShare)
   const cakeProfit = currentSharesAsCake.cakeAsBigNumber.minus(cakeAtLastUserAction)
   const cakeToDisplay = cakeProfit.gte(0) ? getBalanceNumber(cakeProfit, 18) : 0
-  const cakePriceBusd = usePriceSokuEth()
+  const cakePriceBusd = BIG_ZERO
   const dollarValueOfCake = cakeProfit.times(cakePriceBusd)
   const dollarValueToDisplay = dollarValueOfCake.gte(0) ? getBalanceNumber(dollarValueOfCake, 18) : 0
 

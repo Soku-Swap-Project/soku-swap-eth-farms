@@ -10,6 +10,7 @@ const StyledButton = styled(Button)`
   flex-grow: 1;
   background: #04bbfb;
   color: #fff;
+  border-radius: 10px !important;
 `
 
 const PercentageButton: React.FC<PercentageButtonProps> = ({ children, onClick }) => {

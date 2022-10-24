@@ -8,7 +8,7 @@ import { Image, Heading, RowType, Text } from '@pancakeswap/uikit'
 import styled from 'styled-components'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
-import { useGetApiPrices, usePriceSutekuEth, useFarmsV2 } from 'state/hooks'
+import { useGetApiPrices, useFarmsV2 } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmUserDataAsyncV2 } from 'state/actions'
 import usePersistState from 'hooks/usePersistState'
@@ -34,6 +34,7 @@ import { ethPrice } from 'state/prices'
 
 import './index.css'
 import useSutekuPrice from 'hooks/useSutekuPrice'
+import { BIG_ZERO } from 'utils/bigNumber'
 
 const ControlContainer = styled.div`
   display: flex;
@@ -90,7 +91,7 @@ const Farms: React.FC = () => {
   const { pathname } = useLocation()
   const { t } = useTranslation()
   const { data: farmsLP, userDataLoaded } = useFarmsV2()
-  const cakePrice = usePriceSutekuEth()
+  const cakePrice = BIG_ZERO
   const [query, setQuery] = useState('')
   const [viewMode, setViewMode] = usePersistState(ViewMode.TABLE, 'pancake_farm_view')
   const { account } = useWeb3React()
@@ -106,7 +107,7 @@ const Farms: React.FC = () => {
   // const sutekuUsd = useSutekuPrice()
   // const sutekuAsBigNumber = new BigNumber(sutekuUsd)
 
-  const sutekuPrice = usePriceSutekuEth()
+  const sutekuPrice = BIG_ZERO
 
   const dispatch = useAppDispatch()
   const { fastRefresh } = useRefresh()

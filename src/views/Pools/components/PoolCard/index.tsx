@@ -3357,6 +3357,7 @@ const PoolCard: React.FC<{ pool: Pool; account: string }> = ({ pool, account }) 
     <StyledCard
       isFinished={isFinished && sousId !== 0}
       ribbon={isFinished && <CardRibbon variantColor="textDisabled" text={t('Finished')} className="finished_ribbon" />}
+      className="hover_shadow emphasized_swap_layout"
     >
       <StyledCardInner>
         <StyledCardHeader

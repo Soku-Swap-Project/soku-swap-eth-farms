@@ -273,6 +273,7 @@ const SwitchNetworkModal: FC<Props> = ({ toggleNetworkModal, isModalOpen }) => {
   const { ethereum } = window
   const { account, chainId, library } = useWeb3React()
   const supportedChains = [56, 1]
+  const pathName = window.location.pathname.split('/')[2]
 
   if (!chainId) return null
 
@@ -350,7 +351,7 @@ const SwitchNetworkModal: FC<Props> = ({ toggleNetworkModal, isModalOpen }) => {
                             params: [{ chainId: `0x${key.toString(16)}` }],
                           })
                           if (key !== chainId) {
-                            window.location.pathname = 'bsc/farms'
+                            window.location.pathname = pathName === 'farms-v2' ? 'bsc/farms' : `bsc/${pathName}`
                           }
                         } catch (switchError) {
                           // This error code indicates that the chain has not been added to MetaMask.

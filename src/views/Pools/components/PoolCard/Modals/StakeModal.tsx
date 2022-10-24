@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Modal, Text, Flex, Image, Button, BalanceInput, AutoRenewIcon, Link } from '@pancakeswap/uikit'
 import Web3 from 'web3'
+import { toast } from 'react-toastify'
+import { ToastSuccess, ToastError } from 'style/Toasts'
 import { useTranslation } from 'contexts/Localization'
 import { BASE_EXCHANGE_URL } from 'config'
 import { useSousStake } from 'hooks/useStake'
@@ -16,8 +18,7 @@ import BigNumber from 'bignumber.js'
 import { getFullDisplayBalance, formatNumber, getDecimalAmount } from 'utils/formatBalance'
 import { Pool } from 'state/types'
 import Slider from 'components/Slider'
-import { ToastError, ToastSuccess } from 'style/Toasts'
-import { toast } from 'react-toastify'
+
 import PercentageButton from './PercentageButton'
 
 /* eslint-disable react/require-default-props */
@@ -54,7 +55,6 @@ const StakeModal: React.FC<StakeModalProps> = ({
 
   const { onStake } = useSousStake(sousId, isBnbPool)
   const { onUnstake } = useSousUnstake(sousId, pool.enableEmergencyWithdraw)
-  const { toastSuccess, toastError } = useToast()
   const [pendingTx, setPendingTx] = useState(false)
   const [stakeAmount, setStakeAmount] = useState('')
   const [hasReachedStakeLimit, setHasReachedStakedLimit] = useState(false)
@@ -88,8 +88,6 @@ const StakeModal: React.FC<StakeModalProps> = ({
     }
     setStakeAmount(parseInt(input).toString())
   }
-
-  console.log(stakeAmount, 'stake amount')
 
   const handleChangePercent = (sliderPercent: number) => {
     if (sliderPercent > 0) {
@@ -127,11 +125,13 @@ const StakeModal: React.FC<StakeModalProps> = ({
       try {
         // staking
         await onStake(stakeAmount, stakingToken.decimals)
-        toastSuccess(
-          `${t('Staked')}!`,
-          t('Your %symbol% funds have been staked in the pool!', {
-            symbol: stakingToken.symbol,
-          }),
+        toast.success(
+          ToastSuccess(
+            `${t('Staked')}!`,
+            t('Your %symbol% funds have been staked in the pool!', {
+              symbol: stakingToken.symbol,
+            }),
+          ),
         )
         setPendingTx(false)
         onDismiss()
@@ -147,10 +147,10 @@ const StakeModal: React.FC<StakeModalProps> = ({
 
   return (
     <Modal
-      headerBackground="#ecf1f8"
       className="emphasized_swap_layout hover_shadow"
       title={isRemovingStake ? t('Unstake') : t('Stake in Pool')}
       onDismiss={onDismiss}
+      headerBackground="#ecf1f8"
     >
       {stakingLimit.gt(0) && !isRemovingStake && (
         <Text color="#04bbfb" bold mb="24px" style={{ textAlign: 'center' }} fontSize="16px">
@@ -164,23 +164,13 @@ const StakeModal: React.FC<StakeModalProps> = ({
         <Text bold>{isRemovingStake ? t('Unstake') : t('Stake')}:</Text>
         <Flex alignItems="center" minWidth="70px">
           {/* <Image src={`/images/tokens/${stakingToken.symbol}.png`} width={24} height={24} alt={stakingToken.symbol} /> */}
-          {stakingToken.symbol === 'SOKU' ? (
-            <img
-              src="https://i.ibb.co/sm60Zb7/Soku-Logo-400x400.png"
-              width={24}
-              height={24}
-              alt={stakingToken.symbol}
-              style={{ objectFit: 'contain' }}
-            />
-          ) : (
-            <img
-              src="https://i.ibb.co/ZfBZpjN/Suteku-Logo.png"
-              width={24}
-              height={24}
-              alt={stakingToken.symbol}
-              style={{ objectFit: 'contain' }}
-            />
-          )}
+          <img
+            src="https://i.ibb.co/rs4pkSv/SODATSU-Token-Logo.png"
+            width={24}
+            height={24}
+            alt={stakingToken.symbol}
+            style={{ objectFit: 'contain' }}
+          />
 
           <Text ml="4px" bold>
             {stakingToken.symbol}
@@ -193,7 +183,11 @@ const StakeModal: React.FC<StakeModalProps> = ({
         onUserInput={handleStakeInputChange}
         currencyValue={stakingTokenPrice !== 0 && `~${usdValueStaked || 0} USD`}
         isWarning={hasReachedStakeLimit}
-        style={{ background: 'rgb(239 238 238 / 79%)', border: 'none' }}
+        style={{
+          background: 'rgb(239 238 238 / 79%)',
+          border: 'none',
+          margin: '10px',
+        }}
       />
       {hasReachedStakeLimit && (
         <Text color="failure" fontSize="12px" style={{ textAlign: 'right' }} mt="4px">

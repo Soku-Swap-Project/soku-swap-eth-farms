@@ -6,7 +6,8 @@ import { useTranslation } from 'contexts/Localization'
 
 const Wrapper = styled(CardHeader)<{ isFinished?: boolean; background?: string; isPromotedPool?: boolean }>`
   background: ${({ isFinished, background, theme }) => (isFinished ? theme.colors.backgroundDisabled : '#f9f9fa')};
-  border-radius: 7px 7px 0 0;
+  border-radius: ${({ theme, isPromotedPool }) =>
+    isPromotedPool ? '31px 31px 0 0' : `${theme.radii.card} ${theme.radii.card} 0 0`};
 `
 
 /* eslint-disable react/require-default-props */
@@ -64,7 +65,7 @@ const StyledCardHeader: React.FC<{
       isPromotedPool={isPromotedPool}
       isFinished={isFinished}
       background={background}
-      style={{ borderBottom: '1px solid #d8d8d8' }}
+      style={{ borderBottom: '1px solid #d8d8d8', background: '#ecf1f8' }}
     >
       <Flex alignItems="center" justifyContent="space-between">
         <Flex flexDirection="column">
@@ -76,11 +77,13 @@ const StyledCardHeader: React.FC<{
           </Heading>
           <Text color={isFinished ? 'textDisabled' : '#04bbfb'}>{getSubHeading()}</Text>
         </Flex>
-        {earningTokenSymbol === 'SUTEKU' ? (
-          <img src="https://i.ibb.co/qp3JZv7/SOKU-SUTEKU.png" alt={earningTokenSymbol} width={75} height={75} />
-        ) : (
-          <img src="https://i.ibb.co/pLMpbtZ/suteku-soku.png" alt={earningTokenSymbol} width={75} height={75} />
-        )}
+        <img
+          className="logo_shadow hover_shadow_icon"
+          src="https://i.ibb.co/xzhG670/sodatsu-soku.png"
+          alt={earningTokenSymbol}
+          width={75}
+          height={75}
+        />
       </Flex>
     </Wrapper>
   )

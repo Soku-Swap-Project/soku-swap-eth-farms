@@ -178,13 +178,13 @@ const SlideOutMenu: FC = () => {
               >
                 Farms
               </NavLink>
-              {/* <NavLink
+              <NavLink
                 className="nav_link_mobile hover_shadow"
                 activeClassName="emphasized-selected active_mobile_link"
-                to="/bsc/staking/"
+                to="/ethereum/staking/"
               >
                 Staking
-              </NavLink> */}
+              </NavLink>
               <a
                 className="nav_link_mobile"
                 onClick={() => {

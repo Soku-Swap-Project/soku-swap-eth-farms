@@ -74,7 +74,7 @@ const Footer: React.FC<FooterProps> = ({ pool, account, isAutoVault = false, loc
           {/* {isAutoVault ? <CompoundingPoolTag /> : <ManualPoolTag />} */}
           {tooltipVisible && tooltip}
           <Flex ref={targetRef}>
-            <HelpIcon ml="4px" width="20px" height="20px" color="textSubtle" />
+            <HelpIcon className="hover_shadow_icon" ml="4px" width="20px" height="20px" color="textSubtle" />
           </Flex>
         </Flex>
         <ExpandableLabel expanded={isExpanded} onClick={() => setIsExpanded(!isExpanded)}>

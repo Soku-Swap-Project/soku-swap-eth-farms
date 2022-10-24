@@ -11,7 +11,7 @@ import { AbiItem } from 'web3-utils'
 import useLastUpdated from 'hooks/useLastUpdated'
 import { Pool } from 'state/types'
 import { BIG_ZERO } from 'utils/bigNumber'
-// import VaultApprovalAction from './VaultApprovalAction'
+import VaultApprovalAction from './VaultApprovalAction'
 import VaultStakeActions from './VaultStakeActions'
 
 const InlineText = styled(Text)`
@@ -33,7 +33,7 @@ const CakeVaultCardActions: React.FC<{
   // const cakeContract = useCake()
   const sokuContract = useSoku()
   const sutekuContract = useSuteku()
-  // const cakeVaultContract = useCakeVaultContract()
+  const cakeVaultContract: any = null
   // console.log(cakeVaultContract, 'vault contract')
   const { t } = useTranslation()
   // const stakingTokenBalance = userData?.stakingTokenBalance ? new BigNumber(userData.stakingTokenBalance) : BIG_ZERO
@@ -690,8 +690,7 @@ const CakeVaultCardActions: React.FC<{
             accountHasSharesStaked={accountHasSharesStaked}
           />
         ) : (
-          // <VaultApprovalAction pool={pool} isLoading={isLoading} setLastUpdated={setLastUpdated} />
-          <></>
+          <VaultApprovalAction pool={pool} isLoading={isLoading} setLastUpdated={setLastUpdated} />
         )}
       </Flex>
     </Flex>

@@ -19,7 +19,6 @@ import LockClockIcon from '@mui/icons-material/LockClock'
 import { BASE_ETHER_SCAN_URL, BASE_URL } from 'config'
 import { useBlock, useCakeVault } from 'state/hooks'
 import { Pool } from 'state/types'
-// import { getAddress, getCakeVaultAddress } from 'utils/addressHelpers'
 import { getAddress } from 'utils/addressHelpers'
 import { registerToken } from 'utils/wallet'
 import Balance from 'components/Balance'
@@ -62,7 +61,6 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({
 
   const tokenAddress = earningToken.address ? getAddress(earningToken.address) : ''
   const poolContractAddress = getAddress(contractAddress)
-  // const cakeVaultContractAddress = getCakeVaultAddress()
   const imageSrc = `${BASE_URL}/images/tokens/${earningToken.symbol.toLowerCase()}.png`
   const isMetaMaskInScope = !!(window as WindowChain).ethereum?.isMetaMask
   const isManualCakePool = sousId === 0
@@ -119,7 +117,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({
         <>
           <Flex mb="2px" justifyContent="space-between" alignItems="center">
             <Text small>{hasPoolStarted ? t('End') : t('Start')}:</Text>
-            <Flex alignItems="center">
+            <Flex className="hover_shadow_icon_sm" alignItems="center">
               {blocksRemaining || blocksUntilStart ? (
                 <Balance
                   color="primary"
@@ -135,7 +133,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({
                   color="primary"
                   target="_blank"
                   rel="noreferrer"
-                  href={`https://bscscan.com/block/countdown/${endBlock}`}
+                  href={`https://etherscan.com/block/countdown/${endBlock}`}
                   style={{ color: '#04bbfb', marginLeft: '4px', textTransform: 'lowercase' }}
                   className="start_and_endBlocks"
                 >
@@ -146,7 +144,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({
                   color="primary"
                   target="_blank"
                   rel="noreferrer"
-                  href={`https://bscscan.com/block/countdown/${startBlock}`}
+                  href={`https://etherscan.com/block/countdown/${startBlock}`}
                   style={{ color: '#04bbfb', marginLeft: '4px', textTransform: 'lowercase' }}
                   className="start_and_endBlocks"
                 >
@@ -165,7 +163,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({
         <>
           <Flex mb="2px" justifyContent="space-between" alignItems="center">
             <Text small>Lock Time:</Text>
-            <Flex alignItems="center">
+            <Flex className="hover_shadow_icon_sm" alignItems="center">
               {blocksRemaining || blocksUntilStart ? (
                 <Balance color="primary" fontSize="14px" value={stakedAmount > 0 ? lockTime : 0} decimals={0} />
               ) : (
@@ -176,7 +174,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({
                   color="primary"
                   target="_blank"
                   rel="noreferrer"
-                  href={`https://bscscan.com/block/countdown/${remainingLock()}`}
+                  href={`https://etherscan.com/block/countdown/${remainingLock()}`}
                   style={{ color: '#04bbfb', marginLeft: '4px', textTransform: 'lowercase' }}
                   className="start_and_endBlocks"
                 >
@@ -187,7 +185,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({
                   color="primary"
                   target="_blank"
                   rel="noreferrer"
-                  href={`https://bscscan.com/block/countdown/${currentBlock}`}
+                  href={`https://etherscan.com/block/countdown/${currentBlock}`}
                   style={{ color: '#04bbfb', marginLeft: '4px', textTransform: 'lowercase' }}
                   className="start_and_endBlocks"
                 >
@@ -214,24 +212,26 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({
         </Flex>
       )}
       <Flex mb="2px" justifyContent="flex-end">
-        <LinkExternal bold={false} small href={earningToken.projectLink}>
+        <LinkExternal className="hover_shadow_icon_sm" bold={false} small href={earningToken.projectLink}>
           {t('View Project Site')}
         </LinkExternal>
       </Flex>
-      {/* {poolContractAddress && (
+      {poolContractAddress && (
         <Flex mb="2px" justifyContent="flex-end">
           <LinkExternal
+            className="hover_shadow_icon_sm"
             bold={false}
             small
-            href={`${BASE_ETHER_SCAN_URL}/address/${isAutoVault ? cakeVaultContractAddress : poolContractAddress}`}
+            href={`${BASE_ETHER_SCAN_URL}/address/${poolContractAddress}`}
           >
             {t('View Contract')}
           </LinkExternal>
         </Flex>
-      )} */}
+      )}
       {account && isMetaMaskInScope && tokenAddress && (
         <Flex justifyContent="flex-end">
           <Button
+            className="hover_shadow_icon_sm"
             variant="text"
             p="0"
             height="auto"
