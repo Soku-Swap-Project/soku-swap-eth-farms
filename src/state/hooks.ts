@@ -580,14 +580,15 @@ export const usePriceBnbBusd = (): BigNumber => {
 }
 
 export const usePriceSokuEth = (): BigNumber => {
-  const sokuEthFarm = useFarmFromPidV2(1)
-  // const bnbBusdPrice = usePriceBnbBusd()
+  const sokuFarm = useFarmFromPidV2(1)
+  const priceOfEth = ethPrice()
 
-  // const sokuEthPrice = sokuEthFarm.tokenPriceVsQuote ? bnbBusdPrice.times(sokuEthFarm.tokenPriceVsQuote) : BIG_ZERO
+  const sokuPriceETH = sokuFarm.tokenPriceVsQuote ? sokuFarm.tokenPriceVsQuote : BIG_ZERO
 
-  const sokuEthPrice = sokuEthFarm.tokenPriceVsQuote ? sokuEthFarm.tokenPriceVsQuote : BIG_ZERO
+  const sokuPriceUsd = Number(sokuPriceETH) * Number(priceOfEth)
+  const sokuPriceETHAsBN = new BigNumber(sokuPriceUsd)
 
-  return sokuEthPrice
+  return sokuPriceETHAsBN
 }
 
 export const usePriceSutekuEth = (): BigNumber => {

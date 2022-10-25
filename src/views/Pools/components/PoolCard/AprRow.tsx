@@ -52,13 +52,19 @@ const AprRow: React.FC<AprRowProps> = ({
   const stakingTokenPrice = stakingToken.symbol === 'SOKU' ? sokuPrice.toString() : sodatsuPrice.toString()
   const stakingTokenPriceAsNumber = Number(stakingTokenPrice)
 
-  const apr =
-    getPoolApr(
-      stakingTokenPriceAsNumber,
-      earningTokenPriceAsNumber,
-      getBalanceNumber(totalStaked, stakingToken.decimals),
-      parseFloat(rewardPerBlock),
-    )
+  console.log(
+    stakingTokenPriceAsNumber,
+    earningTokenPriceAsNumber,
+    getBalanceNumber(totalStaked, stakingToken.decimals),
+    parseFloat(rewardPerBlock),
+  )
+
+  const apr = getPoolApr(
+    stakingTokenPriceAsNumber,
+    earningTokenPriceAsNumber,
+    getBalanceNumber(totalStaked, stakingToken.decimals),
+    parseFloat(rewardPerBlock),
+  )
 
   // special handling for tokens like tBTC or BIFI where the daily token rewards for $1000 dollars will be less than 0.001 of that token
   const isHighValueToken = Math.round(earningTokenPriceAsNumber / 1000) > 0

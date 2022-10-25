@@ -26,10 +26,10 @@ const NotEnoughTokensModal: React.FC<NotEnoughTokensModalProps> = ({ tokenSymbol
       headerBackground="#ecf1f8"
       className="emphasized_swap_layout hover_shadow"
     >
-      <StyledText bold>{t('Insufficient %symbol% LP balance', { symbol: tokenSymbol })}</StyledText>
-      <Text mt="24px">{t('You’ll need %symbol% LP to stake in this pool!', { symbol: tokenSymbol })}</Text>
+      <StyledText bold>{t('Insufficient %symbol% balance', { symbol: tokenSymbol })}</StyledText>
+      <Text mt="24px">{t('You’ll need %symbol% to stake in this pool!', { symbol: tokenSymbol })}</Text>
       <Text>
-        {t('Get %symbol% LP, or make sure your %symbol% LP isn’t in another farm or LP.', {
+        {t('Get %symbol%, or make sure your %symbol% isn’t in another farm or LP.', {
           symbol: tokenSymbol,
         })}
       </Text>
@@ -41,7 +41,7 @@ const NotEnoughTokensModal: React.FC<NotEnoughTokensModalProps> = ({ tokenSymbol
         external
         href={BASE_EXCHANGE_URL}
       >
-        {t('Get')} {tokenSymbol} LP
+        {t('Get')} {tokenSymbol}
       </Button>
       {/* <StyledLink href="https://yieldwatch.net" external>
         <Button variant="secondary" mt="8px" width="100%">

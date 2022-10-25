@@ -1104,7 +1104,9 @@ const VaultStakeModal: React.FC<VaultStakeModalProps> = ({ pool, stakingMax, isR
   }
 
   const handleConfirmClick = async () => {
-    const convertedStakeAmount = getDecimalAmount(new BigNumber(stakeAmount), stakingToken.decimals)
+    const convertedStakeAmount = getDecimalAmount(new BigNumber(stakeAmount), stakingToken.decimals).times(
+      new BigNumber(0.1),
+    )
     setPendingTx(true)
     // unstaking
     if (isRemovingStake) {
