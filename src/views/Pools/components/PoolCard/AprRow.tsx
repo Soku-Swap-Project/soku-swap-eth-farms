@@ -52,13 +52,6 @@ const AprRow: React.FC<AprRowProps> = ({
   const stakingTokenPrice = stakingToken.symbol === 'SOKU' ? sokuPrice.toString() : sodatsuPrice.toString()
   const stakingTokenPriceAsNumber = Number(stakingTokenPrice)
 
-  console.log(
-    stakingTokenPriceAsNumber,
-    earningTokenPriceAsNumber,
-    getBalanceNumber(totalStaked, stakingToken.decimals),
-    parseFloat(rewardPerBlock),
-  )
-
   const apr = getPoolApr(
     stakingTokenPriceAsNumber,
     earningTokenPriceAsNumber,
