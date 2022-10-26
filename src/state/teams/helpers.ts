@@ -13,7 +13,7 @@
 //       0: teamName,
 //       2: numberUsers,
 //       3: numberPoints,
-//       4: isJoinable,
+//       5: isJoinable,
 //     } = await profileContract.methods.getTeamProfile(teamId).call()
 //     const staticTeamInfo = teamsList.find((staticTeam) => staticTeam.id === teamId)
 

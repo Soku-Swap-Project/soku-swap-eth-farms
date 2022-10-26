@@ -23,7 +23,7 @@ const pools: PoolConfig[] = [
     stakingToken: tokens.sodatsu,
     earningToken: tokens.soku,
     contractAddress: {
-      4: '',
+      5: '',
       1: '0x0e61A77480a143dA0941D88B610c6e75f1cC239a',
     },
     poolCategory: PoolCategory.CORE,

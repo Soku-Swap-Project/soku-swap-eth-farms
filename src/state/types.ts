@@ -126,7 +126,7 @@ export type TeamResponse = {
   1: string
   2: string
   3: string
-  4: boolean
+  5: boolean
 }
 
 export type TeamsById = {

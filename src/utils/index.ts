@@ -2,12 +2,12 @@
 
 export declare enum ChainId {
   MAINNET = 1,
-  TESTNET = 4,
+  TESTNET = 5,
 }
 
 const BSCSCAN_PREFIXES: { [chainId in ChainId]: string } = {
   1: '',
-  4: 'testnet.',
+  5: 'testnet.',
 }
 
 export default function getEtherScanLink(
