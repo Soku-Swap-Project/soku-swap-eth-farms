@@ -48,7 +48,7 @@ const PoolTabButtons = ({ stakedOnly, setStakedOnly, hasStakeInFinishedPools }) 
   return (
     <Flex alignItems="center" justifyContent="center" mb="32px">
       <Flex alignItems="center" flexDirection={['column', null, 'row', null]}>
-        <StyledButtonMenu activeIndex={pathname === newUrl ? 0 : 1} scale="sm" variant="primary">
+        {/* <StyledButtonMenu activeIndex={pathname === newUrl ? 0 : 1} scale="sm" variant="primary">
           <ButtonMenuItem
             className={isActive ? 'hover_transparent emphasized-selected' : 'hover_transparent'}
             style={{ color: '#05195a', opacity: '0.9', borderRadius: '7px', marginRight: '14px' }}
@@ -67,7 +67,7 @@ const PoolTabButtons = ({ stakedOnly, setStakedOnly, hasStakeInFinishedPools }) 
               {t('Finished')}
             </ButtonMenuItem>
           </NotificationDot>
-        </StyledButtonMenu>
+        </StyledButtonMenu> */}
         <Flex mt={['4px', null, 0, null]} ml={[0, null, '24px', null]} justifyContent="center" alignItems="center">
           <ToggleSwitch checked={stakedOnly} onChange={() => setStakedOnly((prev) => !prev)} />
           <Text color="#05195a" ml="8px">
