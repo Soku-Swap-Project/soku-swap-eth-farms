@@ -148,6 +148,7 @@ const StakeAction: React.FC<StakeActionsProps> = ({
               variant="secondary"
               style={isFinished ? { border: '0' } : { border: '2px solid #05195a' }}
               onClick={stakingTokenBalance.gt(0) ? onPresentStake : onPresentTokenRequired}
+              disabled={isFinished}
             >
               <AddIcon color={isFinished ? 'gray' : '#05195a'} width="24px" height="24px" />
             </IconButton>

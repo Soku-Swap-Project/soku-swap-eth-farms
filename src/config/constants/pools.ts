@@ -19,12 +19,26 @@ const pools: PoolConfig[] = [
 
   // 90 Day Locked Staking Pools
   {
-    sousId: 2,
+    sousId: 1,
     stakingToken: tokens.sodatsu,
     earningToken: tokens.soku,
     contractAddress: {
       5: '',
       1: '0x0e61A77480a143dA0941D88B610c6e75f1cC239a',
+    },
+    poolCategory: PoolCategory.CORE,
+    harvest: true,
+    tokenPerBlock: '1',
+    sortOrder: 999,
+    isFinished: false,
+  },
+  {
+    sousId: 2,
+    stakingToken: tokens.sodatsu,
+    earningToken: tokens.soku,
+    contractAddress: {
+      5: '',
+      1: '0x47aAF9f0227262B475d9454031dD5a4F0F8c82EC',
     },
     poolCategory: PoolCategory.CORE,
     harvest: true,
