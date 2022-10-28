@@ -8,13 +8,13 @@ import { AbiItem } from 'web3-utils'
 import { getWeb3NoAccount } from 'utils/web3'
 import { getAddress } from 'utils/addressHelpers'
 import erc20ABI from 'config/abi/erc20.json'
+import useRefresh from 'hooks/useRefresh'
 import { Pool } from 'state/types'
 import AprRow from './AprRow'
 import { StyledCard, StyledCardInner } from './StyledCard'
 import CardFooter from './CardFooter'
 import StyledCardHeader from './StyledCardHeader'
 import CardActions from './CardActions'
-import useRefresh from 'hooks/useRefresh'
 
 const PoolCard: React.FC<{ pool: Pool; account: string }> = ({ pool, account }) => {
   const { sousId, stakingToken, earningToken, isFinished, userData } = pool
