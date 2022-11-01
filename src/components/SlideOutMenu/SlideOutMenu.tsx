@@ -192,7 +192,7 @@ const SlideOutMenu: FC = () => {
                   launchTransak()
                 }}
               >
-                <li>Deposit</li>
+                <li>Buy/Sell</li>
               </a>
               <hr style={{ height: '1px', border: 0, backgroundColor: '#05195a', margin: '20px' }} />
               <a
