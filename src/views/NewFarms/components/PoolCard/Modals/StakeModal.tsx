@@ -153,7 +153,7 @@ const StakeModal: React.FC<StakeModalProps> = ({
         <Flex alignItems="center" minWidth="70px">
           {/* <Image src={`/images/tokens/${stakingToken.symbol}.png`} width={24} height={24} alt={stakingToken.symbol} /> */}
           <img
-            src={`/images/v2Farms/${stakingToken.symbol}.png`}
+            src={`/images/v2Farms/${stakingToken.symbol.toLowerCase()}.png`}
             width={24}
             height={24}
             alt={stakingToken.symbol}

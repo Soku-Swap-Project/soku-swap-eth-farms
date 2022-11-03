@@ -74,7 +74,7 @@ const StyledCardHeader: React.FC<{
         </Flex>
         <img
           className="logo_shadow hover_shadow_icon"
-          src={`/images/v2Farms/${stakingTokenSymbol}.png`}
+          src={`/images/v2Farms/${stakingTokenSymbol.toLowerCase()}.png`}
           alt={stakingTokenSymbol}
           width={75}
           height={75}
