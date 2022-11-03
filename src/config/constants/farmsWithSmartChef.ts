@@ -17,6 +17,20 @@ const farmsWithSmartChef: FarmsWithSmartChefConfig[] = [
     sortOrder: 999,
     isFinished: false,
   },
+  {
+    sousId: 2,
+    stakingToken: LpTokens.sodatsu_eth,
+    earningToken: tokens.soku,
+    contractAddress: {
+      1: '0x3BfB9b916C87cAE0b66856A51228805e73F4d520',
+      5: '',
+    },
+    poolCategory: FarmsWithSmartChefCategory.CORE,
+    harvest: true,
+    tokenPerBlock: '1',
+    sortOrder: 999,
+    isFinished: false,
+  },
   // {
   //   sousId: 1,
   //   stakingToken: LpTokens.soku_eth,

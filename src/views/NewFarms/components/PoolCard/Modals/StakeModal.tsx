@@ -131,8 +131,6 @@ const StakeModal: React.FC<StakeModalProps> = ({
       }
     }
   }
-
-  // console.log(stakeAmount, 'staking now')
   // console.log(web3.utils.fromWei(stakedBalance.toString()), 'staking balance')
 
   return (
@@ -155,7 +153,7 @@ const StakeModal: React.FC<StakeModalProps> = ({
         <Flex alignItems="center" minWidth="70px">
           {/* <Image src={`/images/tokens/${stakingToken.symbol}.png`} width={24} height={24} alt={stakingToken.symbol} /> */}
           <img
-            src="/images/farms/soku-eth.png"
+            src={`/images/v2Farms/${stakingToken.symbol}.png`}
             width={24}
             height={24}
             alt={stakingToken.symbol}
