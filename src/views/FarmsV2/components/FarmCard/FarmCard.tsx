@@ -93,8 +93,6 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, account }
   const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('SOKU', '')
   const earnLabel = farm.dual ? farm.dual.earnLabel : 'SOKU'
 
-  console.log(farm, 'farm')
-
   const farmAPR = farm.apr && farm.apr.toLocaleString('en-US', { maximumFractionDigits: 2 })
   // console.log(farm)
   // console.log(farmAPR)

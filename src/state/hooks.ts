@@ -620,15 +620,10 @@ export const usePriceSodatsuEth = (): BigNumber => {
   const sodatsuFarm = useFarmFromPidV2(8)
   const priceOfEth = ethPrice()
 
-  console.log(priceOfEth, 'priceOfEth')
-  console.log(sodatsuFarm, 'sodatsuFarm')
-
   const sodatsuPriceETH = sodatsuFarm.tokenPriceVsQuote ? sodatsuFarm.tokenPriceVsQuote : BIG_ZERO
 
   const sodatsuPriceUsd = Number(sodatsuPriceETH) * Number(priceOfEth)
   const sodatsuPriceETHAsBN = new BigNumber(sodatsuPriceUsd)
-
-  console.log(sodatsuPriceUsd, 'sodatsuPriceUsd')
 
   return sodatsuPriceETHAsBN
 }
