@@ -189,6 +189,16 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://sokuswap.finance/',
   },
+  smudge: {
+    symbol: 'SMUDGE',
+    name: 'Smudge Lord',
+    address: {
+      1: '0x516e2758b044433371076a48127b8CFa7b0bDb43',
+      5: '',
+    },
+    decimals: 18,
+    projectLink: 'https://sokuswap.finance/',
+  },
 }
 
 export default tokens

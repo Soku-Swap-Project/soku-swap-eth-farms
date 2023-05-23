@@ -45,12 +45,12 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
   const formattedBalance = formatNumber(earningTokenBalance, 3, 3)
   const web3 = getWeb3NoAccount()
 
-  const sutekuPrice = usePriceSutekuEth()
-  const hobiPrice = usePriceHobiEth()
+  // const sutekuPrice = usePriceSutekuEth()
+  // const hobiPrice = usePriceHobiEth()
 
   const isSuteku = earningToken.symbol === 'SUTEKU'
 
-  const earningTokenPrice = isSuteku ? sutekuPrice : hobiPrice
+  const earningTokenPrice = 0
 
   const earningTokenPriceAsNumber = parseFloat(earningTokenPrice.toString())
 

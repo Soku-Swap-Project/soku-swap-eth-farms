@@ -52,6 +52,16 @@ const farmsV2: FarmConfig[] = [
     token: tokens.sodatsu,
     quoteToken: tokens.eth,
   },
+  {
+    pid: 9,
+    lpSymbol: 'SOKU-SMUDGE LP',
+    lpAddresses: {
+      1: '0xc30424B354D41852082F712900bf3366baF1b776',
+      5: '',
+    },
+    token: tokens.soku,
+    quoteToken: tokens.smudge,
+  },
 ]
 
 export default farmsV2

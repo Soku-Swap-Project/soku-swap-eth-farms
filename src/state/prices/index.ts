@@ -61,10 +61,10 @@ const getSokuPrice = async () => {
   } catch (error) {}
 }
 
-getSUKTEUPrice()
-getYummyPrice()
+// getSUKTEUPrice()
+// getYummyPrice()
 getSokuPrice()
-getHODLPrice()
+// getHODLPrice()
 
 export const ethPrice = () => {
   const price = useTokenPrice('ethereum')
@@ -74,12 +74,6 @@ export const ethPrice = () => {
 export const sokuPrice = () => {
   const price = useTokenPrice('sokuswap')
   return price
-}
-
-export const getPrices = async () => {
-  const res = await CoinGeckoClient.coins.markets({ ids: ['bitcoin', 'sokuswap', 'binancecoin', 'tether'] })
-  const resArray = JSON.stringify(res.data)
-  // console.log('test', resArray)
 }
 
 // Thunks
