@@ -616,7 +616,7 @@ export const useLpTokenPriceV2 = (symbol: string) => {
     })
   }
 
-  return new BigNumber(5)
+  return lpTokenPrice
 }
 
 // Pools
