@@ -49,6 +49,16 @@ const LpTokens = {
     decimals: 18,
     projectLink: 'https://sokuswap.org/',
   },
+  soku_smudge: {
+    symbol: 'SOKU-SMUDGE',
+    name: 'SushiSwap LPs',
+    address: {
+      1: '0xc30424B354D41852082F712900bf3366baF1b776',
+      5: '',
+    },
+    decimals: 18,
+    projectLink: 'https://sokuswap.org/',
+  },
 }
 
 export default LpTokens
