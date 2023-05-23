@@ -59,8 +59,8 @@ const farmsV2: FarmConfig[] = [
       1: '0xc30424B354D41852082F712900bf3366baF1b776',
       5: '',
     },
-    token: tokens.soku,
-    quoteToken: tokens.smudge,
+    token: tokens.smudge,
+    quoteToken: tokens.soku,
   },
 ]
 
