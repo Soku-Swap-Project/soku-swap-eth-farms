@@ -34,6 +34,7 @@ const PoolTabButtons = ({ stakedOnly, setStakedOnly, hasStakeInFinishedPools }) 
   // const { url, isExact } = useRouteMatch()
   const { t } = useTranslation()
 
+  // eslint-disable-next-line
   const pathname = window.location.pathname
   const newUrl = pathname.replace(/\/?$/, '/')
 
