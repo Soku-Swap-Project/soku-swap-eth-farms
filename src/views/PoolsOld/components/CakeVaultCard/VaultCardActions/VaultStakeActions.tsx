@@ -649,7 +649,7 @@ const VaultStakeActions: React.FC<VaultStakeActionsProps> = ({
   // })
 
   // console.log(balance.toNumber(), 'bal')
-  const formattedBal = balance.toString()
+  // const formattedBal = balance.toString()
   // console.log(parseFloat(formattedBal), 'formatted')
 
   // const renderStakeAction = () => {
