@@ -92,7 +92,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, account }
     : '-'
 
   const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('SOKU', '')
-  const earnLabel = farm.dual ? farm.dual.earnLabel : 'SOKU'
+  // const earnLabel = farm.dual ? farm.dual.earnLabel : 'SOKU'
 
   const farmAPR = farm.apr && farm.apr.toLocaleString('en-US', { maximumFractionDigits: 2 })
   // console.log(farmAPR)
@@ -102,7 +102,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, account }
     tokenAddress: farm.token.address,
   })
   const addLiquidityUrl = `${BASE_ADD_LIQUIDITY_URL}/${liquidityUrlPathParts}`
-  const lpAddress = farm.lpAddresses[1]
+  // const lpAddress = farm.lpAddresses[1]
   const isPromotedFarm = farm.token.symbol === 'SOKU'
   const provider = ''
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import { useTranslation } from 'contexts/Localization'
-import styled from 'styled-components'
-import { Modal, Text, Button, OpenNewIcon, Link } from '@pancakeswap/uikit'
+// import styled from 'styled-components'
+import { Modal, Text, Button } from '@pancakeswap/uikit'
 import { BASE_EXCHANGE_URL } from 'config'
-import useTheme from 'hooks/useTheme'
+// import useTheme from 'hooks/useTheme'
 
 /* eslint-disable react/require-default-props */
 interface NotEnoughTokensModalProps {
@@ -11,13 +11,13 @@ interface NotEnoughTokensModalProps {
   onDismiss?: () => void
 }
 
-const StyledLink = styled(Link)`
-  width: 100%;
-`
+// const StyledLink = styled(Link)`
+//   width: 100%;
+// `
 
 const NotEnoughTokensModal: React.FC<NotEnoughTokensModalProps> = ({ tokenSymbol, onDismiss }) => {
   const { t } = useTranslation()
-  const { theme } = useTheme()
+  // const { theme } = useTheme()
 
   return (
     <Modal

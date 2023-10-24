@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Flex, Text, IconButton, AddIcon, MinusIcon, useModal, Skeleton } from '@pancakeswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import BigNumber from 'bignumber.js'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { getWeb3NoAccount } from 'utils/web3'
-import { AbiItem } from 'web3-utils'
-import { getAddress } from 'utils/addressHelpers'
+// import { AbiItem } from 'web3-utils'
+// import { getAddress } from 'utils/addressHelpers'
 import { Pool } from 'state/types'
-import { useCakeVault, useBusdPriceFromToken, useTokenPrice } from 'state/hooks'
+import { useCakeVault, useTokenPrice } from 'state/hooks'
 import Balance from 'components/Balance'
+import { BIG_ZERO } from 'utils/bigNumber'
 import NotEnoughTokensModal from '../../PoolCard/Modals/NotEnoughTokensModal'
 import { convertSharesToCake } from '../../../helpers'
 import VaultStakeModal from '../VaultStakeModal'
-import { BIG_ZERO } from 'utils/bigNumber'
 
 interface HasStakeActionProps {
   pool: Pool
@@ -27,10 +27,11 @@ const HasSharesActions: React.FC<HasStakeActionProps> = ({ pool, stakingTokenBal
   const { stakingToken } = pool
   const { cakeAsBigNumber, cakeAsNumberBalance } = convertSharesToCake(userShares, pricePerFullShare)
   // const cakePriceBusd = usePriceCakeBusd()
+  // eslint-disable-next-line
   const [balance, setBalance] = useState(new BigNumber(0))
-  const { account } = useWeb3React()
-  const web3 = getWeb3NoAccount()
-  const sokuPrice = useTokenPrice('sokuswap')
+  // const { account } = useWeb3React()
+  // const web3 = getWeb3NoAccount()
+  // const sokuPrice = useTokenPrice('sokuswap')
   const sutekuPrice = BIG_ZERO
   const stakedDollarValue = getBalanceNumber(cakeAsBigNumber.multipliedBy(sutekuPrice), stakingToken.decimals)
 

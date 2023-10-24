@@ -25,6 +25,7 @@ import SlideOutMenu from './components/SlideOutMenu/SlideOutMenu'
 import ComingSoon from './views/ComingSoon'
 import NewVersionModal from './components/NewVersionModal'
 import NewFarms from './views/NewFarms'
+import OldFarms from './views/OldFarms'
 
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -122,6 +123,9 @@ const App: React.FC = () => {
           </Route>
           <Route exact path="/ethereum/farms-v2/">
             <NewFarms />
+          </Route>
+          <Route exact path="/ethereum/farms-v2/history">
+            <OldFarms />
           </Route>
           <Route path="/ethereum/staking/">
             <Pools />

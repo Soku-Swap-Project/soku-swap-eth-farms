@@ -4,13 +4,7 @@ import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import { Flex, CardFooter, ExpandableLabel, HelpIcon, useTooltip, Text } from '@pancakeswap/uikit'
 import { Pool } from 'state/types'
-import {
-  CompoundingPoolTag,
-  ManualPoolTag,
-  ThirtyDayLockedTag,
-  SixtyDayLockedTag,
-  NinetyDayLockedTag,
-} from 'components/Tags'
+import { ManualPoolTag, ThirtyDayLockedTag, SixtyDayLockedTag, NinetyDayLockedTag } from 'components/Tags'
 import ExpandedFooter from './ExpandedFooter'
 
 /* eslint-disable react/require-default-props */
@@ -41,9 +35,9 @@ const Footer: React.FC<FooterProps> = ({ pool, account, isAutoVault = false, loc
   const lockedVaultToolTip = t(
     'Higher payouts than Manual farms, however your tokens will be locked for a certain amount of days from the time they were staked.',
   )
-  const autoTooltipText = t(
-    'Any funds you stake in this farm will be automagically claimed and restaked (compounded) for you.',
-  )
+  // const autoTooltipText = t(
+  //   'Any funds you stake in this farm will be automagically claimed and restaked (compounded) for you.',
+  // )
 
   const poolTags = () => {
     let tag

@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React from 'react'
 import { Flex, Text, Button, Heading, useModal, Skeleton } from '@pancakeswap/uikit'
-import Web3 from 'web3'
+// import Web3 from 'web3'
 import BigNumber from 'bignumber.js'
 import { Token } from 'config/constants/types'
 import { Pool } from 'state/types'
 import { getWeb3NoAccount } from 'utils/web3'
-import { useWeb3React } from '@web3-react/core'
-import { AbiItem } from 'web3-utils'
-import { getAddress } from 'utils/addressHelpers'
+// import { useWeb3React } from '@web3-react/core'
+// import { AbiItem } from 'web3-utils'
+// import { getAddress } from 'utils/addressHelpers'
 import { useTranslation } from 'contexts/Localization'
 import { getFullDisplayBalance, getBalanceNumber, formatNumber } from 'utils/formatBalance'
-import { useBusdPriceFromToken, useTokenPrice, usePriceSutekuEth } from 'state/hooks'
+import { useTokenPrice, usePriceSutekuEth } from 'state/hooks'
 import useToast from 'hooks/useToast'
 import Balance from 'components/Balance'
 import CollectModal from '../Modals/CollectModal'
@@ -38,15 +38,16 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
 }) => {
   const { t } = useTranslation()
   // const [lockTime, setLockTime] = useState()
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
   const earningTokenBalance = getBalanceNumber(earnings, earningToken.decimals)
   const formattedBalance = formatNumber(earningTokenBalance, 3, 3)
+  // eslint-disable-next-line
   const { toastSuccess, toastError } = useToast()
   const web3 = getWeb3NoAccount()
-  const newWeb3 = new Web3(Web3.givenProvider)
-  const { account } = useWeb3React()
-  const ethPrice = useTokenPrice('wbnb')
-  const ethPriceBig = new BigNumber(ethPrice)
+  // const newWeb3 = new Web3(Web3.givenProvider)
+  // const { account } = useWeb3React()
+  // const ethPrice = useTokenPrice('wbnb')
+  // const ethPriceBig = new BigNumber(ethPrice)
   const sokuPrice = useTokenPrice('sokuswap')
   const sutekuPrice = usePriceSutekuEth()
 

@@ -1,9 +1,10 @@
-import BigNumber from 'bignumber.js'
+// import BigNumber from 'bignumber.js'
 // import { getCakeVaultContract } from 'utils/contractHelpers'
 
 // const cakeVaultContract = getCakeVaultContract()
 
 const fetchVaultUser = async (account: string) => {
+  // eslint-disable-next-line
   console.log('')
   // try {
 

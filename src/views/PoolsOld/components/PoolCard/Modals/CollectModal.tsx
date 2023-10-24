@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   Modal,
   Text,
@@ -13,11 +13,11 @@ import {
 } from '@pancakeswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
-import useTheme from 'hooks/useTheme'
+// import useTheme from 'hooks/useTheme'
 import { Pool } from 'state/types'
 import { AbiItem } from 'web3-utils'
-import { getAddress } from 'utils/addressHelpers'
-import { getWeb3NoAccount } from 'utils/web3'
+// import { getAddress } from 'utils/addressHelpers'
+// import { getWeb3NoAccount } from 'utils/web3'
 import { useSousHarvest } from 'hooks/useHarvest'
 import { useSousStake } from 'hooks/useStake'
 import useToast from 'hooks/useToast'
@@ -51,14 +51,15 @@ const CollectModal: React.FC<CollectModalProps> = ({
   onDismiss,
 }) => {
   const { t } = useTranslation()
-  const { theme } = useTheme()
+  // const { theme } = useTheme()
+  // eslint-disable-next-line
   const { toastSuccess, toastError } = useToast()
   const { onReward } = useSousHarvest(sousId, isBnbPool)
   const { account } = useWeb3React()
   const { onStake } = useSousStake(sousId, isBnbPool)
   const [pendingTx, setPendingTx] = useState(false)
   const [shouldCompound, setShouldCompound] = useState(isCompoundPool)
-  const [userInfo, setUserInfo] = useState()
+  // const [userInfo, setUserInfo] = useState()
   const web3 = useWeb3()
 
   // console.log('pool', pool)
@@ -404,6 +405,7 @@ const CollectModal: React.FC<CollectModalProps> = ({
       .claimReward()
       .send({ from: account })
       .then((receipt) => {
+        // eslint-disable-next-line
         console.log('receipt', receipt)
       })
 
@@ -455,6 +457,7 @@ const CollectModal: React.FC<CollectModalProps> = ({
         setPendingTx(false)
         onDismiss()
       } catch (e) {
+        // eslint-disable-next-line
         console.log(e)
         toast.error(ToastError(t('Canceled'), t('Please try again and confirm the transaction.')))
         setPendingTx(false)

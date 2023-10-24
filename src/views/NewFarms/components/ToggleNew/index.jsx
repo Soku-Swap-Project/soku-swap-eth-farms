@@ -27,6 +27,13 @@ const ToggleNew = () => {
         >
           Farm V2
         </ButtonMenuItem>
+        <ButtonMenuItem
+          style={{ color: '#05195a', borderRadius: '7px' }}
+          as={Link}
+          to={`${'/ethereum/farms-v2/history'}`}
+        >
+          Finished
+        </ButtonMenuItem>
       </ButtonMenu>
     </Wrapper>
   )

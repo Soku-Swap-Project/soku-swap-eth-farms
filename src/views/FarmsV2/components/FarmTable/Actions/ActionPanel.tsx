@@ -1,16 +1,16 @@
 import React from 'react'
-import styled, { keyframes, css } from 'styled-components'
-import { useHistory } from 'react-router-dom'
+import styled from 'styled-components'
+// import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'contexts/Localization'
-import { LinkExternal, Text } from '@pancakeswap/uikit'
+import { Text } from '@pancakeswap/uikit'
 import { FarmWithStakedValue } from 'views/FarmsV2/components/FarmCard/FarmCard'
-import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
-import { CommunityTag, CoreTag, DualTag } from 'components/Tags'
+// import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
+// import { CommunityTag, CoreTag, DualTag } from 'components/Tags'
 
 import HarvestAction from './HarvestAction'
 import StakedAction from './StakedAction'
-import Apr, { AprProps } from '../Apr'
-import Multiplier, { MultiplierProps } from '../Multiplier'
+import { AprProps } from '../Apr'
+import { MultiplierProps } from '../Multiplier'
 import Liquidity, { LiquidityProps } from '../Liquidity'
 
 export interface ActionPanelProps {
@@ -22,23 +22,23 @@ export interface ActionPanelProps {
   expanded: boolean
 }
 
-const expandAnimation = keyframes`
-  from {
-    max-height: 0px;
-  }
-  to {
-    max-height: 500px;
-  }
-`
+// const expandAnimation = keyframes`
+//   from {
+//     max-height: 0px;
+//   }
+//   to {
+//     max-height: 500px;
+//   }
+// `
 
-const collapseAnimation = keyframes`
-  from {
-    max-height: 500px;
-  }
-  to {
-    max-height: 0px;
-  }
-`
+// const collapseAnimation = keyframes`
+//   from {
+//     max-height: 500px;
+//   }
+//   to {
+//     max-height: 0px;
+//   }
+// `
 
 const Button = styled.button`
   // border: 1px solid red;
@@ -62,41 +62,41 @@ const Container = styled.div<{ expanded }>`
   }
 `
 
-const StyledLinkExternal = styled(LinkExternal)`
-  font-weight: 400;
-`
+// const StyledLinkExternal = styled(LinkExternal)`
+//   font-weight: 400;
+// `
 
-const StakeContainer = styled.div`
-  color: ${({ theme }) => theme.colors.text};
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
+// const StakeContainer = styled.div`
+//   color: ${({ theme }) => theme.colors.text};
+//   align-items: center;
+//   display: flex;
+//   justify-content: space-between;
 
-  ${({ theme }) => theme.mediaQueries.sm} {
-    justify-content: flex-start;
-  }
-`
+//   ${({ theme }) => theme.mediaQueries.sm} {
+//     justify-content: flex-start;
+//   }
+// `
 
-const TagsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 25px;
+// const TagsContainer = styled.div`
+//   display: flex;
+//   align-items: center;
+//   margin-top: 25px;
 
-  ${({ theme }) => theme.mediaQueries.sm} {
-    margin-top: 16px;
-  }
+//   ${({ theme }) => theme.mediaQueries.sm} {
+//     margin-top: 16px;
+//   }
 
-  > div {
-    height: 24px;
-    padding: 0 6px;
-    font-size: 14px;
-    margin-right: 4px;
+//   > div {
+//     height: 24px;
+//     padding: 0 6px;
+//     font-size: 14px;
+//     margin-right: 4px;
 
-    svg {
-      width: 14px;
-    }
-  }
-`
+//     svg {
+//       width: 14px;
+//     }
+//   }
+// `
 
 const ActionContainer = styled.div`
   display: flex;
@@ -110,9 +110,9 @@ const ActionContainer = styled.div`
   }
 `
 
-const InfoContainer = styled.div`
-  min-width: 200px;
-`
+// const InfoContainer = styled.div`
+//   min-width: 200px;
+// `
 
 const ValueContainer = styled.div`
   display: block;
@@ -138,18 +138,19 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
   expanded,
 }) => {
   const farm = details
-  const history = useHistory()
+  // const history = useHistory()
   const { t } = useTranslation()
-  const isActive = farm.multiplier !== '0X'
+  // const isActive = farm.multiplier !== '0X'
+  // eslint-disable-next-line
   const { quoteToken, token, dual } = farm
-  const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('PANCAKE', '')
-  const liquidityUrlPathParts = getLiquidityUrlPathParts({
-    quoteTokenAddress: quoteToken.address,
-    tokenAddress: token.address,
-  })
-  const lpAddress = farm.lpAddresses[1]
-  const bsc = `https://bscscan.com/address/${lpAddress}`
-  const info = `https://pancakeswap.info/pair/${lpAddress}`
+  // const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('PANCAKE', '')
+  // const liquidityUrlPathParts = getLiquidityUrlPathParts({
+  //   quoteTokenAddress: quoteToken.address,
+  //   tokenAddress: token.address,
+  // })
+  // const lpAddress = farm.lpAddresses[1]
+  // const bsc = `https://bscscan.com/address/${lpAddress}`
+  // const info = `https://pancakeswap.info/pair/${lpAddress}`
   const origin = window.location.origin
 
   // console.log(quoteToken)

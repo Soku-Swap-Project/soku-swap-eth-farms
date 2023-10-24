@@ -7,7 +7,7 @@ import SmartChefABI from 'config/abi/SmartChefInitializable.json'
 import erc20ABI from 'config/abi/erc20.json'
 import useRefresh from 'hooks/useRefresh'
 import { useTranslation } from 'contexts/Localization'
-import { BIG_ZERO } from 'utils/bigNumber'
+// import { BIG_ZERO } from 'utils/bigNumber'
 import { AbiItem } from 'web3-utils'
 import { getWeb3NoAccount } from 'utils/web3'
 import { getAddress } from 'utils/addressHelpers'
@@ -19,6 +19,7 @@ import StyledCardHeader from './StyledCardHeader'
 import CardActions from './CardActions'
 
 const PoolCard: React.FC<{ pool: Pool; account: string }> = ({ pool, account }) => {
+  // eslint-disable-next-line
   const { sousId, stakingToken, earningToken, isFinished, userData } = pool
   const [lockTime, setLockTime] = useState()
   const [reward, setReward] = useState(new BigNumber(0))

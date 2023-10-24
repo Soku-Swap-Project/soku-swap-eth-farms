@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardHeader, Heading, Text, Flex, Image } from '@pancakeswap/uikit'
+import { CardHeader, Heading, Text, Flex } from '@pancakeswap/uikit'
 import { Pool } from 'state/types'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
@@ -29,6 +29,7 @@ const StyledCardHeader: React.FC<{
   isPromotedPool = false,
 }) => {
   const { t } = useTranslation()
+  // eslint-disable-next-line
   const poolImageSrc = isAutoVault
     ? `cake-cakevault.svg`
     : `${earningTokenSymbol}-${stakingTokenSymbol}.svg`.toLocaleLowerCase()

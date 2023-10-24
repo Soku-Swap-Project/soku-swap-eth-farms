@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Flex, Text, Button, IconButton, AddIcon, MinusIcon, useModal, Skeleton, useTooltip } from '@pancakeswap/uikit'
-import { useWeb3React } from '@web3-react/core'
-import Web3 from 'web3'
-import { AbiItem } from 'web3-utils'
-import { getAddress } from 'utils/addressHelpers'
-import { getWeb3NoAccount } from 'utils/web3'
+// import { useWeb3React } from '@web3-react/core'
+// import Web3 from 'web3'
+// import { AbiItem } from 'web3-utils'
+// import { getAddress } from 'utils/addressHelpers'
+// import { getWeb3NoAccount } from 'utils/web3'
 import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { Pool } from 'state/types'
-import { useBusdPriceFromToken, useTokenPrice, usePriceSutekuEth } from 'state/hooks'
-import { getUserPoolData } from 'state/pools'
+import { useTokenPrice, usePriceSutekuEth } from 'state/hooks'
+// import { getUserPoolData } from 'state/pools'
 
 import Balance from 'components/Balance'
 import NotEnoughTokensModal from '../Modals/NotEnoughTokensModal'
@@ -37,11 +37,12 @@ const StakeAction: React.FC<StakeActionsProps> = ({
   isLoading = false,
   lockTime,
 }) => {
+  // eslint-disable-next-line
   const { stakingToken, stakingLimit, isFinished, userData, contractAddress } = pool
   // const [lockTime, setLockTime] = useState()
-  const { account } = useWeb3React()
+  // const { account } = useWeb3React()
   const { t } = useTranslation()
-  const web3 = getWeb3NoAccount()
+  // const web3 = getWeb3NoAccount()
   // const newWeb3 = new Web3(Web3.givenProvider)
   const stakedTokenBalance = getBalanceNumber(stakedBalance, stakingToken.decimals)
   // const stakingTokenPrice = useBusdPriceFromToken(stakingToken.symbol)

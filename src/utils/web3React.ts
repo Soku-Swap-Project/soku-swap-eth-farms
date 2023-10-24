@@ -5,7 +5,7 @@ import { ConnectorNames } from '@pancakeswap/uikit'
 import Web3 from 'web3'
 import getNodeUrl from './getRpcUrl'
 
-const POLLING_INTERVAL = 12000
+// const POLLING_INTERVAL = 12000
 // Mainnet
 const rpcUrl = getNodeUrl()
 const ethMain = '1'

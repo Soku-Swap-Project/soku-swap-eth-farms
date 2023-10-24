@@ -1,12 +1,12 @@
 import React from 'react'
-import styled from 'styled-components'
-import { useRouteMatch, Link } from 'react-router-dom'
+// import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import {
   ButtonMenu,
   ButtonMenuItem,
-  Button,
-  HelpIcon,
-  Toggle,
+  // Button,
+  // HelpIcon,
+  // Toggle,
   Text,
   Flex,
   NotificationDot,
@@ -15,23 +15,23 @@ import {
 import { useTranslation } from 'contexts/Localization'
 import { ToggleSwitch } from 'components/ToggleSwitch'
 
-const ButtonText = styled(Text)`
-  display: none;
-  ${({ theme }) => theme.mediaQueries.lg} {
-    display: block;
-  }
-`
+// const ButtonText = styled(Text)`
+//   display: none;
+//   ${({ theme }) => theme.mediaQueries.lg} {
+//     display: block;
+//   }
+// `
 
-const StyledLink = styled(UiKitLink)`
-  width: 100%;
+// const StyledLink = styled(UiKitLink)`
+//   width: 100%;
 
-  &:hover {
-    text-decoration: none;
-  }
-`
+//   &:hover {
+//     text-decoration: none;
+//   }
+// `
 
 const PoolTabButtons = ({ stakedOnly, setStakedOnly, hasStakeInFinishedPools }) => {
-  const { url, isExact } = useRouteMatch()
+  // const { url, isExact } = useRouteMatch()
   const { t } = useTranslation()
 
   const pathname = window.location.pathname

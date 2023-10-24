@@ -1,16 +1,16 @@
 import BigNumber from 'bignumber.js'
 import farmsConfig from 'config/constants/farmsWithSmartChef'
-import sousChefABI from 'config/abi/sousChef.json'
-import sousChefV2ABI from 'config/abi/sousChefV2.json'
-import SmartChefInitializeable from 'config/abi/SmartChefInitializable.json'
+// import sousChefABI from 'config/abi/sousChef.json'
+// import sousChefV2ABI from 'config/abi/sousChefV2.json'
+// import SmartChefInitializeable from 'config/abi/SmartChefInitializable.json'
 import cakeABI from 'config/abi/cake.json'
 import wbnbABI from 'config/abi/weth.json'
 import multicall from 'utils/multicall'
 import { getAddress, getWbnbAddress } from 'utils/addressHelpers'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { getSouschefContractFarms } from 'utils/contractHelpers'
-import { AbiItem } from 'web3-utils'
-import Web3 from 'web3'
+// import { AbiItem } from 'web3-utils'
+// import Web3 from 'web3'
 
 export const fetchFarmsBlockLimits = async () => {
   const poolsWithEnd = farmsConfig.filter((p) => p.sousId !== 0)

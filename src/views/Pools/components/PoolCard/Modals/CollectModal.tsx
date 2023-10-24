@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   Modal,
   Text,
@@ -11,18 +11,18 @@ import {
   HelpIcon,
   useTooltip,
 } from '@pancakeswap/uikit'
-import { useWeb3React } from '@web3-react/core'
+// import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
-import useTheme from 'hooks/useTheme'
+// import useTheme from 'hooks/useTheme'
 import { Pool } from 'state/types'
-import { AbiItem } from 'web3-utils'
-import { getAddress } from 'utils/addressHelpers'
-import { getWeb3NoAccount } from 'utils/web3'
-import { useSousHarvest } from 'hooks/useHarvest'
+// import { AbiItem } from 'web3-utils'
+// import { getAddress } from 'utils/addressHelpers'
+// import { getWeb3NoAccount } from 'utils/web3'
+// import { useSousHarvest } from 'hooks/useHarvest'
 import { useSousStake } from 'hooks/useStake'
-import useToast from 'hooks/useToast'
+// import useToast from 'hooks/useToast'
 import { Token } from 'config/constants/types'
-import useWeb3 from 'hooks/useWeb3'
+// import useWeb3 from 'hooks/useWeb3'
 import { ToastSuccess, ToastError } from 'style/Toasts'
 import { toast } from 'react-toastify'
 import { useSousUnstake } from 'hooks/useUnstake'
@@ -52,17 +52,17 @@ const CollectModal: React.FC<CollectModalProps> = ({
   onDismiss,
 }) => {
   const { t } = useTranslation()
-  const { theme } = useTheme()
-  const { toastSuccess, toastError } = useToast()
-  const { onReward } = useSousHarvest(sousId, isBnbPool)
+  // const { theme } = useTheme()
+  // const { toastSuccess, toastError } = useToast()
+  // const { onReward } = useSousHarvest(sousId, isBnbPool)
   const { onUnstake, unStakeFromPool } = useSousUnstake(sousId, pool.enableEmergencyWithdraw)
-  const { account } = useWeb3React()
+  // const { account } = useWeb3React()
   const { onStake } = useSousStake(sousId, isBnbPool)
 
   const [pendingTx, setPendingTx] = useState(false)
   const [shouldCompound, setShouldCompound] = useState(isCompoundPool)
-  const [userInfo, setUserInfo] = useState()
-  const web3 = useWeb3()
+  // const [userInfo, setUserInfo] = useState()
+  // const web3 = useWeb3()
 
   // console.log('pool', pool)
 
