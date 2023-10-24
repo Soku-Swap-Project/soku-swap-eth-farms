@@ -3,6 +3,9 @@
   "homepage": ".",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
