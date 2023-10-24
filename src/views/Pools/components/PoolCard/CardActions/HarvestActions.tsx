@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import { Flex, Text, Button, Heading, useModal, Skeleton } from '@pancakeswap/uikit'
-import Web3 from 'web3'
+import React from 'react'
+import { Flex, Button, Heading, useModal, Skeleton } from '@pancakeswap/uikit'
+// import Web3 from 'web3'
 import BigNumber from 'bignumber.js'
 import { toast } from 'react-toastify'
 import { ToastError } from 'style/Toasts'
 import { Token } from 'config/constants/types'
 import { Pool } from 'state/types'
 import { getWeb3NoAccount } from 'utils/web3'
-import { useWeb3React } from '@web3-react/core'
-import { AbiItem } from 'web3-utils'
-import { getAddress } from 'utils/addressHelpers'
+// import { useWeb3React } from '@web3-react/core'
+// import { AbiItem } from 'web3-utils'
+// import { getAddress } from 'utils/addressHelpers'
 import { useTranslation } from 'contexts/Localization'
 import { getFullDisplayBalance, getBalanceNumber, formatNumber } from 'utils/formatBalance'
-import { useBusdPriceFromToken, useTokenPrice } from 'state/hooks'
-import useToast from 'hooks/useToast'
+import { useTokenPrice } from 'state/hooks'
+// import useToast from 'hooks/useToast'
 import Balance from 'components/Balance'
 import CollectModal from '../Modals/CollectModal'
 import { BIG_TEN, BIG_ZERO } from '../../../../../utils/bigNumber'
@@ -40,20 +40,20 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
 }) => {
   const { t } = useTranslation()
   // const [lockTime, setLockTime] = useState()
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
   const earningTokenBalance = getBalanceNumber(earnings, earningToken.decimals)
   const formattedBalance = formatNumber(earningTokenBalance, 3, 3)
-  const { toastSuccess, toastError } = useToast()
+  // const { toastSuccess, toastError } = useToast()
   const web3 = getWeb3NoAccount()
-  const { account } = useWeb3React()
-  const bnbPrice = useTokenPrice('wbnb')
-  const bnbPriceBig = new BigNumber(bnbPrice)
+  // const { account } = useWeb3React()
+  // const bnbPrice = useTokenPrice('wbnb')
+  // const bnbPriceBig = new BigNumber(bnbPrice)
   const sokuPrice = useTokenPrice('sokuswap')
   const sutekuPrice = BIG_ZERO
 
   const earningTokenPrice = earningToken.symbol === 'SOKU' ? sokuPrice : sutekuPrice.toNumber()
 
-  const earningTokenPriceAsNumber = earningTokenPrice
+  // const earningTokenPriceAsNumber = earningTokenPrice
 
   const earningTokenDollarBalance = new BigNumber(parseFloat(earnings.toString()) * earningTokenPrice).dividedBy(
     BIG_TEN.pow(earningToken.decimals),

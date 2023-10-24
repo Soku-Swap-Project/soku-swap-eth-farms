@@ -21,14 +21,15 @@ const StyledButton = styled(Button)`
   border-radius: 14px;
   height: 52px;
 `
-
+// eslint-disable-next-line
 const ApprovalAction: React.FC<ApprovalActionProps> = ({ pool, isLoading = false, approved }) => {
+  // eslint-disable-next-line
   const { sousId, stakingToken, earningToken } = pool
   const { t } = useTranslation()
   const stakingTokenContract = useERC20(stakingToken.address ? getAddress(stakingToken.address) : '')
   const [requestedApproval, setRequestedApproval] = useState(false)
   const { onApprove } = useSousApprove(stakingTokenContract, sousId)
-  const { toastSuccess, toastError } = useToast()
+  // const { toastSuccess, toastError } = useToast()
 
   const handleApprove = useCallback(async () => {
     try {

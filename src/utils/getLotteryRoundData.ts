@@ -33,6 +33,7 @@
 // }
 
 const getLotteryRoundData = () => {
+  // eslint-disable-next-line
   console.log('getLotteryRoundData')
 }
 

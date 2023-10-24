@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Box, CardBody, Flex, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
@@ -28,7 +28,8 @@ interface CakeVaultProps {
 
 const CakeVaultCard: React.FC<CakeVaultProps> = ({ pool, showStakedOnly }) => {
   // console.log('pool', pool)
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
+  // eslint-disable-next-line
   const [userDetails, setUserDetails] = useState()
   const web3 = getWeb3NoAccount()
   const { t } = useTranslation()
@@ -39,6 +40,7 @@ const CakeVaultCard: React.FC<CakeVaultProps> = ({ pool, showStakedOnly }) => {
     fees: { performanceFee },
   } = useCakeVault()
 
+  // eslint-disable-next-line
   const getUserInfo = async (address) => {
     try {
       if (pool.poolCategory === '30DayLock' || pool.poolCategory === '60DayLock' || pool.poolCategory === '90DayLock') {
@@ -378,7 +380,9 @@ const CakeVaultCard: React.FC<CakeVaultProps> = ({ pool, showStakedOnly }) => {
         ]
         const contract = new web3.eth.Contract(abi as unknown as AbiItem, getAddress(pool.contractAddress))
         const userInfo = await contract.methods.userInfo(address).call()
+        // eslint-disable-next-line
         console.log(pool, 'pool')
+        // eslint-disable-next-line
         console.log(userInfo, 'user')
 
         // console.log(parsedBal, 'staked')
@@ -652,13 +656,16 @@ const CakeVaultCard: React.FC<CakeVaultProps> = ({ pool, showStakedOnly }) => {
         ]
         const contract = new web3.eth.Contract(abi as unknown as AbiItem, getAddress(pool.contractAddress))
         const userInfo = await contract.methods.userInfo(address).call()
+        // eslint-disable-next-line
         console.log(pool, 'pool')
+        // eslint-disable-next-line
         console.log(userInfo, 'user')
         // console.log(parsedBal, 'staked')
 
         setUserDetails(userInfo)
       }
     } catch (error) {
+      // eslint-disable-next-line
       console.log(error, 'getUserInfo')
     }
   }

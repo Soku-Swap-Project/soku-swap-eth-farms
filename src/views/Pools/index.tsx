@@ -5,9 +5,9 @@ import { Route, useRouteMatch } from 'react-router-dom'
 
 import { useWeb3React } from '@web3-react/core'
 import { Heading, Flex } from '@pancakeswap/uikit'
-import { getAddress } from 'utils/addressHelpers'
-import { AbiItem } from 'web3-utils'
-import { getWeb3NoAccount } from 'utils/web3'
+// import { getAddress } from 'utils/addressHelpers'
+// import { AbiItem } from 'web3-utils'
+// import { getWeb3NoAccount } from 'utils/web3'
 import { getUserPoolData } from 'state/pools'
 import orderBy from 'lodash/orderBy'
 import partition from 'lodash/partition'
@@ -16,7 +16,7 @@ import usePersistState from 'hooks/usePersistState'
 import { usePools } from 'state/hooks'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
-import AlertDismissable from 'components/Alerts'
+// import AlertDismissable from 'components/Alerts'
 import PageHeader from 'components/PageHeader'
 import PoolCard from './components/PoolCard'
 // import CakeVaultCard from './components/CakeVaultCard'
@@ -37,10 +37,10 @@ const Pools: React.FC = () => {
   // modal video
   const [isOpen, setOpen] = useState(false)
 
-  const web3 = getWeb3NoAccount()
+  // const web3 = getWeb3NoAccount()
   const [stakedOnly, setStakedOnly] = usePersistState(false, 'pancake_pool_staked')
-  const [staked, setStaked] = useState(0)
-  const [userDetails, setUserDetails] = useState({})
+  // const [staked, setStaked] = useState(0)
+  // const [userDetails, setUserDetails] = useState({})
   const [userInfo, setUserInfo] = useState({})
   const [numberOfPoolsVisible, setNumberOfPoolsVisible] = useState(NUMBER_OF_POOLS_VISIBLE)
   const [observerIsSet, setObserverIsSet] = useState(false)
@@ -54,6 +54,7 @@ const Pools: React.FC = () => {
         const test = await getUserPoolData(account)
         setUserInfo(test)
       } catch (err) {
+        // eslint-disable-next-line
         console.log(err, 'err')
       }
     }
@@ -81,6 +82,7 @@ const Pools: React.FC = () => {
   const hasStakeInFinishedPools = stakedOnlyFinishedPools.length > 0
 
   // This pool is passed explicitly to the cake vault
+  // eslint-disable-next-line
   const cakePoolData = useMemo(() => openPools.find((pool) => pool.sousId === 0), [openPools])
 
   useEffect(() => {

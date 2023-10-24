@@ -12,7 +12,7 @@ const StyledButtonMenu = styled(ButtonMenu)`
   background: transparent;
 `
 const FarmTabButtons: React.FC<FarmTabButtonsProps> = ({ hasStakeInFinishedFarms }) => {
-  const { url } = useRouteMatch()
+  // const { url } = useRouteMatch()
   const location = useLocation()
   const { t } = useTranslation()
 

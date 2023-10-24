@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
-import { DEFAULT_GAS } from 'config'
+// import { DEFAULT_GAS } from 'config'
 import styled from 'styled-components'
 import { Modal, Text, Flex, Button, HelpIcon, AutoRenewIcon, useTooltip } from '@pancakeswap/uikit'
 import { getBalanceNumber } from 'utils/formatBalance'
@@ -16,6 +16,7 @@ interface BountyModalProps {
   dollarBountyToDisplay: number
   totalPendingCakeHarvest: BigNumber
   callFee: number
+  // eslint-disable-next-line
   onDismiss?: () => void
   TooltipComponent: React.ElementType
 }
@@ -37,8 +38,9 @@ const BountyModal: React.FC<BountyModalProps> = ({
 }) => {
   const { t } = useTranslation()
   const { account } = useWeb3React()
-  const { theme } = useTheme()
-  const { toastError, toastSuccess } = useToast()
+  // const { theme } = useTheme()
+  // const { toastError, toastSuccess } = useToast()
+  // eslint-disable-next-line
   const [pendingTx, setPendingTx] = useState(false)
   const callFeeAsDecimal = callFee / 100
   const totalYieldToDisplay = getBalanceNumber(totalPendingCakeHarvest, 18)
@@ -48,7 +50,6 @@ const BountyModal: React.FC<BountyModalProps> = ({
   })
 
   const handleConfirmClick = async () => {
-    console.log('confirm')
     // cakeVaultContract.methods
     //   .harvest()
     //   .send({ from: account, gas: DEFAULT_GAS })

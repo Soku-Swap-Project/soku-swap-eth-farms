@@ -1,40 +1,44 @@
-import React, { useState, useEffect } from 'react'
-import { Flex, Button, useModal, Skeleton } from '@pancakeswap/uikit'
-import { useWeb3React } from '@web3-react/core'
-import { useBusdPriceFromToken, useTokenPrice, usePriceSutekuEth } from 'state/hooks'
+import React, { useState } from 'react'
+import { Flex, Skeleton } from '@pancakeswap/uikit'
+// import { useWeb3React } from '@web3-react/core'
+// import { useTokenPrice, usePriceSutekuEth } from 'state/hooks'
 import BigNumber from 'bignumber.js'
-import { useTranslation } from 'contexts/Localization'
+// import { useTranslation } from 'contexts/Localization'
 import { Pool } from 'state/types'
-import { getWeb3NoAccount } from 'utils/web3'
-import { getAddress } from 'utils/addressHelpers'
-import { AbiItem } from 'web3-utils'
-import NotEnoughTokensModal from '../../PoolCard/Modals/NotEnoughTokensModal'
+// import { getWeb3NoAccount } from 'utils/web3'
+// import { getAddress } from 'utils/addressHelpers'
+// import { AbiItem } from 'web3-utils'
+// import NotEnoughTokensModal from '../../PoolCard/Modals/NotEnoughTokensModal'
 // import VaultStakeModal from '../VaultStakeModal'
 // import HasSharesActions from './HasSharesActions'
 
 interface VaultStakeActionsProps {
   pool: Pool
+  // eslint-disable-next-line
   stakingTokenBalance: BigNumber
+  // eslint-disable-next-line
   accountHasSharesStaked: boolean
   // eslint-disable-next-line react/require-default-props
   isLoading?: boolean
 }
 
 const VaultStakeActions: React.FC<VaultStakeActionsProps> = ({
+  // eslint-disable-next-line
   pool,
-  stakingTokenBalance,
-  accountHasSharesStaked,
+  // stakingTokenBalance,
+  // accountHasSharesStaked,
   isLoading = false,
 }) => {
-  const { stakingToken } = pool
-  const { t } = useTranslation()
-  const sokuPrice = useTokenPrice('sokuswap')
-  const sutekuPrice = usePriceSutekuEth()
-  const { account } = useWeb3React()
+  // const { stakingToken } = pool
+  // const { t } = useTranslation()
+  // const sokuPrice = useTokenPrice('sokuswap')
+  // const sutekuPrice = usePriceSutekuEth()
+  // const { account } = useWeb3React()
+  // eslint-disable-next-line
   const [balance, setBalance] = useState(new BigNumber(0))
-  const [onPresentTokenRequired] = useModal(<NotEnoughTokensModal tokenSymbol={stakingToken.symbol} />)
+  // const [onPresentTokenRequired] = useModal(<NotEnoughTokensModal tokenSymbol={stakingToken.symbol} />)
   // const [onPresentStake] = useModal(<VaultStakeModal stakingMax={balance} pool={pool} />)
-  const web3 = getWeb3NoAccount()
+  // const web3 = getWeb3NoAccount()
 
   // useEffect(() => {
   //   try {

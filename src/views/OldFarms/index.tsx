@@ -5,16 +5,16 @@ import { Route, useRouteMatch } from 'react-router-dom'
 
 import { useWeb3React } from '@web3-react/core'
 import { Heading, Flex } from '@pancakeswap/uikit'
-import { getWeb3NoAccount } from 'utils/web3'
+// import { getWeb3NoAccount } from 'utils/web3'
 import { getUserPoolData as getUserFarmData } from 'state/farmsWithSmartChef'
 import orderBy from 'lodash/orderBy'
 import partition from 'lodash/partition'
 import { useTranslation } from 'contexts/Localization'
 import usePersistState from 'hooks/usePersistState'
-import { useFarmsWithSmartChef, usePriceBnbBusd } from 'state/hooks'
+import { useFarmsWithSmartChef } from 'state/hooks'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
-import AlertDismissable from 'components/Alerts'
+// import AlertDismissable from 'components/Alerts'
 import PageHeader from 'components/PageHeader'
 import PoolCard from './components/PoolCard'
 // import CakeVaultCard from './components/CakeVaultCard'
@@ -36,10 +36,10 @@ const NewFarms: React.FC = () => {
   // modal video
   const [isOpen, setOpen] = useState(false)
 
-  const web3 = getWeb3NoAccount()
+  // const web3 = getWeb3NoAccount()
   const [stakedOnly, setStakedOnly] = usePersistState(false, 'pancake_pool_staked')
-  const [staked, setStaked] = useState(0)
-  const [userDetails, setUserDetails] = useState({})
+  // const [staked, setStaked] = useState(0)
+  // const [userDetails, setUserDetails] = useState({})
   const [userInfo, setUserInfo] = useState({})
   const [numberOfPoolsVisible, setNumberOfPoolsVisible] = useState(NUMBER_OF_FARMS_VISIBLE)
   const [observerIsSet, setObserverIsSet] = useState(false)
@@ -80,7 +80,7 @@ const NewFarms: React.FC = () => {
   const hasStakeInFinishedPools = stakedOnlyFinishedPools.length > 0
 
   // This pool is passed explicitly to the cake vault
-  const cakePoolData = useMemo(() => openPools.find((pool) => pool.sousId === 0), [openPools])
+  // const cakePoolData = useMemo(() => openPools.find((pool) => pool.sousId === 0), [openPools])
 
   useEffect(() => {
     const showMorePools = (entries) => {

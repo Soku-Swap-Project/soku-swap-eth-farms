@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Modal, Text, Flex, Image, Button, BalanceInput, AutoRenewIcon, Link } from '@pancakeswap/uikit'
-import Web3 from 'web3'
+import { Modal, Text, Flex, Button, BalanceInput, AutoRenewIcon, Link } from '@pancakeswap/uikit'
+// import Web3 from 'web3'
 import { useTranslation } from 'contexts/Localization'
 import { BASE_EXCHANGE_URL } from 'config'
 import { useSousStake } from 'hooks/useStake'
 import { useSousUnstake } from 'hooks/useUnstake'
-import { AbiItem } from 'web3-utils'
-import { getAddress } from 'utils/addressHelpers'
-import { useWeb3React } from '@web3-react/core'
-import { getWeb3NoAccount } from 'utils/web3'
-import useTheme from 'hooks/useTheme'
+// import { AbiItem } from 'web3-utils'
+// import { getAddress } from 'utils/addressHelpers'
+// import { useWeb3React } from '@web3-react/core'
+// import { getWeb3NoAccount } from 'utils/web3'
+// import useTheme from 'hooks/useTheme'
 import useToast from 'hooks/useToast'
 import BigNumber from 'bignumber.js'
 import { getFullDisplayBalance, formatNumber, getDecimalAmount } from 'utils/formatBalance'
@@ -44,16 +44,18 @@ const StakeModal: React.FC<StakeModalProps> = ({
   isRemovingStake = false,
   onDismiss,
 }) => {
+  // eslint-disable-next-line
   const { sousId, stakingToken, userData, stakingLimit, earningToken } = pool
 
   const { t } = useTranslation()
-  const { theme } = useTheme()
-  const { account } = useWeb3React()
-  const web3 = getWeb3NoAccount()
+  // const { theme } = useTheme()
+  // const { account } = useWeb3React()
+  // const web3 = getWeb3NoAccount()
   // const newWeb3 = new Web3(Web3.givenProvider)
 
   const { onStake } = useSousStake(sousId, isBnbPool)
   const { onUnstake } = useSousUnstake(sousId, pool.enableEmergencyWithdraw)
+  // eslint-disable-next-line
   const { toastSuccess, toastError } = useToast()
   const [pendingTx, setPendingTx] = useState(false)
   const [stakeAmount, setStakeAmount] = useState('')

@@ -5,8 +5,8 @@ import { useTranslation } from 'contexts/Localization'
 import { useCakeVault } from 'state/hooks'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { convertSharesToCake } from 'views/Pools/helpers'
-import RecentCakeProfitBalance from './RecentCakeProfitBalance'
 import { BIG_ZERO } from 'utils/bigNumber'
+import RecentCakeProfitBalance from './RecentCakeProfitBalance'
 
 const RecentCakeProfitCountdownRow = () => {
   const { t } = useTranslation()

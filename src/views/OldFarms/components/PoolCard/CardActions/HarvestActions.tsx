@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import { Flex, Text, Button, Heading, useModal, Skeleton } from '@pancakeswap/uikit'
-import Web3 from 'web3'
+import React, { useState } from 'react'
+import { Flex, Button, Heading, useModal, Skeleton } from '@pancakeswap/uikit'
+// import Web3 from 'web3'
 import BigNumber from 'bignumber.js'
 import { Token } from 'config/constants/types'
 import { Pool } from 'state/types'
 import { getWeb3NoAccount } from 'utils/web3'
-import { useWeb3React } from '@web3-react/core'
-import { AbiItem } from 'web3-utils'
+// import { useWeb3React } from '@web3-react/core'
+// import { AbiItem } from 'web3-utils'
 import { toast } from 'react-toastify'
 import { ToastError } from 'style/Toasts'
-import { getAddress } from 'utils/addressHelpers'
+// import { getAddress } from 'utils/addressHelpers'
 import { useTranslation } from 'contexts/Localization'
 import { getFullDisplayBalance, getBalanceNumber, formatNumber } from 'utils/formatBalance'
-import { usePriceSutekuEth, usePriceHobiEth } from 'state/hooks'
-import useToast from 'hooks/useToast'
+// import { usePriceSutekuEth, usePriceHobiEth } from 'state/hooks'
+// import useToast from 'hooks/useToast'
 import Balance from 'components/Balance'
 import CollectModal from '../Modals/CollectModal'
 import { BIG_TEN } from '../../../../../utils/bigNumber'
@@ -40,7 +40,7 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
 }) => {
   const { t } = useTranslation()
   // const [lockTime, setLockTime] = useState()
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
   const earningTokenBalance = getBalanceNumber(earnings, earningToken.decimals)
   const formattedBalance = formatNumber(earningTokenBalance, 3, 3)
   const web3 = getWeb3NoAccount()
@@ -48,7 +48,7 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
   // const sutekuPrice = usePriceSutekuEth()
   // const hobiPrice = usePriceHobiEth()
 
-  const isSuteku = earningToken.symbol === 'SUTEKU'
+  // const isSuteku = earningToken.symbol === 'SUTEKU'
 
   const earningTokenPrice = 0
 

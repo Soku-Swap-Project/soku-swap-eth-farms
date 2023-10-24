@@ -1,21 +1,21 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import { Flex, Text, Button, IconButton, AddIcon, MinusIcon, useModal, Skeleton, useTooltip } from '@pancakeswap/uikit'
-import { useWeb3React } from '@web3-react/core'
-import Web3 from 'web3'
-import { AbiItem } from 'web3-utils'
-import { getAddress } from 'utils/addressHelpers'
-import { getWeb3NoAccount } from 'utils/web3'
+import React from 'react'
+import { Flex, Button, IconButton, AddIcon, MinusIcon, useModal, Skeleton, useTooltip } from '@pancakeswap/uikit'
+// import { useWeb3React } from '@web3-react/core'
+// import Web3 from 'web3'
+// import { AbiItem } from 'web3-utils'
+// import { getAddress } from 'utils/addressHelpers'
+// import { getWeb3NoAccount } from 'utils/web3'
 import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { Pool } from 'state/types'
 import { useLpTokenPriceV2 } from 'state/hooks'
-import { getUserPoolData } from 'state/pools'
-import useRefresh from 'hooks/useRefresh'
+// import { getUserPoolData } from 'state/pools'
+// import useRefresh from 'hooks/useRefresh'
 import Balance from 'components/Balance'
 import NotEnoughTokensModal from '../Modals/NotEnoughTokensModal'
 import StakeModal from '../Modals/StakeModal'
-import { BIG_TEN, BIG_ZERO } from '../../../../../utils/bigNumber'
+// import { BIG_TEN, BIG_ZERO } from '../../../../../utils/bigNumber'
 
 /* eslint-disable react/require-default-props */
 interface StakeActionsProps {
@@ -37,12 +37,13 @@ const StakeAction: React.FC<StakeActionsProps> = ({
   isLoading = false,
   lockTime,
 }) => {
+  // eslint-disable-next-line
   const { stakingToken, stakingLimit, isFinished, userData, contractAddress } = pool
   // const [lockTime, setLockTime] = useState()
-  const [userInfo, setUserInfo] = useState({})
-  const { account } = useWeb3React()
+  // const [userInfo, setUserInfo] = useState({})
+  // const { account } = useWeb3React()
   const { t } = useTranslation()
-  const web3 = getWeb3NoAccount()
+  // const web3 = getWeb3NoAccount()
 
   const stakedTokenBalance = getBalanceNumber(stakedBalance, stakingToken.decimals)
 

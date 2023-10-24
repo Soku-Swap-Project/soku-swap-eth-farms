@@ -3,7 +3,7 @@ import BigNumber from 'bignumber.js'
 import { IconButton, useModal, CalculateIcon } from '@pancakeswap/uikit'
 import ApyCalculatorModal from 'components/ApyCalculatorModal'
 import { useTranslation } from 'contexts/Localization'
-import { CodeSandboxCircleFilled } from '@ant-design/icons'
+// import { CodeSandboxCircleFilled } from '@ant-design/icons'
 
 export interface ApyButtonProps {
   lpLabel?: string

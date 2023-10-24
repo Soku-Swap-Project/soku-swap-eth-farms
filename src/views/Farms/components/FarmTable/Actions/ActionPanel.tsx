@@ -1,10 +1,10 @@
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
-import { useHistory } from 'react-router-dom'
+import styled from 'styled-components'
+// import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'contexts/Localization'
-import { LinkExternal, Text } from '@pancakeswap/uikit'
+import { Text } from '@pancakeswap/uikit'
 import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
-import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
+// import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 
 import HarvestAction from './HarvestAction'
 import StakedAction from './StakedAction'
@@ -73,15 +73,17 @@ const ValueWrapper = styled.div`
 const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({ details, liquidity, userDataReady, expanded }) => {
   const farm = details
   const { t } = useTranslation()
+  // eslint-disable-next-line
   const { quoteToken, token, dual } = farm
   // const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('PANCAKE', '')
   // const liquidityUrlPathParts = getLiquidityUrlPathParts({
   //   quoteTokenAddress: quoteToken.address,
   //   tokenAddress: token.address,
   // })
-  const lpAddress = farm.lpAddresses[1]
+  // const lpAddress = farm.lpAddresses[1]
   // const bsc = `https://bscscan.com/address/${lpAddress}`
   // const info = `https://pancakeswap.info/pair/${lpAddress}`
+  // eslint-disable-next-line
   const origin = window.location.origin
 
   return (

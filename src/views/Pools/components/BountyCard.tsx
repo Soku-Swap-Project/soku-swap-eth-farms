@@ -18,8 +18,8 @@ import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useCakeVault } from 'state/hooks'
 import Balance from 'components/Balance'
-import BountyModal from './BountyModal'
 import { BIG_ZERO } from 'utils/bigNumber'
+import BountyModal from './BountyModal'
 
 const StyledCard = styled(Card)`
   width: 100%;

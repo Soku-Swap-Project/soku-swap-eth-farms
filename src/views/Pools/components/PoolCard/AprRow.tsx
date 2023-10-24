@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import { Flex, TooltipText, IconButton, useModal, CalculateIcon, Skeleton, useTooltip } from '@pancakeswap/uikit'
-import Web3 from 'web3'
+import React from 'react'
+import { Flex, TooltipText, useModal, Skeleton, useTooltip } from '@pancakeswap/uikit'
+// import Web3 from 'web3'
 import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { getPoolApr } from 'utils/apr'
-import { AbiItem } from 'web3-utils'
+// import { AbiItem } from 'web3-utils'
 import { tokenEarnedPerThousandDollarsCompounding, getRoi } from 'utils/compoundApyHelpers'
-import { useBusdPriceFromToken, useTokenPrice, usePriceSokuEth, usePriceSodatsuEth } from 'state/hooks'
+import { usePriceSokuEth, usePriceSodatsuEth } from 'state/hooks'
 import Balance from 'components/Balance'
 import ApyCalculatorModal from 'components/ApyCalculatorModal'
 import AprCalculatorModal from 'components/AprCalculatorModal'
 import { Pool } from 'state/types'
 import { BASE_EXCHANGE_URL } from 'config'
-import BigNumber from 'bignumber.js'
-import { getWeb3NoAccount } from 'utils/web3'
-import { getAddress } from 'utils/addressHelpers'
-import { BIG_ZERO } from 'utils/bigNumber'
+// import BigNumber from 'bignumber.js'
+// import { getWeb3NoAccount } from 'utils/web3'
+// import { getAddress } from 'utils/addressHelpers'
+// import { BIG_ZERO } from 'utils/bigNumber'
 
 /* eslint-disable react/require-default-props */
 interface AprRowProps {
@@ -34,8 +34,9 @@ const AprRow: React.FC<AprRowProps> = ({
   rewardPerBlock,
 }) => {
   const { t } = useTranslation()
+  // eslint-disable-next-line
   const { stakingToken, earningToken, totalStaked, isFinished, tokenPerBlock } = pool
-  const web3 = getWeb3NoAccount()
+  // const web3 = getWeb3NoAccount()
   // const newWeb3 = new Web3(Web3.givenProvider)
 
   const tooltipContent = isAutoVault
@@ -45,7 +46,7 @@ const AprRow: React.FC<AprRowProps> = ({
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })
   const sokuPrice = usePriceSokuEth()
   const sodatsuPrice = usePriceSodatsuEth()
-  const sutekuPrice = BIG_ZERO
+  // const sutekuPrice = BIG_ZERO
   const earningTokenPrice = earningToken.symbol === 'SOKU' ? sokuPrice.toString() : sodatsuPrice.toString()
   const earningTokenPriceAsNumber = Number(earningTokenPrice)
 
@@ -84,6 +85,7 @@ const AprRow: React.FC<AprRowProps> = ({
 
   const apyModalLink = stakingToken.address && `${BASE_EXCHANGE_URL}/#/swap?outputCurrency=${stakingToken.address[56]}`
 
+  // eslint-disable-next-line
   const [onPresentApyModal] = useModal(
     <ApyCalculatorModal
       tokenPrice={earningTokenPriceAsNumber}

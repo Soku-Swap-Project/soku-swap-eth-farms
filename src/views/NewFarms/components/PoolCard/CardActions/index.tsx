@@ -1,15 +1,15 @@
 import BigNumber from 'bignumber.js'
-import React, { useState, useEffect } from 'react'
-import Web3 from 'web3'
+import React from 'react'
+// import Web3 from 'web3'
 import styled from 'styled-components'
-import { BIG_ZERO } from 'utils/bigNumber'
+// import { BIG_ZERO } from 'utils/bigNumber'
 import { Flex, Text, Box } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { PoolCategory } from 'config/constants/types'
-import { AbiItem } from 'web3-utils'
-import { getWeb3NoAccount } from 'utils/web3'
-import { useWeb3React } from '@web3-react/core'
-import { getAddress } from 'utils/addressHelpers'
+// import { AbiItem } from 'web3-utils'
+// import { getWeb3NoAccount } from 'utils/web3'
+// import { useWeb3React } from '@web3-react/core'
+// import { getAddress } from 'utils/addressHelpers'
 import { Pool } from 'state/types'
 import ApprovalAction from './ApprovalAction'
 import StakeActions from './StakeActions'
@@ -38,11 +38,11 @@ const CardActions: React.FC<CardActionsProps> = ({
 }) => {
   const { sousId, stakingToken, earningToken, harvest, poolCategory, userData } = pool
 
-  const { account } = useWeb3React()
+  // const { account } = useWeb3React()
   // Pools using native BNB behave differently than pools using a token
   const isBnbPool = poolCategory === PoolCategory.BINANCE
   const { t } = useTranslation()
-  const allowance = userData?.allowance ? new BigNumber(userData.allowance) : BIG_ZERO
+  // const allowance = userData?.allowance ? new BigNumber(userData.allowance) : BIG_ZERO
   // const stakingTokenBalance = userData?.stakingTokenBalance ? new BigNumber(userData.stakingTokenBalance) : BIG_ZERO
   // const earnings = userData?.pendingReward ? new BigNumber(userData.pendingReward) : BIG_ZERO
   const needsApproval = !isApproved && !isBnbPool

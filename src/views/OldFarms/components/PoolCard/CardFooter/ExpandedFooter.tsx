@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import Web3 from 'web3'
+import React from 'react'
+// import Web3 from 'web3'
 import BigNumber from 'bignumber.js'
 import styled from 'styled-components'
 import { getBalanceNumber } from 'utils/formatBalance'
@@ -23,9 +23,9 @@ import { getAddress } from 'utils/addressHelpers'
 import { registerToken } from 'utils/wallet'
 import Balance from 'components/Balance'
 import { getWeb3NoAccount } from 'utils/web3'
-import { AbiItem } from 'web3-utils'
+// import { AbiItem } from 'web3-utils'
 import { BIG_ZERO } from 'utils/bigNumber'
-import useRefresh from 'hooks/useRefresh'
+// import useRefresh from 'hooks/useRefresh'
 
 /* eslint-disable react/require-default-props */
 interface ExpandedFooterProps {

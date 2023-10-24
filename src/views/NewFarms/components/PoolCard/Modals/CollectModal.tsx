@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   Modal,
   Text,
@@ -11,23 +11,23 @@ import {
   HelpIcon,
   useTooltip,
 } from '@pancakeswap/uikit'
-import { useWeb3React } from '@web3-react/core'
+// import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
-import useTheme from 'hooks/useTheme'
+// import useTheme from 'hooks/useTheme'
 import { Pool } from 'state/types'
-import { AbiItem } from 'web3-utils'
-import { getAddress } from 'utils/addressHelpers'
-import { getWeb3NoAccount } from 'utils/web3'
-import { useSousHarvestFarms } from 'hooks/useHarvest'
+// import { AbiItem } from 'web3-utils'
+// import { getAddress } from 'utils/addressHelpers'
+// import { getWeb3NoAccount } from 'utils/web3'
+// import { useSousHarvestFarms } from 'hooks/useHarvest'
 import { useSousStakeFarms } from 'hooks/useStake'
-import useToast from 'hooks/useToast'
+// import useToast from 'hooks/useToast'
 import { Token } from 'config/constants/types'
-import useWeb3 from 'hooks/useWeb3'
-import { useSousChefV2Farms } from 'hooks/useContract'
+// import useWeb3 from 'hooks/useWeb3'
+// import { useSousChefV2Farms } from 'hooks/useContract'
 import { useSousUnstakeFarms } from 'hooks/useUnstake'
 import { ToastError, ToastSuccess } from 'style/Toasts'
 import { toast } from 'react-toastify'
-import { SmartChefABI } from '../../../helpers'
+// import { SmartChefABI } from '../../../helpers'
 
 /* eslint-disable react/require-default-props */
 interface CollectModalProps {
@@ -46,6 +46,7 @@ const CollectModal: React.FC<CollectModalProps> = ({
   formattedBalance,
   fullBalance,
   earningToken,
+  // eslint-disable-next-line
   earningsDollarValue,
   sousId,
   pool,
@@ -54,15 +55,16 @@ const CollectModal: React.FC<CollectModalProps> = ({
   onDismiss,
 }) => {
   const { t } = useTranslation()
-  const { theme } = useTheme()
-  const { toastSuccess, toastError } = useToast()
-  const { onReward, claimRewards } = useSousHarvestFarms(sousId, isBnbPool)
+  // const { theme } = useTheme()
+  // const { toastSuccess, toastError } = useToast()
+  // const { onReward, claimRewards } = useSousHarvestFarms(sousId, isBnbPool)
+  // eslint-disable-next-line
   const { onUnstake, unStakeInFarm } = useSousUnstakeFarms(sousId, pool.enableEmergencyWithdraw)
-  const { account } = useWeb3React()
+  // const { account } = useWeb3React()
   const { onStake } = useSousStakeFarms(sousId, isBnbPool)
   const [pendingTx, setPendingTx] = useState(false)
   const [shouldCompound, setShouldCompound] = useState(isCompoundPool)
-  const web3 = useWeb3()
+  // const web3 = useWeb3()
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <>
@@ -104,6 +106,7 @@ const CollectModal: React.FC<CollectModalProps> = ({
         setPendingTx(false)
         onDismiss()
       } catch (e) {
+        // eslint-disable-next-line
         console.log(e)
         toast.error(ToastError(t('Canceled'), t('Please try again and confirm the transaction.')))
         setPendingTx(false)

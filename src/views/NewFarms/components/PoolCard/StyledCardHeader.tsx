@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardHeader, Heading, Text, Flex, Image } from '@pancakeswap/uikit'
+import { CardHeader, Heading, Text, Flex } from '@pancakeswap/uikit'
 import { Pool } from 'state/types'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
@@ -21,19 +21,21 @@ const StyledCardHeader: React.FC<{
 }> = ({
   earningTokenSymbol,
   stakingTokenSymbol,
+  // eslint-disable-next-line
   pool,
   isFinished = false,
   isAutoVault = false,
+  // eslint-disable-next-line
   isStaking = false,
   isPromotedPool = false,
 }) => {
   const { t } = useTranslation()
-  const poolImageSrc = isAutoVault
-    ? `cake-cakevault.svg`
-    : `${earningTokenSymbol}-${stakingTokenSymbol}.svg`.toLocaleLowerCase()
+  // const poolImageSrc = isAutoVault
+  //   ? `cake-cakevault.svg`
+  //   : `${earningTokenSymbol}-${stakingTokenSymbol}.svg`.toLocaleLowerCase()
   const isSokuPool = earningTokenSymbol === 'SOKU' && stakingTokenSymbol === 'SOKU'
-  const background = isStaking ? 'bubblegum' : 'cardHeader'
-  const farmImage = `${stakingTokenSymbol}.png`.toLocaleLowerCase()
+  // const background = isStaking ? 'bubblegum' : 'cardHeader'
+  // const farmImage = `${stakingTokenSymbol}.png`.toLocaleLowerCase()
 
   const getHeadingPrefix = () => {
     if (isAutoVault) {

@@ -1,11 +1,11 @@
 import React from 'react'
-import { CardHeader, Heading, Text, Flex, Image } from '@pancakeswap/uikit'
+import { CardHeader, Heading, Text, Flex } from '@pancakeswap/uikit'
 import { Pool } from 'state/types'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 
 const Wrapper = styled(CardHeader)<{ isFinished?: boolean; background?: string; isPromotedPool?: boolean }>`
-  background: ${({ isFinished, background, theme }) => (isFinished ? theme.colors.backgroundDisabled : '#f9f9fa')};
+  background: ${({ isFinished, theme }) => (isFinished ? theme.colors.backgroundDisabled : '#f9f9fa')};
   border-radius: 7px 7px 0 0;
 `
 
@@ -28,12 +28,12 @@ const StyledCardHeader: React.FC<{
   isPromotedPool = false,
 }) => {
   const { t } = useTranslation()
-  const poolImageSrc = isAutoVault
-    ? `cake-cakevault.svg`
-    : `${earningTokenSymbol}-${stakingTokenSymbol}.svg`.toLocaleLowerCase()
+  // const poolImageSrc = isAutoVault
+  //   ? `cake-cakevault.svg`
+  //   : `${earningTokenSymbol}-${stakingTokenSymbol}.svg`.toLocaleLowerCase()
   const isSokuPool = earningTokenSymbol === 'SOKU' && stakingTokenSymbol === 'SOKU'
-  const background = isStaking ? 'bubblegum' : 'cardHeader'
-  const farmImage = `${stakingTokenSymbol}.png`.toLocaleLowerCase()
+  // const background = isStaking ? 'bubblegum' : 'cardHeader'
+  // const farmImage = `${stakingTokenSymbol}.png`.toLocaleLowerCase()
 
   const getHeadingPrefix = () => {
     if (isAutoVault) {

@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Modal, Text, Flex, Image, Button, BalanceInput, AutoRenewIcon, Link } from '@pancakeswap/uikit'
-import Web3 from 'web3'
+import { Modal, Text, Flex, Button, BalanceInput, AutoRenewIcon, Link } from '@pancakeswap/uikit'
+// import Web3 from 'web3'
 import { useTranslation } from 'contexts/Localization'
 import { BASE_EXCHANGE_URL } from 'config'
 import { useSousStakeFarms } from 'hooks/useStake'
 import { useSousUnstakeFarms } from 'hooks/useUnstake'
 import { ToastError, ToastSuccess } from 'style/Toasts'
 import { toast } from 'react-toastify'
-import { AbiItem } from 'web3-utils'
-import { getAddress } from 'utils/addressHelpers'
-import { useWeb3React } from '@web3-react/core'
-import { getWeb3NoAccount } from 'utils/web3'
-import useTheme from 'hooks/useTheme'
+// import { AbiItem } from 'web3-utils'
+// import { getAddress } from 'utils/addressHelpers'
+// import { useWeb3React } from '@web3-react/core'
+// import { getWeb3NoAccount } from 'utils/web3'
+// import useTheme from 'hooks/useTheme'
 import useToast from 'hooks/useToast'
 import BigNumber from 'bignumber.js'
 import { getFullDisplayBalance, formatNumber, getDecimalAmount } from 'utils/formatBalance'
@@ -47,13 +47,16 @@ const StakeModal: React.FC<StakeModalProps> = ({
   const { sousId, stakingToken, userData, stakingLimit, earningToken } = pool
 
   const { t } = useTranslation()
-  const { theme } = useTheme()
-  const { account } = useWeb3React()
-  const web3 = getWeb3NoAccount()
+  // const { theme } = useTheme()
+  // const { account } = useWeb3React()
+  // const web3 = getWeb3NoAccount()
   // const newWeb3 = new Web3(Web3.givenProvider)
 
+  // eslint-disable-next-line
   const { onStake, stakeInFarm } = useSousStakeFarms(sousId, isBnbPool)
+  // eslint-disable-next-line
   const { onUnstake, unStakeInFarm } = useSousUnstakeFarms(sousId, pool.enableEmergencyWithdraw)
+  // eslint-disable-next-line
   const { toastSuccess, toastError } = useToast()
   const [pendingTx, setPendingTx] = useState(false)
   const [stakeAmount, setStakeAmount] = useState('')

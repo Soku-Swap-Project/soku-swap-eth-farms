@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import { useTable, Button, ChevronUpIcon, ColumnType } from '@pancakeswap/uikit'
+import { useTable, ColumnType } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 import Row, { RowProps } from './Row'
@@ -9,6 +9,7 @@ export interface ITableProps {
   data: RowProps[]
   columns: ColumnType<RowProps>[]
   userDataReady: boolean
+  // eslint-disable-next-line
   sortColumn?: string
 }
 

@@ -17,12 +17,13 @@ interface ApprovalActionProps {
 }
 
 const ApprovalAction: React.FC<ApprovalActionProps> = ({ pool, isLoading = false, approved }) => {
+  // eslint-disable-next-line
   const { sousId, stakingToken, earningToken } = pool
   const { t } = useTranslation()
   const stakingTokenContract = useERC20(stakingToken.address ? getAddress(stakingToken.address) : '')
   const [requestedApproval, setRequestedApproval] = useState(false)
   const { onApprove } = useSousApproveFarms(stakingTokenContract, sousId)
-  const { toastSuccess, toastError } = useToast()
+  // const { toastSuccess, toastError } = useToast()
 
   const handleApprove = useCallback(async () => {
     try {

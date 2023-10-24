@@ -1,49 +1,49 @@
 import React from 'react'
-import styled from 'styled-components'
-import ToggleButton from '@mui/material/ToggleButton'
-import { useRouteMatch, Link } from 'react-router-dom'
+// import styled from 'styled-components'
+// import ToggleButton from '@mui/material/ToggleButton'
+// import { useRouteMatch, Link } from 'react-router-dom'
 import {
-  ButtonMenu,
-  ButtonMenuItem,
-  Button,
-  HelpIcon,
-  Toggle,
+  // ButtonMenu,
+  // ButtonMenuItem,
+  // Button,
+  // HelpIcon,
+  // Toggle,
   Text,
   Flex,
-  NotificationDot,
+  // NotificationDot,
   Link as UiKitLink,
 } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { ToggleSwitch } from 'components/ToggleSwitch'
 
-const ButtonText = styled(Text)`
-  display: none;
-  ${({ theme }) => theme.mediaQueries.lg} {
-    display: block;
-  }
-`
+// const ButtonText = styled(Text)`
+//   display: none;
+//   ${({ theme }) => theme.mediaQueries.lg} {
+//     display: block;
+//   }
+// `
 
-const StyledLink = styled(UiKitLink)`
-  width: 100%;
+// const StyledLink = styled(UiKitLink)`
+//   width: 100%;
 
-  &:hover {
-    text-decoration: none;
-  }
-`
+//   &:hover {
+//     text-decoration: none;
+//   }
+// `
 
-const StyledButtonMenu = styled(ButtonMenu)`
-  border: none;
-  background: transparent;
-`
+// const StyledButtonMenu = styled(ButtonMenu)`
+//   border: none;
+//   background: transparent;
+// `
 
 const PoolTabButtons = ({ stakedOnly, setStakedOnly, hasStakeInFinishedPools }) => {
-  const { url, isExact } = useRouteMatch()
+  // const { url, isExact } = useRouteMatch()
   const { t } = useTranslation()
 
   const pathname = window.location.pathname
   const newUrl = pathname.replace(/\/?$/, '/')
 
-  const isActive = pathname === newUrl
+  // const isActive = pathname === newUrl
 
   return (
     <Flex alignItems="center" justifyContent="center" mb="32px">

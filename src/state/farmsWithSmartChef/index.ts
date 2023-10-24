@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import farmsConfig from 'config/constants/farmsWithSmartChef'
 import { BIG_ZERO } from 'utils/bigNumber'
-import { PoolsState as FarmsState, Pool as Farm, CakeVault, VaultFees, VaultUser } from 'state/types'
+import { PoolsState as FarmsState, Pool as Farm } from 'state/types'
 import { fetchFarmsBlockLimits, fetchFarmsStakingLimits, fetchFarmsTotalStaking } from './fetchPools'
 import {
   fetchFarmsV2Allowance,
