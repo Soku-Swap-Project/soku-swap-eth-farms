@@ -5,10 +5,10 @@ import { FarmWithStakedValue } from 'views/FarmsV2/components/FarmCard/FarmCard'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useHarvestV2 } from 'hooks/useHarvest'
 import { useTranslation } from 'contexts/Localization'
-import { usePriceBnbSuteku } from 'state/hooks'
+import { usePriceSutekuEth } from 'state/hooks'
 import { useCountUp } from 'react-countup'
 import { useWeb3React } from '@web3-react/core'
-
+import { ethPrice } from 'state/prices'
 import { ActionContainer, ActionTitles, Title, Subtle, ActionContent, Earned, Staked } from './styles'
 
 interface HarvestActionProps extends FarmWithStakedValue {
@@ -17,8 +17,12 @@ interface HarvestActionProps extends FarmWithStakedValue {
 
 const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userData, userDataReady }) => {
   const earningsBigNumber = new BigNumber(userData.earnings)
-  const sutekuPrice = usePriceBnbSuteku()
-  // console.log('Cake Price', sutekuPrice.toString())
+  // console.log(earningsBigNumber.toString(), 'earnings')
+  const sutekuPrice = usePriceSutekuEth()
+  // const priceOfEth = ethPrice()
+  // // const sutekuToString = sutekuPrice?.toString()
+  // // const sutekuToNumber = parseFloat(sutekuToString)
+  // // const sutekuUsd = sutekuToNumber * priceOfEth
   let earnings = 0
   let earningsBusd = 0
   let displayBalance = userDataReady ? earnings.toLocaleString() : <Skeleton width={60} />
@@ -30,6 +34,8 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userD
     earningsBusd = new BigNumber(earnings).multipliedBy(sutekuPrice).toNumber()
     displayBalance = earnings.toLocaleString()
   }
+
+  // console.log(sutekuUsd, 'sutekuUsd')
 
   const [pendingTx, setPendingTx] = useState(false)
   const { onReward } = useHarvestV2(pid)
@@ -62,6 +68,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userD
               {countUp > 0 && <Staked>~ ${countUp} USD</Staked>}
             </div>
             <Button
+              className="hover_shadow emphasize_swap_button"
               style={{ background: '#04bbfb' }}
               disabled={!earnings || pendingTx || !userDataReady}
               onClick={async () => {

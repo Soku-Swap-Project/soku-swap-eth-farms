@@ -126,7 +126,7 @@ export type TeamResponse = {
   1: string
   2: string
   3: string
-  4: boolean
+  5: boolean
 }
 
 export type TeamsById = {
@@ -309,6 +309,7 @@ export interface State {
   block: BlockState
   farms: FarmsState
   farmsV2: FarmsStateV2
+  farmsWithSmartChef: PoolsState
   prices: PriceState
   pools: PoolsState
   predictions: PredictionsState

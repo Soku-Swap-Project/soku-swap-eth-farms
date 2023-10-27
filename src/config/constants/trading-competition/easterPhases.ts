@@ -45,5 +45,5 @@ export const SmartContractPhases = {
   1: CompetitionPhases.LIVE,
   2: CompetitionPhases.FINISHED,
   3: CompetitionPhases.CLAIM,
-  4: CompetitionPhases.OVER,
+  5: CompetitionPhases.OVER,
 }

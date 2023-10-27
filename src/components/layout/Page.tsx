@@ -4,7 +4,7 @@ import { useTranslation } from 'contexts/Localization'
 import { Helmet } from 'react-helmet-async'
 import { useLocation } from 'react-router'
 import { DEFAULT_META, getCustomMeta } from 'config/constants/meta'
-import { usePriceCakeBusd } from 'state/hooks'
+import { usePriceSokuEth } from 'state/hooks'
 import Container from './Container'
 
 const StyledPage = styled(Container)`
@@ -26,7 +26,7 @@ const StyledPage = styled(Container)`
 const PageMeta = () => {
   const { t } = useTranslation()
   const { pathname } = useLocation()
-  const cakePriceUsd = usePriceCakeBusd()
+  const cakePriceUsd = usePriceSokuEth()
   // const cakePriceUsdDisplay = cakePriceUsd.eq(0)
   //   ? ''
   //   : `$${cakePriceUsd.toNumber().toLocaleString(undefined, {

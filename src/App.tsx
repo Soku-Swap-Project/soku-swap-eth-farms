@@ -8,7 +8,7 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import BigNumber from 'bignumber.js'
 import useEagerConnect from 'hooks/useEagerConnect'
-import { useFetchPriceList, useFetchPublicData } from 'state/hooks'
+import { useFetchPriceList, useFetchPublicData, useFetchPublicDataV2 } from 'state/hooks'
 import useAuth from 'hooks/useAuth'
 import detectEthereumProvider from '@metamask/detect-provider'
 import GlobalStyle from './style/Global'
@@ -23,14 +23,17 @@ import AccountModal from './components/AccountModal'
 import ClaimSokuModal from './components/ClaimSokuModal'
 import SlideOutMenu from './components/SlideOutMenu/SlideOutMenu'
 import ComingSoon from './views/ComingSoon'
+import NewVersionModal from './components/NewVersionModal'
+import NewFarms from './views/NewFarms'
+import OldFarms from './views/OldFarms'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 
-import './MobileFooter.css'
+// import './MobileFooter.css'
+import './styles/index.css'
 
 // Route-based code splitting
 // Only pool is included in the main bundle because of it's the most visited page
-const Farms = lazy(() => import('./views/Farms'))
 const FarmsV2 = lazy(() => import('./views/FarmsV2'))
 const NotFound = lazy(() => import('./views/NotFound'))
 
@@ -52,7 +55,7 @@ const loadNetwork = async () => {
       method: 'wallet_switchEthereumChain',
       params: [
         {
-          chainId: '0x4',
+          chainId: '0x1',
         },
       ],
     })
@@ -63,9 +66,9 @@ const loadNetwork = async () => {
         method: 'wallet_addEthereumChain',
         params: [
           {
-            chainId: '0x4',
+            chainId: '0x1',
             chainName: 'Ethereum Network',
-            rpcUrls: ['https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161/'],
+            rpcUrls: ['https://mainnet.infura.io/v3/'],
             nativeCurrency: {
               name: 'ETH',
               symbol: 'ETH',
@@ -82,13 +85,14 @@ const loadNetwork = async () => {
 const App: React.FC = () => {
   useEagerConnect()
   useFetchPublicData()
+  useFetchPublicDataV2()
   // useFetchProfile()
   useFetchPriceList()
 
-  useEffect(() => {
-    loadNetwork()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // useEffect(() => {
+  //   loadNetwork()
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [])
 
   const { account } = useWeb3React()
   const { login, logout } = useAuth()
@@ -104,7 +108,7 @@ const App: React.FC = () => {
     }
   }
 
-  const isMobile = window.innerWidth <= 500
+  const isMobile = window.innerWidth <= 1200
 
   return (
     <Router history={history}>
@@ -114,21 +118,24 @@ const App: React.FC = () => {
       {/* <Menu /> */}
       <SuspenseWithChunkError fallback={<PageLoader />}>
         <Switch>
-          {/* <Route exact path="/bsc/farms">
-            <Farms />
-          </Route> */}
-          <Route path="/eth/farms">
+          <Route exact path="/ethereum/farms">
             <FarmsV2 />
           </Route>
-          <Route path="/eth/staking/">
+          <Route exact path="/ethereum/farms-v2/">
+            <NewFarms />
+          </Route>
+          <Route exact path="/ethereum/farms-v2/history">
+            <OldFarms />
+          </Route>
+          <Route path="/ethereum/staking/">
             <Pools />
           </Route>
-          <Route path="/eth/bridge">
+          {/* <Route path="/eth/bridge">
             <ComingSoon />
-          </Route>
+          </Route> */}
           <Route component={NotFound} />
         </Switch>
-        <div className="connectWallet__options__MOBILE">
+        {/* <div className="connectWallet__options__MOBILE">
           <ul>
             {account ? (
               <li className="account__footer">
@@ -190,7 +197,8 @@ const App: React.FC = () => {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
+        {/* <NewVersionModal /> */}
       </SuspenseWithChunkError>
       <EasterEgg iterations={2} />
       <ToastContainer />

@@ -54,7 +54,13 @@ const Farm: React.FunctionComponent<FarmProps> = ({ image, label, pid }) => {
 
   return (
     <Container>
-      <IconImage src={`/images/farms/${image}.png`} alt="icon" width={40} height={40} mr="8px" />
+      <IconImage
+        src={pid === 1 ? `/images/farms/${image}.png` : 'https://i.ibb.co/dK7sncY/suteku-eth.png'}
+        alt="icon"
+        width={40}
+        height={40}
+        mr="8px"
+      />
       <div>
         {handleRenderFarming()}
         <Text bold style={{ textTransform: 'uppercase' }}>

@@ -26,7 +26,7 @@ let hodl_price
 const getSUKTEUPrice = async () => {
   try {
     const { data } = await axios.get(
-      `https://api.pancakeswap.info/api/v2/tokens/0x198800aF50914004A9E9D19cA18C0b24587a50cf`,
+      `https://api.pancakeswap.info/api/v2/tokens/0xc7230BADF274995F1933598c249c824fDE26F426`,
     )
     suteku_price = data.data.price
   } catch (error) {}
@@ -53,7 +53,7 @@ const getHODLPrice = async () => {
 const getSokuPrice = async () => {
   try {
     const { data } = await axios.get(
-      `https://api.pancakeswap.info/api/v2/tokens/0x0e4b5ea0259eb3d66e6fcb7cc8785817f8490a53`,
+      `https://api.pancakeswap.info/api/v2/tokens/0x4C3A8ECeB656Ec63eaE80a4ebD565E4887DB6160`,
     )
 
     // console.log(data, 'data')
@@ -61,13 +61,13 @@ const getSokuPrice = async () => {
   } catch (error) {}
 }
 
-getSUKTEUPrice()
-getYummyPrice()
+// getSUKTEUPrice()
+// getYummyPrice()
 getSokuPrice()
-getHODLPrice()
+// getHODLPrice()
 
-export const bnbPrice = () => {
-  const price = useTokenPrice('binance-coin')
+export const ethPrice = () => {
+  const price = useTokenPrice('ethereum')
   return price
 }
 
@@ -76,19 +76,13 @@ export const sokuPrice = () => {
   return price
 }
 
-export const getPrices = async () => {
-  const res = await CoinGeckoClient.coins.markets({ ids: ['bitcoin', 'sokuswap', 'binancecoin', 'tether'] })
-  const resArray = JSON.stringify(res.data)
-  // console.log('test', resArray)
-}
-
 // Thunks
 export const fetchPrices = createAsyncThunk<PriceApiThunk>('prices/fetch', async () => {
   const response = await fetch('https://api.pancakeswap.info/api/v2/tokens')
   const data = (await response.json()) as PriceApiResponse
 
   const suteku = {
-    '0x198800aF50914004A9E9D19cA18C0b24587a50cf': {
+    '0xc7230BADF274995F1933598c249c824fDE26F426': {
       name: 'SUTEKU Soku Rewards Token',
       symbol: 'SUTEKU',
       price: suteku_price || 0,
@@ -97,7 +91,7 @@ export const fetchPrices = createAsyncThunk<PriceApiThunk>('prices/fetch', async
   }
 
   const soku = {
-    '0x0e4b5ea0259eb3d66e6fcb7cc8785817f8490a53': {
+    '0x4C3A8ECeB656Ec63eaE80a4ebD565E4887DB6160': {
       name: 'Soku',
       symbol: 'SOKU',
       price: soku_price || 0,

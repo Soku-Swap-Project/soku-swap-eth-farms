@@ -9,9 +9,9 @@ import { Team } from 'config/constants/types'
 import Nfts from 'config/constants/nfts'
 import { getWeb3NoAccount } from 'utils/web3'
 import { getBalanceAmount } from 'utils/formatBalance'
-import { BIG_ZERO } from 'utils/bigNumber'
+import { BIG_NINE, BIG_ZERO } from 'utils/bigNumber'
 import useRefresh from 'hooks/useRefresh'
-import { filterFarmsByQuoteToken } from 'utils/farmsPriceHelpers'
+import { filterFarmsByLpToken, filterFarmsByQuoteToken } from 'utils/farmsPriceHelpers'
 import {
   fetchFarmsPublicDataAsync,
   fetchFarmsPublicDataAsyncV2,
@@ -21,6 +21,8 @@ import {
   // fetchCakeVaultUserData,
   // fetchCakeVaultFees,
   setBlock,
+  fetchFarmsV2PublicDataAsync as fetchFarmSmartChefPublicDataAsync,
+  fetchFarmsV2UserDataAsync as fetchFarmSmartChefUserDataAsync,
 } from './actions'
 import {
   State,
@@ -32,15 +34,20 @@ import {
   PriceState,
   FarmsState,
   FarmsStateV2,
+  FarmV2,
 } from './types'
 // import { fetchProfile } from './profile'
 // import { fetchTeam, fetchTeams } from './teams'
 // import { fetchAchievements } from './achievements'
-import { fetchPrices, bnbPrice } from './prices'
+import { fetchPrices, ethPrice } from './prices'
 import { fetchWalletNfts } from './collectibles'
 // import { getCanClaim } from './predictions/helpers'
 import { transformPool } from './pools/helpers'
+import { transformPool as transformFarm } from './farmsWithSmartChef/helpers'
+
 import { fetchPoolsStakingLimitsAsync } from './pools'
+import { fetchFarmsV2StakingLimitsAsync } from './farmsWithSmartChef'
+import useSutekuPrice from 'hooks/useSutekuPrice'
 
 const web3 = getWeb3NoAccount()
 
@@ -74,13 +81,13 @@ export const useFetchPublicDataV2 = () => {
   const { slowRefresh } = useRefresh()
   const web3 = getWeb3NoAccount()
   useEffect(() => {
-    const fetchPoolsPublicData = async () => {
+    const fetchFarmsPublicData = async () => {
       const blockNumber = await web3.eth.getBlockNumber()
-      dispatch(fetchPoolsPublicDataAsync(blockNumber))
+      dispatch(fetchFarmSmartChefPublicDataAsync(blockNumber))
     }
     dispatch(fetchFarmsPublicDataAsyncV2())
-    fetchPoolsPublicData()
-    dispatch(fetchPoolsStakingLimitsAsync())
+    fetchFarmsPublicData()
+    dispatch(fetchFarmsV2StakingLimitsAsync())
   }, [dispatch, slowRefresh, web3])
 
   useEffect(() => {
@@ -158,10 +165,18 @@ export const useFarmFromTokenSymbolV2 = (tokenSymbol: string, preferredQuoteToke
   return filteredFarm
 }
 
+export const useFarmFromTokenSymbolSmartChef = (tokenSymbol: any, preferredQuoteTokens?: string[]): Pool => {
+  const farms = useSelector((state: State) =>
+    state.farmsWithSmartChef.data.filter((farm) => farm.stakingToken === tokenSymbol),
+  )
+  const filteredFarm = filterFarmsByLpToken(farms, preferredQuoteTokens)
+  return filteredFarm
+}
+
 export const useBusdPriceFromPid = (pid: number): BigNumber => {
   const farm = useFarmFromPid(pid)
-  const bnbPriceBusd = usePriceBnbBusd()
-  // console.log('bnb price', bnbPriceBusd)
+  const ethPriceBusd = usePriceBnbBusd()
+  // console.log('bnb price', ethPriceBusd)
   const quoteTokenFarm = useFarmFromTokenSymbol(farm?.quoteToken?.symbol)
 
   // Catch in case a farm isn't found
@@ -177,11 +192,11 @@ export const useBusdPriceFromPid = (pid: number): BigNumber => {
   if (farm.quoteToken.symbol === 'SOKU') {
     // console.log('farm', farm.tokenPriceVsQuote)
 
-    return bnbPriceBusd.gt(0) ? bnbPriceBusd.times(farm.tokenPriceVsQuote) : BIG_ZERO
+    return ethPriceBusd.gt(0) ? ethPriceBusd.times(farm.tokenPriceVsQuote) : BIG_ZERO
   }
 
   if (farm.quoteToken.symbol === 'wBNB') {
-    return bnbPriceBusd.gt(0) ? bnbPriceBusd.times(farm.tokenPriceVsQuote) : BIG_ZERO
+    return ethPriceBusd.gt(0) ? ethPriceBusd.times(farm.tokenPriceVsQuote) : BIG_ZERO
   }
 
   // Possible alternative farm quoteTokens:
@@ -191,7 +206,7 @@ export const useBusdPriceFromPid = (pid: number): BigNumber => {
   // we find the pBTC farm (pBTC - BNB)'s quote token - BNB
   // from the BNB - pBTC BUSD price, we can calculate the PNT - BUSD price
   if (quoteTokenFarm?.quoteToken?.symbol === 'wBNB') {
-    const quoteTokenInBusd = bnbPriceBusd.gt(0) && bnbPriceBusd.times(quoteTokenFarm.tokenPriceVsQuote)
+    const quoteTokenInBusd = ethPriceBusd.gt(0) && ethPriceBusd.times(quoteTokenFarm.tokenPriceVsQuote)
     return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote).times(quoteTokenInBusd) : BIG_ZERO
   }
 
@@ -199,6 +214,52 @@ export const useBusdPriceFromPid = (pid: number): BigNumber => {
     const quoteTokenInBusd = quoteTokenFarm.tokenPriceVsQuote
     return quoteTokenInBusd ? new BigNumber(farm.tokenPriceVsQuote).times(quoteTokenInBusd) : BIG_ZERO
   }
+
+  // Catch in case token does not have immediate or once-removed BUSD/wBNB quoteToken
+  return BIG_ZERO
+}
+
+export const useBusdPriceFromPidV2 = (pid: number): BigNumber => {
+  const farm = useFarmFromPidV2(pid)
+  const bnbPriceBusd = usePriceBnbBusd()
+  const sokuPrice = usePriceSokuEth()
+  const quoteTokenFarm = useFarmFromTokenSymbolSmartChef(farm?.quoteToken?.symbol)
+
+  // Catch in case a farm isn't found
+  if (!farm) {
+    return null
+  }
+
+  // With a quoteToken of BUSD or wBNB, it is straightforward to return the token price.
+  if (farm.quoteToken.symbol === 'ETH') {
+    return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote) : BIG_ZERO
+  }
+
+  if (farm.quoteToken.symbol === 'SOKU') {
+    // console.log('farm', farm.tokenPriceVsQuote)
+
+    return (sokuPrice as BigNumber).isGreaterThan(0) ? sokuPrice.times(farm.tokenPriceVsQuote) : BIG_ZERO
+  }
+
+  if (farm.quoteToken.symbol === 'wBNB') {
+    return (bnbPriceBusd as BigNumber).isGreaterThan(0) ? bnbPriceBusd.times(farm.tokenPriceVsQuote) : BIG_ZERO
+  }
+
+  // Possible alternative farm quoteTokens:
+  // UST (i.e. MIR-UST), pBTC (i.e. PNT-pBTC), BTCB (i.e. bBADGER-BTCB), ETH (i.e. SUSHI-ETH)
+  // If the farm's quote token isn't BUSD or wBNB, we then use the quote token, of the original farm's quote token
+  // i.e. for farm PNT - pBTC
+  // we find the pBTC farm (pBTC - BNB)'s quote token - BNB
+  // from the BNB - pBTC BUSD price, we can calculat the PNT - BUSD price
+  // if (quoteTokenFarm?.quoteToken?.symbol === 'wBNB') {
+  //   const quoteTokenInBusd = bnbPriceBusd?.toNumber() > 0 && bnbPriceBusd.times(quoteTokenFarm.tokenPriceVsQuote)
+  //   return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote).times(quoteTokenInBusd) : BIG_ZERO
+  // }
+
+  // if (quoteTokenFarm?.quoteToken?.symbol === 'BUSD') {
+  //   const quoteTokenInBusd = quoteTokenFarm.tokenPriceVsQuote
+  //   return quoteTokenInBusd ? new BigNumber(farm.tokenPriceVsQuote).times(quoteTokenInBusd) : BIG_ZERO
+  // }
 
   // Catch in case token does not have immediate or once-removed BUSD/wBNB quoteToken
   return BIG_ZERO
@@ -223,6 +284,32 @@ export const useLpTokenPrice = (symbol: string) => {
     // Divide total value of all tokens, by the number of LP tokens
     const totalLpTokens = getBalanceAmount(farm.lpTotalSupply)
     lpTokenPrice = overallValueOfAllTokensInFarm.div(totalLpTokens)
+  }
+
+  return lpTokenPrice
+}
+
+export const useLpTokenPriceV2 = (symbol: string) => {
+  const farm = useFarmFromLpSymbolV2(symbol)
+  const farmTokenPriceInUsd = useBusdPriceFromPidV2(farm.pid)
+  const sokuPrice = usePriceSokuEth()
+  const priceOfEth = ethPrice()
+  let lpTokenPrice = BIG_ZERO
+
+  if (farm.lpTotalSupply && farm.lpTotalInQuoteToken && farm.lpSymbol === 'SOKU-SMUDGE LP') {
+    // Create an instance of the contract with the ABI and contract address
+    const totalValueOfSokuInFarm = sokuPrice.times(farm.quoteTokenAmountTotal)
+    lpTokenPrice = totalValueOfSokuInFarm.times(2).div(getBalanceAmount(farm.lpTotalSupply))
+  } else if (farm.lpTotalSupply && farm.lpTotalInQuoteToken && farm.lpSymbol !== 'SOKU-SMUDGE LP') {
+    // Total value of base token in LP
+    const valueOfBaseTokenInFarm = farmTokenPriceInUsd.times(farm.tokenAmountTotal)
+    // Double it to get overall value in LP
+    const overallValueOfAllTokensInFarm = valueOfBaseTokenInFarm.times(2).times(priceOfEth)
+    // Divide total value of all tokens, by the number of LP tokens
+    const totalLpTokens = getBalanceAmount(farm.lpTotalSupply)
+    lpTokenPrice = overallValueOfAllTokensInFarm.div(totalLpTokens)
+
+    // https://dailydefi.org/articles/lp-token-value-calculation/
   }
 
   return lpTokenPrice
@@ -335,6 +422,26 @@ export const useCakeVault = () => {
   }
 }
 
+// Farms With SmartChef
+
+export const useFarmsWithSmartChef = (account): Pool[] => {
+  const { fastRefresh } = useRefresh()
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    if (account) {
+      dispatch(fetchFarmSmartChefUserDataAsync(account))
+    }
+  }, [account, dispatch, fastRefresh])
+
+  const farms = useSelector((state: State) => state.farmsWithSmartChef.data)
+  return farms.map(transformFarm)
+}
+
+export const useFarmWithSmartChefFromPid = (sousId: number): Pool => {
+  const farm = useSelector((state: State) => state.farmsWithSmartChef.data.find((p) => p.sousId === sousId))
+  return transformFarm(farm)
+}
+
 // Profile
 
 // export const useFetchProfile = () => {
@@ -429,10 +536,16 @@ let price
 
 export const useTokenPrice = (token: string) => {
   const [tokenPrice, setTokenPrice] = useState(0)
+  const { slowRefresh } = useRefresh()
+
   useEffect(() => {
     const getTokenPrice = async (token_symbol) => {
       try {
-        const res = await CoinGeckoClient.coins.fetch(token_symbol)
+        const res = await CoinGeckoClient.coins.fetch(token_symbol, {
+          headers: {
+            'X-CoinGecko-API-Key': 'CG-zkP5j8VkGrkSvGp3LF8Nvmh2',
+          },
+        })
         const data = await res.data
         const price = data?.market_data?.current_price['usd']
 
@@ -441,8 +554,9 @@ export const useTokenPrice = (token: string) => {
         console.log(e)
       }
     }
+
     getTokenPrice(token)
-  }, [])
+  }, [slowRefresh])
 
   return tokenPrice
 }
@@ -468,46 +582,62 @@ export const useGetApiPrice = (address: string) => {
     return 0
   }
 
-  console.log(prices[address.toLowerCase()])
-
   return prices[address.toLowerCase()]
 }
 
 export const usePriceBnbBusd = (): BigNumber => {
-  // const bnbBusdFarm = useFarmFromPid(1)
-  // return bnbBusdFarm.tokenPriceVsQuote ? new BigNumber(1).div(bnbBusdFarm.tokenPriceVsQuote) : BIG_ZERO
+  const ethPrice = useTokenPrice('ethereum')
 
-  // return bnbBusdFarm.tokenPriceVsQuote ? bnbBusdFarm.tokenPriceVsQuote : BIG_ZERO
-  return BIG_ZERO
+  return new BigNumber(ethPrice)
 }
 
-export const usePriceCakeBusd = (): BigNumber => {
-  // const cakeBnbFarm = useFarmFromPid(2)
-  // const bnbBusdPrice = usePriceBnbBusd()
+export const usePriceSokuEth = (): BigNumber => {
+  const sokuFarm = useFarmFromPidV2(1)
+  // console.log(sokuFarm, 'farm')
+  const priceOfEth = ethPrice()
 
-  // console.log(cakeBnbFarm)
+  const sokuPriceETH = sokuFarm.tokenPriceVsQuote ? sokuFarm.tokenPriceVsQuote : BIG_ZERO
+  const sokuPriceUsd = Number(sokuPriceETH) * Number(priceOfEth)
+  const sokuPriceETHAsBN = new BigNumber(sokuPriceUsd)
 
-  // const cakeBusdPrice = cakeBnbFarm.tokenPriceVsQuote ? bnbBusdPrice.times(cakeBnbFarm.tokenPriceVsQuote) : BIG_ZERO
-
-  // const cakeBusdPrice = cakeBnbFarm.tokenPriceVsQuote ? cakeBnbFarm.tokenPriceVsQuote : BIG_ZERO
-  const cakeBusdPrice = BIG_ZERO
-
-  return cakeBusdPrice
+  return sokuPriceETHAsBN
 }
 
-export const usePriceBnbSuteku = (): BigNumber => {
-  // const sutekuFarm = useFarmFromPid(11)
-  // const soku_price = usePriceCakeBusd()
+export const usePriceSutekuEth = (): BigNumber => {
+  const sutekuFarm = useFarmFromPidV2(2)
+  const soku_price = usePriceSokuEth()
+  const priceOfEth = ethPrice()
 
-  // console.log('farm', sutekuFarm)
+  const sutekuPriceBSC = useSutekuPrice()
+  const sutekuPriceBSCAsBN = new BigNumber(sutekuPriceBSC)
 
-  // const sutekuPrice = sutekuFarm.tokenPriceVsQuote ? sutekuFarm.tokenPriceVsQuote : BIG_ZERO
+  const sutekuPriceETH = sutekuFarm.tokenPriceVsQuote ? sutekuFarm.tokenPriceVsQuote : BIG_ZERO
 
-  const sutekuPrice = BIG_ZERO
+  const sutekuPriceUsd = Number(sutekuPriceETH) * Number(priceOfEth)
+  const sutekuPriceETHAsBN = new BigNumber(sutekuPriceUsd)
+  const averageSutekuPrice = sutekuPriceBSCAsBN.plus(sutekuPriceETHAsBN).div(new BigNumber(2))
 
-  // const price = new BigNumber(sutekuPrice).multipliedBy(soku_price)
-  // console.log(tmuFarm, 'tmu2')
-  return sutekuPrice
+  return averageSutekuPrice
+}
+
+export const usePriceHobiEth = (): BigNumber => {
+  const hobiFarm = useFarmFromPidV2(3)
+
+  const hobiPrice = hobiFarm.tokenPriceVsQuote ? hobiFarm.tokenPriceVsQuote : BIG_ZERO
+
+  return new BigNumber(1)
+}
+
+export const usePriceSodatsuEth = (): BigNumber => {
+  const sodatsuFarm = useFarmFromPidV2(8)
+  const priceOfEth = ethPrice()
+
+  const sodatsuPriceETH = sodatsuFarm.tokenPriceVsQuote ? sodatsuFarm.tokenPriceVsQuote : BIG_ZERO
+
+  const sodatsuPriceUsd = Number(sodatsuPriceETH) * Number(priceOfEth)
+  const sodatsuPriceETHAsBN = new BigNumber(sodatsuPriceUsd)
+
+  return sodatsuPriceETHAsBN
 }
 
 // Block

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { Button, useModal, IconButton, AddIcon, MinusIcon, Skeleton } from '@pancakeswap/uikit'
+import { Button, useModal, IconButton, AddIcon, MinusIcon } from '@pancakeswap/uikit'
 import { useLocation } from 'react-router-dom'
 import UnlockButton from 'components/UnlockButton'
 import { useWeb3React } from '@web3-react/core'
@@ -8,7 +8,7 @@ import { useFarmUserV2 } from 'state/hooks'
 import { FarmWithStakedValue } from 'views/FarmsV2/components/FarmCard/FarmCard'
 import { useTranslation } from 'contexts/Localization'
 import { useApproveV2 } from 'hooks/useApprove'
-import { getBep20Contract } from 'utils/contractHelpers'
+import { getBep20Contract, getLpContract } from 'utils/contractHelpers'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
@@ -17,7 +17,7 @@ import { useUnstakeV2 } from 'hooks/useUnstake'
 import useWeb3 from 'hooks/useWeb3'
 import DepositModal from '../../DepositModal'
 import WithdrawModal from '../../WithdrawModal'
-import { ActionContainer, ActionTitles, ActionContent, Earned, Title, Subtle } from './styles'
+import { ActionContainer, ActionTitles, ActionContent, Earned, Title, Subtle, ActionContentNoAccount } from './styles'
 
 const IconButtonWrapper = styled.div`
   display: flex;
@@ -48,7 +48,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
 
   const isApproved = account && allowance && allowance.isGreaterThan(0)
 
-  const lpAddress = lpAddresses[process.env.REACT_APP_CHAIN_ID]
+  const lpAddress = lpAddresses[1]
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
     quoteTokenAddress: quoteToken.address,
     tokenAddress: token.address,
@@ -69,9 +69,9 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
   const [onPresentWithdraw] = useModal(<WithdrawModal max={stakedBalance} onConfirm={onUnstake} tokenName={lpSymbol} />)
 
   const lpContract = getBep20Contract(lpAddress, web3)
+  const testLp = getLpContract(lpAddress, web3)
 
   const { onApprove } = useApproveV2(lpContract)
-
   const handleApprove = useCallback(async () => {
     try {
       setRequestedApproval(true)
@@ -82,15 +82,17 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
     }
   }, [onApprove])
 
+  const isMobile = window.innerWidth <= 1200
+
   if (!account) {
     return (
       <ActionContainer>
         {/* <ActionTitles>
           <Subtle>{t('Start Farming').toUpperCase()}</Subtle>
         </ActionTitles> */}
-        <ActionContent>
-          <UnlockButton width="100%" />
-        </ActionContent>
+        <ActionContentNoAccount>
+          <UnlockButton width={isMobile ? '100%' : '50%'} />
+        </ActionContentNoAccount>
       </ActionContainer>
     )
   }
@@ -109,6 +111,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
             </div>
             <IconButtonWrapper>
               <IconButton
+                className="hover_shadow emphasize_swap_button"
                 style={{ background: 'transparent', border: '2px solid #05195a' }}
                 onClick={onPresentWithdraw}
                 mr="6px"
@@ -116,6 +119,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
                 <MinusIcon color="#05195a" width="14px" />
               </IconButton>
               <IconButton
+                className="hover_shadow emphasize_swap_button"
                 style={{ background: 'transparent', border: '2px solid #05195a' }}
                 onClick={onPresentDeposit}
                 disabled={['history', 'archived'].some((item) => location.pathname.includes(item))}
@@ -153,6 +157,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
         </ActionTitles>
         <ActionContent>
           <Button
+            className="hover_shadow emphasize_swap_button"
             style={{ background: '#04bbfb', borderRadius: '24px' }}
             width="100%"
             onClick={onPresentDeposit}
@@ -185,6 +190,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
       </ActionTitles> */}
       <ActionContent>
         <Button
+          className="hover_shadow emphasize_swap_button"
           width="100%"
           disabled={requestedApproval}
           onClick={handleApprove}

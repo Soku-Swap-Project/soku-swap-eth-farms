@@ -8,7 +8,7 @@ import { Image, Heading, RowType, Text } from '@pancakeswap/uikit'
 import styled from 'styled-components'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
-import { useGetApiPrices, usePriceBnbSuteku, useFarmsV2 } from 'state/hooks'
+import { useGetApiPrices, useFarmsV2 } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmUserDataAsyncV2 } from 'state/actions'
 import usePersistState from 'hooks/usePersistState'
@@ -28,10 +28,13 @@ import Table from './components/FarmTable/FarmTable'
 import SearchInput from './components/SearchInput'
 import { RowProps } from './components/FarmTable/Row'
 import { DesktopColumnSchema, ViewMode } from './components/types'
-import ToggleNew from 'views/FarmsV2/components/ToggleNew'
+import Toggle from 'components/Toggle'
+import ToggleNew from './components/ToggleNew'
+import { ethPrice } from 'state/prices'
 
 import './index.css'
-import Web3 from 'web3'
+import useSutekuPrice from 'hooks/useSutekuPrice'
+import { BIG_ZERO } from 'utils/bigNumber'
 
 const ControlContainer = styled.div`
   display: flex;
@@ -80,32 +83,6 @@ const FilterContainer = styled.div`
   }
 `
 
-const ViewControls = styled.div`
-  flex-wrap: wrap;
-  justify-content: space-between;
-  display: flex;
-  align-items: center;
-  width: 100%;
-
-  > div {
-    padding: 8px 0px;
-  }
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    justify-content: flex-start;
-    width: auto;
-
-    > div {
-      padding: 0;
-    }
-  }
-`
-
-const StyledImage = styled(Image)`
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 58px;
-`
 const NUMBER_OF_FARMS_VISIBLE = 12
 
 const Farms: React.FC = () => {
@@ -114,14 +91,23 @@ const Farms: React.FC = () => {
   const { pathname } = useLocation()
   const { t } = useTranslation()
   const { data: farmsLP, userDataLoaded } = useFarmsV2()
-  const cakePrice = usePriceBnbSuteku()
-
+  const cakePrice = BIG_ZERO
   const [query, setQuery] = useState('')
   const [viewMode, setViewMode] = usePersistState(ViewMode.TABLE, 'pancake_farm_view')
   const { account } = useWeb3React()
   const [sortOption, setSortOption] = useState('hot')
   const prices = useGetApiPrices()
   const Web3 = require('web3')
+  const priceOfEth = ethPrice()
+  // const sutekuToString = cakePrice?.toString()
+  // const sutekuToNumber = parseFloat(sutekuToString)
+  // const sutekuUsd = sutekuToNumber * priceOfEth
+  // const sutekuAsBigNumber = new BigNumber(sutekuUsd)
+
+  // const sutekuUsd = useSutekuPrice()
+  // const sutekuAsBigNumber = new BigNumber(sutekuUsd)
+
+  const sutekuPrice = BIG_ZERO
 
   const dispatch = useAppDispatch()
   const { fastRefresh } = useRefresh()
@@ -182,8 +168,8 @@ const Farms: React.FC = () => {
         }
 
         const quoteTokenPriceUsd = prices[getAddress(farm.quoteToken.address).toLowerCase()]
-        const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(quoteTokenPriceUsd)
-        const apr = isActive ? getV2FarmApr(farm.poolWeight, cakePrice, totalLiquidity) : 0
+        const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(priceOfEth)
+        const apr = isActive ? getV2FarmApr(farm.poolWeight, sutekuPrice, totalLiquidity) : 0
 
         return { ...farm, apr, liquidity: totalLiquidity }
       })
@@ -378,20 +364,21 @@ const Farms: React.FC = () => {
   return (
     <div style={{ paddingTop: '2.5rem' }} className="farm_heading">
       <PageHeader>
-        <Heading as="h1" color="white" mb="20px" style={{ fontSize: '3.25rem', marginBottom: '10px' }}>
+        <Heading as="h1" color="#05195a" mb="20px" style={{ fontSize: '3.25rem', marginBottom: '10px' }}>
           {t('Farms')}
         </Heading>
         <Heading
           scale="lg"
-          color="white"
-          style={{ opacity: '0.65', fontSize: '1.25rem', textAlign: 'center', padding: '8px 0px' }}
+          color="#05195a"
+          style={{ opacity: '0.85', fontSize: '1.25rem', textAlign: 'center', padding: '8px 0px' }}
         >
           {t('Stake Liquidity Pool (LP) tokens to earn SUTEKU!')}
         </Heading>
       </PageHeader>
 
       <Page>
-        {/* <ToggleNew /> */}
+        {/* <Toggle /> */}
+        <ToggleNew />
         <ControlContainer>
           <FilterContainer>
             <LabelWrapper>

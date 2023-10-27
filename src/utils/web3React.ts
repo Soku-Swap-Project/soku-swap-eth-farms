@@ -5,10 +5,11 @@ import { ConnectorNames } from '@pancakeswap/uikit'
 import Web3 from 'web3'
 import getNodeUrl from './getRpcUrl'
 
-const POLLING_INTERVAL = 12000
+// const POLLING_INTERVAL = 12000
 // Mainnet
 const rpcUrl = getNodeUrl()
-const chainId = parseInt(process.env.REACT_APP_CHAIN_ID, 10)
+const ethMain = '1'
+const chainId = parseInt(ethMain, 10)
 
 // Testnet
 // const chainId = 97
@@ -23,7 +24,7 @@ const walletconnect = new WalletConnectConnector({
   rpc: { [chainId]: rpcUrl },
   bridge: 'https://pancakeswap.bridge.walletconnect.org/',
   qrcode: true,
-  pollingInterval: POLLING_INTERVAL,
+  // pollingInterval: POLLING_INTERVAL,
 })
 
 const bscConnector = new BscConnector({ supportedChainIds: [chainId] })

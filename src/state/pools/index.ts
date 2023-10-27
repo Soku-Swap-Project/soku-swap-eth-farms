@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import poolsConfig from 'config/constants/pools'
 import { BIG_ZERO } from 'utils/bigNumber'
-import { PoolsState, Pool, CakeVault, VaultFees, VaultUser } from 'state/types'
+import { PoolsState, Pool } from 'state/types'
 import { fetchPoolsBlockLimits, fetchPoolsStakingLimits, fetchPoolsTotalStaking } from './fetchPools'
 import {
   fetchPoolsAllowance,
@@ -94,8 +94,6 @@ export const fetchPoolsUserDataAsync = (account) => async (dispatch) => {
     pendingReward: pendingRewards[pool.sousId],
   }))
 
-  console.log(userData, 'user')
-
   dispatch(setPoolsUserData(userData))
   return { allowances, stakingTokenBalances, stakedBalances, pendingRewards }
 }
@@ -119,7 +117,6 @@ export const getUserPoolData = async (account) => {
       stakedBalance: stakedBalances[pool.sousId],
       pendingReward: pendingRewards[pool.sousId],
     }))
-    console.log(userData, 'user')
   } catch (error) {
     // console.log(error)
   }

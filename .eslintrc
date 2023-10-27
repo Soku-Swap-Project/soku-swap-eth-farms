@@ -14,6 +14,9 @@
   "extends": "@pancakeswap/eslint-config-pancake",
   "rules": {
     "no-console": ["warn", { "allow": ["info", "warn", "error"] }],
+    "react/require-default-props": "warn",
+    "react/no-unused-prop-types": "warn",
+    "react/destructuring-assignment": "warn",
     "no-plusplus": 0,
     "prefer-destructuring": ["warn", { "object": true, "array": false }],
     "no-underscore-dangle": 0,

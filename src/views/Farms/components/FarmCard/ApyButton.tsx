@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react'
 import BigNumber from 'bignumber.js'
 import { IconButton, useModal, CalculateIcon } from '@pancakeswap/uikit'
@@ -32,6 +33,13 @@ const ApyButton: React.FC<ApyButtonProps> = ({ lpLabel, cakePrice, apr, addLiqui
       <CalculateIcon width="18px" />
     </IconButton>
   )
+}
+
+ApyButton.defaultProps = {
+  lpLabel: '',
+  cakePrice: null,
+  apr: null,
+  addLiquidityUrl: null,
 }
 
 export default ApyButton

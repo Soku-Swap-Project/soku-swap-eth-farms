@@ -29,6 +29,7 @@ import useRefresh from './useRefresh'
 // }
 
 // Retrieve IFO allowance
+// eslint-disable-next-line import/prefer-default-export
 export const useIfoAllowance = (tokenContract: Contract, spenderAddress: string, dependency?: any): BigNumber => {
   const { account } = useWeb3React()
   const [allowance, setAllowance] = useState(BIG_ZERO)

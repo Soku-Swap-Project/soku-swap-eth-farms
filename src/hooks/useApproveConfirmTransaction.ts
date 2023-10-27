@@ -3,6 +3,8 @@ import { noop } from 'lodash'
 import { useWeb3React } from '@web3-react/core'
 import useToast from 'hooks/useToast'
 import { useTranslation } from 'contexts/Localization'
+import { ToastError } from 'style/Toasts'
+import { toast } from 'react-toastify'
 
 type Web3Payload = Record<string, unknown> | null
 
@@ -133,7 +135,7 @@ const useApproveConfirmTransaction = ({
         .on('error', (error: Web3Payload) => {
           dispatch({ type: 'approve_error', payload: error })
           console.error('An error occurred approving transaction:', error)
-          toastError(t('An error occurred approving transaction'))
+          toast.error(ToastError('Error', 'An error occurred approving transaction'))
         })
     },
     handleConfirm: () => {
@@ -148,7 +150,7 @@ const useApproveConfirmTransaction = ({
         .on('error', (error: Web3Payload) => {
           dispatch({ type: 'confirm_error', payload: error })
           console.error('An error occurred confirming transaction:', error)
-          toastError(t('An error occurred confirming transaction'))
+          toast.error(ToastError('Error', 'An error occurred confirming transaction'))
         })
     },
   }

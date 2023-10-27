@@ -7,8 +7,8 @@ const tokens = {
     symbol: 'SOKU',
     name: 'SOKU',
     address: {
-      1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      1: '0x4C3A8ECeB656Ec63eaE80a4ebD565E4887DB6160',
+      5: '',
     },
     decimals: 18,
     projectLink: 'https://sokuswap.org/',
@@ -17,8 +17,38 @@ const tokens = {
     symbol: 'SUTEKU',
     name: 'Suteku Rewards Token',
     address: {
-      1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x5BaF25e000A9FB67e768C1E80B1bB81f4A6eBf76',
+      1: '0xc7230BADF274995F1933598c249c824fDE26F426',
+      5: '',
+    },
+    decimals: 18,
+    projectLink: 'https://sokuswap.org/',
+  },
+  hobi: {
+    symbol: 'HOBI',
+    name: 'Hobi',
+    address: {
+      1: '0xDe8239e84c4f31875EA7A22dBdb232c28ac77bE4',
+      5: '',
+    },
+    decimals: 18,
+    projectLink: 'https://sokuswap.org/',
+  },
+  sodatsu_old: {
+    symbol: 'SODATSU',
+    name: 'Sodatsu',
+    address: {
+      1: '0xeD641273b0c9dd7Bc89f0CD4c3BD58770B662d63',
+      5: '',
+    },
+    decimals: 18,
+    projectLink: 'https://sokuswap.org/',
+  },
+  sodatsu: {
+    symbol: 'SODATSU',
+    name: 'Sodatsu',
+    address: {
+      1: '0xf8497f1dab075A3674363B5609Ba679F7dc9C885',
+      5: '',
     },
     decimals: 18,
     projectLink: 'https://sokuswap.org/',
@@ -28,7 +58,7 @@ const tokens = {
     name: 'Tether USD',
     address: {
       1: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      5: '',
     },
     decimals: 6,
     projectLink: 'https://sokuswap.finance/',
@@ -38,7 +68,7 @@ const tokens = {
     name: 'Suteku Rewards Token',
     address: {
       1: '',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      5: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
     },
     decimals: 18,
     projectLink: 'https://sokuswap.finance/',
@@ -48,7 +78,7 @@ const tokens = {
     name: 'BODAV2',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      5: '',
     },
     decimals: 18,
     projectLink: 'https://www.bodatoken.org/ ',
@@ -58,7 +88,7 @@ const tokens = {
     name: 'HODL',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      5: '',
     },
     decimals: 9,
     projectLink: 'https://sokuswap.finance/',
@@ -68,7 +98,7 @@ const tokens = {
     name: 'Moonlight Token',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      5: '',
     },
     decimals: 9,
     projectLink: 'https://sokuswap.finance/',
@@ -78,7 +108,7 @@ const tokens = {
     name: 'FCF',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      5: '',
     },
     decimals: 18,
     projectLink: 'https://sokuswap.finance/',
@@ -88,7 +118,7 @@ const tokens = {
     name: 'Suteku Rewards Token',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      5: '',
     },
     decimals: 9,
     projectLink: 'https://sokuswap.finance/',
@@ -98,7 +128,7 @@ const tokens = {
     name: 'earnable',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      5: '',
     },
     decimals: 18,
     projectLink: 'https://earnable.one/',
@@ -108,7 +138,7 @@ const tokens = {
     name: 'yummy',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      5: '',
     },
     decimals: 18,
     projectLink: 'https://yummy-crypto.com/',
@@ -117,7 +147,7 @@ const tokens = {
     symbol: "SOKU 'Syrup'",
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0xa35062141Fa33BCA92Ce69FeD37D0E8908868AAe',
+      5: '',
     },
     decimals: 18,
     projectLink: 'https://sokuswap.finance/',
@@ -126,7 +156,7 @@ const tokens = {
     symbol: 'CAKE',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      5: '',
     },
     decimals: 18,
     projectLink: 'https://sokuswap.finance/',
@@ -135,25 +165,16 @@ const tokens = {
     symbol: 'wBNB',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      5: '',
     },
     decimals: 18,
     projectLink: 'https://sokuswap.finance/',
-  },
-  weth: {
-    symbol: 'Wrapped ETH',
-    address: {
-      1: '0x009cF7bC57584b7998236eff51b98A168DceA9B0',
-      4: '0xc778417E063141139Fce010982780140Aa0cD5Ab',
-    },
-    decimals: 18,
-    projectLink: 'https://pancakeswap.finance/',
   },
   busd: {
     symbol: 'BUSD',
     address: {
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      5: '',
     },
     decimals: 18,
     projectLink: 'https://www.paxos.com/busd/',
@@ -163,7 +184,17 @@ const tokens = {
     name: 'Ethereum Token',
     address: {
       1: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      4: '0x73621e8A89B6bA8CAD0cAB95ee1E1E0A3E61BAA1',
+      5: '',
+    },
+    decimals: 18,
+    projectLink: 'https://sokuswap.finance/',
+  },
+  smudge: {
+    symbol: 'SMUDGE',
+    name: 'Smudge Lord',
+    address: {
+      1: '0x516e2758b044433371076a48127b8CFa7b0bDb43',
+      5: '',
     },
     decimals: 18,
     projectLink: 'https://sokuswap.finance/',

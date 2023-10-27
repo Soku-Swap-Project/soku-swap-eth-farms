@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { BSC_BLOCK_TIME } from 'config'
+import { ETH_BLOCK_TIME } from 'config'
 import { getWeb3NoAccount } from 'utils/web3'
 
 /**
@@ -15,7 +15,7 @@ const useBlockCountdown = (blockNumber: number) => {
       const currentBlock = await web3.eth.getBlockNumber()
 
       if (blockNumber > currentBlock) {
-        setSecondsRemaining((blockNumber - currentBlock) * BSC_BLOCK_TIME)
+        setSecondsRemaining((blockNumber - currentBlock) * ETH_BLOCK_TIME)
 
         // Clear previous interval
         if (timer.current) {

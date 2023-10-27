@@ -50,12 +50,13 @@ const SearchInput: React.FC<Props> = ({ onChange: onChangeCallback }) => {
     <Container toggled={toggled}>
       <InputWrapper>
         <StyledInput
+          className="hover_shadow"
           value={searchText}
           onChange={onChange}
           placeholder={t('Search by name, symbol, address')}
           onBlur={() => setToggled(false)}
         />
-        <span
+        {/* <span
           style={{
             right: '0',
             padding: '0.65rem 1.5rem',
@@ -71,7 +72,7 @@ const SearchInput: React.FC<Props> = ({ onChange: onChangeCallback }) => {
           className="material-icons"
         >
           search
-        </span>
+        </span> */}
       </InputWrapper>
     </Container>
   )

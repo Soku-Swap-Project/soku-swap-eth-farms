@@ -1,17 +1,17 @@
 import BigNumber from 'bignumber.js'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Flex, Text, Box } from '@pancakeswap/uikit'
-import { useWeb3React } from '@web3-react/core'
+// import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
-import { useCake, useSoku, useSuteku } from 'hooks/useContract'
-import { getWeb3NoAccount } from 'utils/web3'
-import { getAddress } from 'utils/addressHelpers'
-import { AbiItem } from 'web3-utils'
+// import { useSoku, useSuteku } from 'hooks/useContract'
+// import { getWeb3NoAccount } from 'utils/web3'
+// import { getAddress } from 'utils/addressHelpers'
+// import { AbiItem } from 'web3-utils'
 import useLastUpdated from 'hooks/useLastUpdated'
 import { Pool } from 'state/types'
-import { BIG_ZERO } from 'utils/bigNumber'
-// import VaultApprovalAction from './VaultApprovalAction'
+// import { BIG_ZERO } from 'utils/bigNumber'
+import VaultApprovalAction from './VaultApprovalAction'
 import VaultStakeActions from './VaultStakeActions'
 
 const InlineText = styled(Text)`
@@ -23,17 +23,21 @@ const CakeVaultCardActions: React.FC<{
   accountHasSharesStaked: boolean
   isLoading: boolean
 }> = ({ pool, accountHasSharesStaked, isLoading }) => {
-  const { account } = useWeb3React()
+  // const { account } = useWeb3React()
+  // eslint-disable-next-line
   const { stakingToken, userData } = pool
+  // eslint-disable-next-line
   const { lastUpdated, setLastUpdated } = useLastUpdated()
+  // eslint-disable-next-line
   const [isVaultApproved, setIsVaultApproved] = useState(false)
+  // eslint-disable-next-line
   const [balance, setBalance] = useState(new BigNumber(0))
 
-  const web3 = getWeb3NoAccount()
+  // const web3 = getWeb3NoAccount()
   // const cakeContract = useCake()
-  const sokuContract = useSoku()
-  const sutekuContract = useSuteku()
-  // const cakeVaultContract = useCakeVaultContract()
+  // const sokuContract = useSoku()
+  // const sutekuContract = useSuteku()
+  // const cakeVaultContract: any = null
   // console.log(cakeVaultContract, 'vault contract')
   const { t } = useTranslation()
   // const stakingTokenBalance = userData?.stakingTokenBalance ? new BigNumber(userData.stakingTokenBalance) : BIG_ZERO
@@ -690,8 +694,7 @@ const CakeVaultCardActions: React.FC<{
             accountHasSharesStaked={accountHasSharesStaked}
           />
         ) : (
-          // <VaultApprovalAction pool={pool} isLoading={isLoading} setLastUpdated={setLastUpdated} />
-          <></>
+          <VaultApprovalAction pool={pool} isLoading={isLoading} setLastUpdated={setLastUpdated} />
         )}
       </Flex>
     </Flex>

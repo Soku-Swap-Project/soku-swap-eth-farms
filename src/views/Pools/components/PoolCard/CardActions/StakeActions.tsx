@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Flex, Text, Button, IconButton, AddIcon, MinusIcon, useModal, Skeleton, useTooltip } from '@pancakeswap/uikit'
 import { useWeb3React } from '@web3-react/core'
-import Web3 from 'web3'
-import { AbiItem } from 'web3-utils'
-import { getAddress } from 'utils/addressHelpers'
+// import Web3 from 'web3'
+// import { AbiItem } from 'web3-utils'
+// import { getAddress } from 'utils/addressHelpers'
 import { getWeb3NoAccount } from 'utils/web3'
 import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { Pool } from 'state/types'
-import { useBusdPriceFromToken, useTokenPrice, usePriceBnbSuteku } from 'state/hooks'
-import { getUserPoolData } from 'state/pools'
+import { useTokenPrice } from 'state/hooks'
+// import { getUserPoolData } from 'state/pools'
 
 import Balance from 'components/Balance'
 import NotEnoughTokensModal from '../Modals/NotEnoughTokensModal'
 import StakeModal from '../Modals/StakeModal'
-import { BIG_TEN } from '../../../../../utils/bigNumber'
+import { BIG_TEN, BIG_ZERO } from '../../../../../utils/bigNumber'
 
 /* eslint-disable react/require-default-props */
 interface StakeActionsProps {
@@ -37,28 +37,15 @@ const StakeAction: React.FC<StakeActionsProps> = ({
   isLoading = false,
   lockTime,
 }) => {
+  // eslint-disable-next-lines
   const { stakingToken, stakingLimit, isFinished, userData, contractAddress } = pool
-  // const [lockTime, setLockTime] = useState()
-  const { account } = useWeb3React()
+  // const { account } = useWeb3React()
   const { t } = useTranslation()
-  const web3 = getWeb3NoAccount()
-  // const newWeb3 = new Web3(Web3.givenProvider)
+  // const web3 = getWeb3NoAccount()
   const stakedTokenBalance = getBalanceNumber(stakedBalance, stakingToken.decimals)
   // const stakingTokenPrice = useBusdPriceFromToken(stakingToken.symbol)
   const sokuPrice = useTokenPrice('sokuswap')
-  const sutekuPrice = usePriceBnbSuteku()
-
-  // useEffect(() => {
-  //   const fetchUserData = async () => {
-  //     try {
-  //       const test = await getUserPoolData(account)
-  //       console.log(test, 'test')
-  //     } catch (err) {
-  //       console.log(err, 'err')
-  //     }
-  //   }
-  //   fetchUserData()
-  // }, [account])
+  const sutekuPrice = BIG_ZERO
 
   const stakingTokenPrice = stakingToken.symbol === 'SOKU' ? sokuPrice : sutekuPrice.toNumber()
 
@@ -125,6 +112,7 @@ const StakeAction: React.FC<StakeActionsProps> = ({
           (pool.poolCategory === '60DayLock' && lockTime !== '0' && !pool.isFinished) ||
           (pool.poolCategory === '90DayLock' && lockTime !== '0' && !pool.isFinished) ? (
             <IconButton
+              className="hover_shadow emphasize_swap_button"
               variant="secondary"
               disabled={pool.isFinished ? false : !false}
               onClick={onPresentUnstake}
@@ -133,19 +121,31 @@ const StakeAction: React.FC<StakeActionsProps> = ({
               <MinusIcon color="gray" width="14px" />
             </IconButton>
           ) : (
-            <IconButton style={{ border: '2px solid #05195a' }} variant="secondary" onClick={onPresentUnstake} mr="6px">
+            <IconButton
+              className="hover_shadow emphasize_swap_button"
+              style={{ border: '2px solid #05195a' }}
+              variant="secondary"
+              onClick={onPresentUnstake}
+              mr="6px"
+            >
               <MinusIcon color="#05195a" width="14px" />
             </IconButton>
           )}
 
           {reachStakingLimit ? (
             <span ref={targetRef}>
-              <IconButton style={{ border: '2px solid #05195a' }} variant="secondary" disabled>
+              <IconButton
+                className="hover_shadow emphasize_swap_button"
+                style={{ border: '2px solid #05195a' }}
+                variant="secondary"
+                disabled
+              >
                 <AddIcon color="#05195a" width="14px" height="24px" />
               </IconButton>
             </span>
           ) : (
             <IconButton
+              className="hover_shadow emphasize_swap_button"
               variant="secondary"
               style={isFinished ? { border: '0' } : { border: '2px solid #05195a' }}
               onClick={stakingTokenBalance.gt(0) ? onPresentStake : onPresentTokenRequired}
@@ -159,7 +159,8 @@ const StakeAction: React.FC<StakeActionsProps> = ({
       </Flex>
     ) : (
       <Button
-        style={{ backgroundColor: '#04bbfb' }}
+        className="hover_shadow emphasize_swap_button"
+        style={{ backgroundColor: '#04bbfb', marginTop: '12px' }}
         disabled={isFinished}
         onClick={stakingTokenBalance.gt(0) ? onPresentStake : onPresentTokenRequired}
       >

@@ -1,20 +1,22 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import { Flex, Text, Button, Heading, useModal, Skeleton } from '@pancakeswap/uikit'
-import Web3 from 'web3'
+import React from 'react'
+import { Flex, Button, Heading, useModal, Skeleton } from '@pancakeswap/uikit'
+// import Web3 from 'web3'
 import BigNumber from 'bignumber.js'
+import { toast } from 'react-toastify'
+import { ToastError } from 'style/Toasts'
 import { Token } from 'config/constants/types'
 import { Pool } from 'state/types'
 import { getWeb3NoAccount } from 'utils/web3'
-import { useWeb3React } from '@web3-react/core'
-import { AbiItem } from 'web3-utils'
-import { getAddress } from 'utils/addressHelpers'
+// import { useWeb3React } from '@web3-react/core'
+// import { AbiItem } from 'web3-utils'
+// import { getAddress } from 'utils/addressHelpers'
 import { useTranslation } from 'contexts/Localization'
 import { getFullDisplayBalance, getBalanceNumber, formatNumber } from 'utils/formatBalance'
-import { useBusdPriceFromToken, useTokenPrice, usePriceBnbSuteku } from 'state/hooks'
-import useToast from 'hooks/useToast'
+import { useTokenPrice } from 'state/hooks'
+// import useToast from 'hooks/useToast'
 import Balance from 'components/Balance'
 import CollectModal from '../Modals/CollectModal'
-import { BIG_TEN } from '../../../../../utils/bigNumber'
+import { BIG_TEN, BIG_ZERO } from '../../../../../utils/bigNumber'
 
 /* eslint-disable react/require-default-props */
 interface HarvestActionsProps {
@@ -38,21 +40,20 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
 }) => {
   const { t } = useTranslation()
   // const [lockTime, setLockTime] = useState()
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
   const earningTokenBalance = getBalanceNumber(earnings, earningToken.decimals)
   const formattedBalance = formatNumber(earningTokenBalance, 3, 3)
-  const { toastSuccess, toastError } = useToast()
+  // const { toastSuccess, toastError } = useToast()
   const web3 = getWeb3NoAccount()
-  const newWeb3 = new Web3(Web3.givenProvider)
-  const { account } = useWeb3React()
-  const bnbPrice = useTokenPrice('wbnb')
-  const bnbPriceBig = new BigNumber(bnbPrice)
+  // const { account } = useWeb3React()
+  // const bnbPrice = useTokenPrice('wbnb')
+  // const bnbPriceBig = new BigNumber(bnbPrice)
   const sokuPrice = useTokenPrice('sokuswap')
-  const sutekuPrice = usePriceBnbSuteku()
+  const sutekuPrice = BIG_ZERO
 
   const earningTokenPrice = earningToken.symbol === 'SOKU' ? sokuPrice : sutekuPrice.toNumber()
 
-  const earningTokenPriceAsNumber = earningTokenPrice
+  // const earningTokenPriceAsNumber = earningTokenPrice
 
   const earningTokenDollarBalance = new BigNumber(parseFloat(earnings.toString()) * earningTokenPrice).dividedBy(
     BIG_TEN.pow(earningToken.decimals),
@@ -95,7 +96,7 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
               ) : (
                 <Heading color="textDisabled">0</Heading>
               )}
-              {earningTokenPriceAsNumber && (
+              {/* {earningTokenPriceAsNumber && (
                 <Text fontSize="12px" color={hasEarnings ? 'textSubtle' : 'textDisabled'}>
                   {hasEarnings ? (
                     <Balance
@@ -110,12 +111,13 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
                     '0 USD'
                   )}
                 </Text>
-              )}
+              )} */}
             </>
           )}
         </Flex>
         <Flex>
           <Button
+            className="hover_shadow emphasize_swap_button"
             style={{ background: 'rgb(4, 187, 251)' }}
             disabled={!hasEarnings || pool.isFinished}
             onClick={() => {
@@ -124,10 +126,12 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
                 (pool.poolCategory === '60DayLock' && lockTime !== '0') ||
                 (pool.poolCategory === '90DayLock' && lockTime !== '0')
               ) {
-                toastError(
-                  t('Canceled'),
-                  t(
-                    'Your lock time has not yet expired. You can view your lock time for the current pool in the "Details" section.',
+                toast.error(
+                  ToastError(
+                    t('Canceled'),
+                    t(
+                      'Your lock time has not yet expired. You can view your lock time for the current pool in the "Details" section.',
+                    ),
                   ),
                 )
               } else {

@@ -5,7 +5,7 @@ import { useTranslation } from 'contexts/Localization'
 import { useHarvestV2 } from 'hooks/useHarvest'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useWeb3React } from '@web3-react/core'
-import { usePriceCakeBusd } from 'state/hooks'
+import { usePriceSokuEth } from 'state/hooks'
 import CardBusdValue from '../../../Home/components/CardBusdValue'
 
 /* eslint-disable react/require-default-props */
@@ -19,7 +19,7 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
   const { t } = useTranslation()
   const [pendingTx, setPendingTx] = useState(false)
   const { onReward } = useHarvestV2(pid)
-  const cakePrice = usePriceCakeBusd()
+  const cakePrice = usePriceSokuEth()
 
   const rawEarningsBalance = account ? getBalanceNumber(earnings) : 0
   const displayBalance = rawEarningsBalance.toLocaleString()

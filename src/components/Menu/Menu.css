@@ -315,6 +315,10 @@ nav {
   display: none;
 }
 
+.sokuswap__navbar ul {
+  margin-bottom: 0px;
+}
+
 .sokuswap__navbar #open {
   position: absolute;
   right: 1%;

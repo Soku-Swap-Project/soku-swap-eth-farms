@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import { Flex, TooltipText, IconButton, useModal, CalculateIcon, Skeleton, useTooltip } from '@pancakeswap/uikit'
-import Web3 from 'web3'
+import React from 'react'
+import { Flex, TooltipText, useModal, Skeleton, useTooltip } from '@pancakeswap/uikit'
+// import Web3 from 'web3'
 import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { getPoolApr } from 'utils/apr'
-import { AbiItem } from 'web3-utils'
+// import { AbiItem } from 'web3-utils'
 import { tokenEarnedPerThousandDollarsCompounding, getRoi } from 'utils/compoundApyHelpers'
-import { useBusdPriceFromToken, useTokenPrice, usePriceBnbSuteku } from 'state/hooks'
+import { usePriceSokuEth, usePriceSodatsuEth } from 'state/hooks'
 import Balance from 'components/Balance'
 import ApyCalculatorModal from 'components/ApyCalculatorModal'
 import AprCalculatorModal from 'components/AprCalculatorModal'
 import { Pool } from 'state/types'
 import { BASE_EXCHANGE_URL } from 'config'
-import BigNumber from 'bignumber.js'
-import { getWeb3NoAccount } from 'utils/web3'
-import { getAddress } from 'utils/addressHelpers'
+// import BigNumber from 'bignumber.js'
+// import { getWeb3NoAccount } from 'utils/web3'
+// import { getAddress } from 'utils/addressHelpers'
+// import { BIG_ZERO } from 'utils/bigNumber'
 
 /* eslint-disable react/require-default-props */
 interface AprRowProps {
@@ -33,8 +34,9 @@ const AprRow: React.FC<AprRowProps> = ({
   rewardPerBlock,
 }) => {
   const { t } = useTranslation()
+  // eslint-disable-next-line
   const { stakingToken, earningToken, totalStaked, isFinished, tokenPerBlock } = pool
-  const web3 = getWeb3NoAccount()
+  // const web3 = getWeb3NoAccount()
   // const newWeb3 = new Web3(Web3.givenProvider)
 
   const tooltipContent = isAutoVault
@@ -42,21 +44,21 @@ const AprRow: React.FC<AprRowProps> = ({
     : t('This pool’s rewards aren’t compounded automatically, so we show APR')
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })
-  const sokuPrice = useTokenPrice('sokuswap')
-  const sutekuPrice = usePriceBnbSuteku()
-  const earningTokenPrice = earningToken.symbol === 'SOKU' ? sokuPrice : sutekuPrice.toNumber()
-  const earningTokenPriceAsNumber = earningTokenPrice
+  const sokuPrice = usePriceSokuEth()
+  const sodatsuPrice = usePriceSodatsuEth()
+  // const sutekuPrice = BIG_ZERO
+  const earningTokenPrice = earningToken.symbol === 'SOKU' ? sokuPrice.toString() : sodatsuPrice.toString()
+  const earningTokenPriceAsNumber = Number(earningTokenPrice)
 
-  const stakingTokenPrice = stakingToken.symbol === 'SOKU' ? sokuPrice : sutekuPrice.toNumber()
-  const stakingTokenPriceAsNumber = stakingTokenPrice
+  const stakingTokenPrice = stakingToken.symbol === 'SOKU' ? sokuPrice.toString() : sodatsuPrice.toString()
+  const stakingTokenPriceAsNumber = Number(stakingTokenPrice)
 
-  const apr =
-    getPoolApr(
-      stakingTokenPriceAsNumber,
-      earningTokenPriceAsNumber,
-      getBalanceNumber(totalStaked, stakingToken.decimals),
-      parseFloat(rewardPerBlock),
-    ) * 0.75
+  const apr = getPoolApr(
+    stakingTokenPriceAsNumber,
+    earningTokenPriceAsNumber,
+    getBalanceNumber(totalStaked, stakingToken.decimals),
+    parseFloat(rewardPerBlock),
+  )
 
   // special handling for tokens like tBTC or BIFI where the daily token rewards for $1000 dollars will be less than 0.001 of that token
   const isHighValueToken = Math.round(earningTokenPriceAsNumber / 1000) > 0
@@ -83,6 +85,7 @@ const AprRow: React.FC<AprRowProps> = ({
 
   const apyModalLink = stakingToken.address && `${BASE_EXCHANGE_URL}/#/swap?outputCurrency=${stakingToken.address[56]}`
 
+  // eslint-disable-next-line
   const [onPresentApyModal] = useModal(
     <ApyCalculatorModal
       tokenPrice={earningTokenPriceAsNumber}
@@ -124,7 +127,7 @@ const AprRow: React.FC<AprRowProps> = ({
             unit="%"
             bold
           />
-          <IconButton
+          {/* <IconButton
             onClick={
               pool.poolCategory === '30DayLock' ||
               pool.poolCategory === '60DayLock' ||
@@ -135,8 +138,8 @@ const AprRow: React.FC<AprRowProps> = ({
             variant="text"
             scale="sm"
           >
-            <CalculateIcon color="textSubtle" width="18px" />
-          </IconButton>
+            <CalculateIcon className="hover_shadow_icon" color="textSubtle" width="18px" />
+          </IconButton> */}
         </Flex>
       )}
     </Flex>

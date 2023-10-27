@@ -9,8 +9,16 @@ declare module 'styled-components' {
 
 const GlobalStyle = createGlobalStyle`
   * {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif !important;
 
+  }
+
+  a {
+  text-decoration: none !important;
+    }
+
+  p {
+    margin-bottom: 0px !important;
   }
 
   .start_and_endBlocks:hover {
@@ -22,17 +30,135 @@ const GlobalStyle = createGlobalStyle`
     margin-right: -2px;
   }
  
-  body {
-    min-height: 100vh;
-    padding-bottom: 100px;    
-    background: linear-gradient(250deg, #05195a 20%, #040f31);
+  // body {
+  //   min-height: 100vh;
+  //   padding-bottom: 100px;    
+  //   background: linear-gradient(250deg, #05195a 20%, #040f31);
 
+
+  //   img {
+  //     height: auto;
+  //     max-width: 100%;
+  //   }
+  // }
+
+  html,
+  body {
+    font-family:'Poppins', 'sans-serif';
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #e0e6f0;
+    color: #05195a;
+  }
+
+  body {
+    position: relative;
+    margin: 0;
+    min-height: 100vh;
 
     img {
       height: auto;
       max-width: 100%;
     }
   }
+
+  .logo_shadow {
+    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.2));
+  }
+
+  .sokuswap__toggleContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: -5px;
+  padding-bottom: 5px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.sokuswap__toggleContainer p {
+  padding: 10px;
+  color: #05195a;
+  margin-left: 12px;
+  font-size: 14px;
+  font-weight: bolder;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  margin-right: 14px;
+}
+
+.toggleActive {
+  text-shadow: 0px 0px 20px #04bbfb, 1px 1px 10px #04bbfb;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 58px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 18px;
+  width: 18px;
+  left: 7px;
+  bottom: 1px;
+  background-color: #04bbfb;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #fff;
+}
+
+input:focus + .slider {
+  -webkit-box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
 
   .transak_modal {
     width: 95% !important;
@@ -43,9 +169,6 @@ const GlobalStyle = createGlobalStyle`
     fill: #04bbfb;
   }
 
-  button {
-    box-shadow: none !important;
-  }
 
   svg[color="textSubtle"] {
     fill: #04bbfb;
@@ -53,9 +176,9 @@ const GlobalStyle = createGlobalStyle`
 
   }
 
-  input[pattern='^[0-9]*[.,]?[0-9]*$']:focus:not(:disabled) {
-    box-shadow: 0px 0px 4px 2px #04bbfb
-}
+//   input[pattern='^[0-9]*[.,]?[0-9]*$']:focus:not(:disabled) {
+//     box-shadow: 0px 0px 4px 2px #04bbfb
+// }
 
 input[pattern='^[0-9]*[.,]?[0-9]*$']::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -91,9 +214,6 @@ input[pattern='^[0-9]*[.,]?[0-9]*$'] {
     border: none;
   }
 
-  div[color='textSubtle'] {
-    color: #05489c;
-  }
   
 
   div[color="text"], p[color="text"] {
@@ -119,17 +239,19 @@ input[pattern='^[0-9]*[.,]?[0-9]*$'] {
   }
 
   div[data-popper-reference-hidden="false"] {
-    background: #fff;
+    background: rgb(236, 241, 248);
+      box-shadow: 1px 24px 12px 3px rgb(0 0 0 / 18%) !important;
+
     color: #04bbfb;
   }
 
    div[data-popper-reference-hidden="false"] div::before {
-     background: #fff;
+     background: rgb(236, 241, 248);
    }
  
   a[variant="primary"] {
-    background: #04bbfb;
-    color: #fff !important;
+    background: transparent;
+    color: #05195a;
   }
 
   a[color="primary"] {
@@ -169,8 +291,8 @@ input[pattern='^[0-9]*[.,]?[0-9]*$'] {
   .farm_liquidity_buttons {
     background: #05195a;
     border: none;
-    padding: 0.75rem 1rem !important;
-    border-radius: 24px;
+    padding: 0.75rem 1rem;
+    border-radius: 14px;
     color: #fff;
     font-size: 1rem;
     cursor: pointer;
@@ -207,18 +329,25 @@ button[id='wallet-connect-binance chain wallet'] div,
   fill: #04bbfb !important;
 }
 
+button[id='wallet-connect-metamask'],
+button[id='wallet-connect-walletconnect'],
+button[id='wallet-connect-binance chain wallet'] {
+    transition: all 0.2s ease-in-out !important;
+  background: transparent;
+  border-radius: 7px;
+}
+
+button[id='wallet-connect-metamask']:hover,
+button[id='wallet-connect-walletconnect']:hover,
+button[id='wallet-connect-binance chain wallet']:hover {
+    box-shadow: 1px 8px 7px 1px rgba(0, 0, 0, 0.2) !important;
+  transform: scale(1.025) !important;
+}
+
 a[href='https://docs.pancakeswap.finance/help/faq#how-do-i-connect-my-wallet-to-pancakeswap'] {
   display: none !important;
 }
 
-/* button[id='wallet-connect-trustwallet'],
-button[id='wallet-connect-mathwallet'],
-button[id='wallet-connect-tokenpocket'],
-button[id='wallet-connect-walletconnect'],
-button[id='wallet-connect-binance chain wallet'],
-button[id='wallet-connect-safepal wallet'],
-  display: none;
-} */
 
 button[id='wallet-connect-tokenpocket'],
 button[id='wallet-connect-trustwallet'],
@@ -247,7 +376,7 @@ img[alt="icon"] {
   }
   
   div[role='presentation'] {
-    background: rgba(0, 0, 0, 0.603);
+    background: rgba(0, 0, 0, 0.5);
   }
   
   h2[color='text'] {
@@ -260,9 +389,13 @@ img[alt="icon"] {
     fill: #04bbfb;
   }
   
+  // div[color='textSubtle'] {
+  //   color: #05489c;
+  // }
+
   div[color='textSubtle'] {
-    color: #05489c;
-  }
+    color: rgb(127 127 127);
+}
   
   svg[stroke='#8f80ba'] {
     stroke: #05195a;
@@ -282,6 +415,7 @@ img[alt="icon"] {
 
   .Toastify__toast {
     width: 350px;
+    background: transparent;
   }
 
   .how_to_remove_liquidity {

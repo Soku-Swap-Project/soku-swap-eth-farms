@@ -1,7 +1,7 @@
 import { TranslatableText } from 'state/types'
 
 export interface Address {
-  4?: string
+  5?: string
   1: string
 }
 

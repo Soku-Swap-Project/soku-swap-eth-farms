@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
@@ -7,7 +7,7 @@ import './Toggle.css'
 /* eslint-disable */
 
 // console.log(window.location)
-const origin = window.location.origin
+// const origin = window.location.origin
 
 const Toggle = () => {
   let history = useHistory()

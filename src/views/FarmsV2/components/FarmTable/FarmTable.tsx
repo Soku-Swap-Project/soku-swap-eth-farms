@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import { useTable, Button, ChevronUpIcon, ColumnType } from '@pancakeswap/uikit'
+import { useTable, ColumnType } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 import Row, { RowProps } from './Row'
@@ -9,6 +9,7 @@ export interface ITableProps {
   data: RowProps[]
   columns: ColumnType<RowProps>[]
   userDataReady: boolean
+  // eslint-disable-next-line
   sortColumn?: string
 }
 
@@ -16,7 +17,7 @@ const Container = styled.div`
   filter: ${({ theme }) => theme.card.dropShadow};
   width: 100%;
   background: ${({ theme }) => theme.card.background};
-  border-radius: 16px;
+  border-radius: 7px;
   margin: 16px 0px;
 `
 
@@ -71,7 +72,7 @@ const FarmTable: React.FC<ITableProps> = (props) => {
   }
 
   return (
-    <Container>
+    <Container className="emphasized_swap_layout_no_hover">
       <TableContainer>
         <TableWrapper ref={tableWrapperEl}>
           <StyledTable>
