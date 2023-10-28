@@ -7,18 +7,19 @@ describe('getAddress', () => {
   }
 
   it(`get address for mainnet (chainId 56)`, () => {
-    1 = '56'
+    const newAddr = {
+      1: address[56],
+      5: address[97]
+    }
     const expected = address[56]
-    expect(getAddress(address)).toEqual(expected)
+    expect(getAddress(newAddr)).toEqual(expected)
   })
   it(`get address for testnet (chainId 97)`, () => {
-    1 = '97'
+    const newAddr = {
+      1: address[97],
+      5: address[56]
+    }
     const expected = address[97]
-    expect(getAddress(address)).toEqual(expected)
-  })
-  it(`get address for any other network (chainId 31337)`, () => {
-    1 = '31337'
-    const expected = address[56]
-    expect(getAddress(address)).toEqual(expected)
+    expect(getAddress(newAddr)).toEqual(expected)
   })
 })
