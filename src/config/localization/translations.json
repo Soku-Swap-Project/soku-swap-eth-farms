@@ -801,5 +801,15 @@
   "Trading Battle": "Trading Battle",
   "Prediction": "Prediction",
   "Initial Farm Offering": "Initial Farm Offering",
-  "An error occurred confirming transaction": "An error occurred confirming transaction"
+  "An error occurred confirming transaction": "An error occurred confirming transaction",
+  "Stake Liquidity Pool (LP) tokens to earn SUTEKU!": "Stake Liquidity Pool (LP) tokens to earn SUTEKU!",
+  "Actions": "Actions",
+  "Staking Pools": "Staking Pools",
+  "Earn SOKU, stake SOKU": "Earn SOKU, stake SOKU",
+  "Claiming": "Claiming",
+  "Claimed": "Claimed",
+  "Claim: collect SOKU and send to wallet": "Claim: collect SOKU and send to wallet",
+  "Compound: collect and restake SOKU into pool.": "Compound: collect and restake SOKU into pool.",
+  "SOKU to Harvest": "SOKU to Harvest",
+  "You must claim and compound your earnings from this pool manually.": "You must claim and compound your earnings from this pool manually."
 }
