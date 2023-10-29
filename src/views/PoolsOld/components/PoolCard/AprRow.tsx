@@ -33,6 +33,7 @@ const AprRow: React.FC<AprRowProps> = ({
   rewardPerBlock,
 }) => {
   const { t } = useTranslation()
+  // eslint-disable-next-lines
   const { stakingToken, earningToken, totalStaked, isFinished, tokenPerBlock } = pool
   // const web3 = getWeb3NoAccount()
   // const newWeb3 = new Web3(Web3.givenProvider)

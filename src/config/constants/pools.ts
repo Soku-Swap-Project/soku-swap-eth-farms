@@ -46,6 +46,20 @@ const pools: PoolConfig[] = [
     sortOrder: 999,
     isFinished: false,
   },
+  {
+    sousId: 3,
+    stakingToken: tokens.sodatsu,
+    earningToken: tokens.soku,
+    contractAddress: {
+      1: '0x356a0FcEf99d12776166174077D90c960D60f8ec',
+      5: '',
+    },
+    poolCategory: PoolCategory.CORE,
+    harvest: true,
+    tokenPerBlock: '1',
+    sortOrder: 999,
+    isFinished: false,
+  },
 ]
 
 export default pools
